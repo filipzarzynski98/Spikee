@@ -1,0 +1,11 @@
+.footer__wrapper {
+    height: 10vh;
+    border: 2px solid black;
+    margin-top: 5vh;
+}
+
+.footer__nav-list {
+    display: flex;
+    gap: 15px;
+    list-style-type: none;
+}

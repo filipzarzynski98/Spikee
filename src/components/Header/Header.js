@@ -4,7 +4,11 @@ import "./Header.scss"
 const Header = () => {
     return (
         <div className='header'>
-            <h1>Header</h1>
+            <div className='header__logo'>Logo</div>
+            <div className='header__login-and-menu__wrapper'>
+                <h3>Zaloguj się</h3>
+                <div>Menu</div>
+            </div>
         </div>
     );
 };
