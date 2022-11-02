@@ -38,7 +38,7 @@ const Form = ({athleteData, setAthleteData}) => {
         }
     }
 
-    const handleNameChange = (e) => {
+    const handleAthleteDataChange = (e) => {
         const {name, value} = e.target;
         setAthleteData(prevState => {
             return {
@@ -54,11 +54,11 @@ const Form = ({athleteData, setAthleteData}) => {
            <form>
                 <div>
                     <label>Imię</label>
-                    <input type="text" name="name" value={athleteData.name} onChange={handleNameChange}></input>
+                    <input type="text" name="name" value={athleteData.name} onChange={handleAthleteDataChange}></input>
                 </div> 
                 <div>
                     <label>Nazwisko</label>
-                    <input type="text" name="surname" value={athleteData.surname} onChange={handleNameChange}></input>
+                    <input type="text" name="surname" value={athleteData.surname} onChange={handleAthleteDataChange}></input>
                 </div>
                 <div>
                     <label>Płeć</label>
