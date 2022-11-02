@@ -3,7 +3,7 @@ import "./Form.scss"
 import Competitions from './competitions';
 
 
-const Form = ({athleteName, setAthleteName}) => {
+const Form = ({athleteData, setAthleteData}) => {
 
     const [sex, setSex] = useState("")
     const [sexFirstLetter, setSexFirstLetter] = useState("")
@@ -39,7 +39,13 @@ const Form = ({athleteName, setAthleteName}) => {
     }
 
     const handleNameChange = (e) => {
-        setAthleteName(e.target.value)
+        const {name, value} = e.target;
+        setAthleteData(prevState => {
+            return {
+                ...prevState,
+                [name]: value
+            }
+        })
     }
 
     return (
@@ -48,11 +54,11 @@ const Form = ({athleteName, setAthleteName}) => {
            <form>
                 <div>
                     <label>Imię</label>
-                    <input type="text" value={athleteName} onChange={handleNameChange}></input>
+                    <input type="text" name="name" value={athleteData.name} onChange={handleNameChange}></input>
                 </div> 
                 <div>
                     <label>Nazwisko</label>
-                    <input type="text"></input>
+                    <input type="text" name="surname" value={athleteData.surname} onChange={handleNameChange}></input>
                 </div>
                 <div>
                     <label>Płeć</label>
