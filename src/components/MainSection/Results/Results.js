@@ -1,10 +1,10 @@
 import React from 'react';
 import "./Results.scss"
 
-const Results = () => {
+const Results = ({athleteName}) => {
     return (
         <div className='results__wrapper'>
-            Rezultaty
+            <h1>{athleteName}</h1>
         </div>
     );
 };
