@@ -1,11 +1,11 @@
 import React from 'react';
 import "./Results.scss"
 
-const Results = ({athleteData}) => {
+const Results = ({resultsData}) => {
     return (
         <div className='results__wrapper'>
-            <h1>{athleteData.name}</h1>
-            <h2>{athleteData.surname}</h2>
+            <h1>{resultsData.name}</h1>
+            <h2>{resultsData.surname}</h2>
         </div>
     );
 };

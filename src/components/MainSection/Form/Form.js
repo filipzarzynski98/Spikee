@@ -3,7 +3,7 @@ import "./Form.scss"
 import Competitions from './competitions';
 
 
-const Form = ({athleteData, setAthleteData}) => {
+const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
 
     const [sex, setSex] = useState("")
     const [sexFirstLetter, setSexFirstLetter] = useState("")
@@ -48,6 +48,20 @@ const Form = ({athleteData, setAthleteData}) => {
         })
     }
 
+    const handleClick = (e) => {
+        e.preventDefault();
+
+        setResultsData(athleteData)
+        
+        setAthleteData(prevState => {
+            return {
+                ...prevState,
+                name: "",
+                surname: ""
+            }
+        })
+    }
+
     return (
         <div className='form__wrapper'>
            <h3>Dodaj zawodnika</h3>
@@ -76,7 +90,7 @@ const Form = ({athleteData, setAthleteData}) => {
                         <option>{heptathlonOrDecathlon()}</option>                   
                     </select>
                 </div>
-                <button>Dodaj</button>
+                <button onClick={handleClick}>Dodaj</button>
            </form>
             
         </div>

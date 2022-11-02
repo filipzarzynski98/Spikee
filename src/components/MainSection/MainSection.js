@@ -4,11 +4,12 @@ import Form from './Form/Form';
 import Results from './Results/Results';
 
 const MainSection = () => {
-    const [athleteData, setAthleteData] = useState({name: "", surname: "", sex: "", competition: ""})
+    const [athleteData, setAthleteData] = useState({name: "", surname: ""})
+    const [resultsData, setResultsData] = useState({})
     return (
         <div className='mainSection__wrapper'>
-            <Results athleteData={athleteData}/>
-            <Form athleteData={athleteData} setAthleteData={setAthleteData}/>   
+            <Results resultsData={resultsData}/>
+            <Form athleteData={athleteData} setAthleteData={setAthleteData} setResultsData={setResultsData}/>   
         </div>
     );
 };
