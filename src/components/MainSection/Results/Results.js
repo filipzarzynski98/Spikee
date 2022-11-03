@@ -4,8 +4,18 @@ import "./Results.scss"
 const Results = ({resultsData}) => {
     return (
         <div className='results__wrapper'>
-            <h1>{resultsData.name}</h1>
-            <h2>{resultsData.surname}</h2>
+            <ul>
+                {resultsData.map((elem, index) => <li key={index}>
+                    {elem.name}
+                    <br/> 
+                    {elem.surname}
+                    <br/>  
+                    {elem.sex} 
+                    <br/> 
+                    {elem.competition}
+                </li>)}
+            </ul>
+            
         </div>
     );
 };

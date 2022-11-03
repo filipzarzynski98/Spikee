@@ -51,7 +51,7 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
     const handleClick = (e) => {
         e.preventDefault();
 
-        setResultsData(athleteData)
+        setResultsData(prevState => [...prevState, athleteData])
         
         setAthleteData(prevState => {
             return {
