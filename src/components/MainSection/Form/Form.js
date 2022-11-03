@@ -13,6 +13,12 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
         setSex(e.target.value)
         if (sex === "male") {
             setSexFirstLetter("M")
+            setAthleteData(prevState => {
+                return {
+                    ...prevState,
+                    sex: sex
+                }
+            })
         }
         else {
             setSexFirstLetter("K")
@@ -50,7 +56,7 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
 
     const handleClick = (e) => {
         e.preventDefault();
-
+        
         setResultsData(prevState => [...prevState, athleteData])
         
         setAthleteData(prevState => {
