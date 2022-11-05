@@ -1,40 +1,54 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./Form.scss"
 import Competitions from './competitions';
 
 
-const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
+const Form = ({athleteData, setAthleteData, setResultsData}) => {
 
     const [sex, setSex] = useState("")
     const [sexFirstLetter, setSexFirstLetter] = useState("")
     
+   
 
-    const handleSexChange = (e) => {
-        setSex(e.target.value)
-        if (sex === "male") {
-            setSexFirstLetter("M")
-        }
-        else {
+    const handleSexSelect = (e) => {
+        if (e.target.value === "Kobieta") {
+            setSex("Kobieta")
             setSexFirstLetter("K")
+            setAthleteData(prevState => {
+                return {
+                    ...prevState,
+                    sex: "Kobieta"
+                }
+            })
         }
-         
+        if (e.target.value === "Mężczyzna") {
+            setSex("Mężczyzna")
+            setSexFirstLetter("M")
+            setAthleteData(prevState => {
+                return {
+                    ...prevState,
+                    sex: "Mężczyzna"
+                }
+            })
+        }
     }
 
+    
     const handle100mHurdlesOption = () => {
-        if (sex === "female") {
-            return `110m p.pł ${sexFirstLetter}`
+        if (sex === "Kobieta") {
+            return `100m p.pł ${sexFirstLetter}`
         }
         else {
-            return `100m p.pł ${sexFirstLetter}`
+            return `110m p.pł ${sexFirstLetter}`
         }
     }
 
     const heptathlonOrDecathlon = () => {
-        if (sex === "female") {
-            return `Dziesięciobój ${sexFirstLetter}`
+        if (sex === "Kobieta") {
+            return `Siedmiobój ${sexFirstLetter}`
         }
         else {
-            return `Siedmiobój ${sexFirstLetter}`
+            return `Dziesięciobój ${sexFirstLetter}`
         }
     }
 
@@ -48,6 +62,15 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
         })
     }
 
+    const handleCompetitionSelect = (e) => {
+        setAthleteData(prevState => {
+            return {
+                ...prevState,
+                competition: e.target.value
+            }
+        })
+    }
+
     const handleClick = (e) => {
         e.preventDefault();
 
@@ -57,7 +80,8 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
             return {
                 ...prevState,
                 name: "",
-                surname: ""
+                surname: "",
+                
             }
         })
     }
@@ -76,15 +100,16 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
                 </div>
                 <div>
                     <label>Płeć</label>
-                    <select value={sex} onChange={handleSexChange}>
+                    <select value={sex} onChange={handleSexSelect}>
                         <option></option>
-                        <option value="male">Kobieta</option>
-                        <option value="female">Mężczyzna</option>
+                        <option>Kobieta</option>
+                        <option>Mężczyzna</option>
                     </select>
                 </div>
                 <div>
                     <label>Konkurencja</label>
-                    <select>
+                    <select onChange={handleCompetitionSelect}>
+                        <option></option>
                         {Competitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
                         <option>{handle100mHurdlesOption()}</option>
                         <option>{heptathlonOrDecathlon()}</option>                   
