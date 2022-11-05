@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "./Form.scss"
 import Competitions from './competitions';
 
 
-const Form = ({athleteData, setAthleteData, setResultsData}) => {
+const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
 
     const [sex, setSex] = useState("")
     const [sexFirstLetter, setSexFirstLetter] = useState("")
