@@ -95,7 +95,7 @@ const Form = ({athleteData, setAthleteData, setResultsData}) => {
                 ...prevState,
                 name: "",
                 surname: "",
-                
+                license: ""  
             }
         })
     }
@@ -130,6 +130,10 @@ const Form = ({athleteData, setAthleteData, setResultsData}) => {
                         <option>{handle100mHurdlesOption()}</option>
                         <option>{heptathlonOrDecathlon()}</option>                   
                     </select>
+                </div>
+                <div>
+                    <label>Nr licencji</label>
+                    <input type="text" name="license" value={athleteData.license} onChange={handleAthleteDataChange}></input>
                 </div>
                 <button onClick={handleClick}>Dodaj</button>
            </form>
