@@ -3,7 +3,7 @@ import "./Form.scss"
 import Competitions from './competitions';
 
 
-const Form = ({athleteData, setAthleteData, setResultsData}) => {
+const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
 
     const [sex, setSex] = useState("")
     const [sexFirstLetter, setSexFirstLetter] = useState("")
@@ -98,6 +98,7 @@ const Form = ({athleteData, setAthleteData, setResultsData}) => {
                 license: ""  
             }
         })
+        console.log(resultsData)
     }
 
     // End of logic section

@@ -2,22 +2,42 @@ import React from 'react';
 import "./Results.scss"
 import Result from './Result/Result';
 
-const Results = ({resultsData}) => {
+const Results = ({resultsData, setResultsData}) => {
 
-    const redirectToDomtel = (e) => {
-        e.preventDefault();
+    
 
-        
+    const removeAthlete = (deletingAthleteLicense) => {
+        const updateAthletesList = resultsData.filter((athlete) => athlete !== deletingAthleteLicense);
+        setResultsData(updateAthletesList)
     }
+
+
     return (
         <div className='results__wrapper'>
-            <div>
-                {resultsData.map((result, index) => <Result resultsData={result} key={index}/>)}  
-            </div>
+            <>
+                {resultsData.map((elem, index) => {
+                    const domtelHref = `https://statystyka.pzla.pl/personal.php?page=profile&nr_zaw=${elem.license}&r=1`
+                    return(
+                        <div key={index}>
+                            <Result setResultsData={setResultsData} resultsData={elem}/>
+                            <button onClick={() => removeAthlete(elem)}>Usuń</button>
+                            <button>
+                                <a 
+                                    href={domtelHref} 
+                                    target="_blank" 
+                                    rel="noreferrer"
+                                >
+                                    Domtel
+                                </a>
+                            </button>
+                        </div>
+                        )
+                    }
+                )} 
+            </>
             <div className='buttons__wrapper'>
                 <button>Drukuj</button>
-            </div>
-            
+            </div>      
         </div>
     );
 };

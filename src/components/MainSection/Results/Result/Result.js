@@ -4,18 +4,15 @@ import menAvatar from "../../../../images/men-avatar.png"
 import womanAvatar from "../../../../images/woman-avatar2.png"
  
 
-const Result = ({resultsData}) => {
+const Result = ({resultsData, setResultsData}) => {
 
-    const [avatarGender, setAvatarGender] = useState("")
-
-    const domtelHref = `https://statystyka.pzla.pl/personal.php?page=profile&nr_zaw=${resultsData.license}&r=1`
-    
+    const [avatarGender, setAvatarGender] = useState("")    
 
     // Setting avatar depending of selected gender
 
     useEffect(() => {
         chooseAvatarGender()
-    }, [resultsData])
+    })
     
     const chooseAvatarGender = () => {
         if (resultsData.sex === "Kobieta") {
@@ -25,7 +22,8 @@ const Result = ({resultsData}) => {
             setAvatarGender(menAvatar)
         }
     }
-    
+
+
     return (
         <div className='result'>
             <img className='avatar' src={avatarGender} alt='men-avatar' />
@@ -36,13 +34,10 @@ const Result = ({resultsData}) => {
                         <li>{resultsData.surname}</li>
                         <li>{resultsData.sex}</li>
                         <li>{resultsData.competition}</li>
+                        <li>{resultsData.license}</li>
                     </ul>
                 </div>
             </div>
-            <button>
-                <a href={domtelHref} target="_blank">Domtel</a>
-            </button>
-            <button>Usuń</button>
         </div>
     );
 };

@@ -10,10 +10,14 @@ const MainSection = () => {
 
     return (
         <div className='mainSection__wrapper'>
-            <Results resultsData={resultsData}/>
+            <Results 
+                resultsData={resultsData}
+                setResultsData={setResultsData}
+            />
             <Form 
                 athleteData={athleteData} 
-                setAthleteData={setAthleteData} 
+                setAthleteData={setAthleteData}
+                resultsData={resultsData} 
                 setResultsData={setResultsData}
             />   
         </div>
