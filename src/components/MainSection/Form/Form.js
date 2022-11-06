@@ -7,13 +7,29 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
 
     const [sex, setSex] = useState("")
     const [sexFirstLetter, setSexFirstLetter] = useState("")
+
+
+    // Inputs values are setting to athleteData.name and athleteData.surname
     
-   
+    const handleAthleteDataChange = (e) => {
+        const {name, value} = e.target;
+        setAthleteData(prevState => {
+            return {
+                ...prevState,
+                [name]: value
+            }
+        })
+    }
+
+    // Setting gender to sex and athleteData 
+    // Also adding first gender letter to a competition
 
     const handleSexSelect = (e) => {
         if (e.target.value === "Kobieta") {
             setSex("Kobieta")
+
             setSexFirstLetter("K")
+
             setAthleteData(prevState => {
                 return {
                     ...prevState,
@@ -23,7 +39,9 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
         }
         if (e.target.value === "Mężczyzna") {
             setSex("Mężczyzna")
+
             setSexFirstLetter("M")
+            
             setAthleteData(prevState => {
                 return {
                     ...prevState,
@@ -33,7 +51,8 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
         }
     }
 
-    
+    // There are few competitions which specificity depends on gender
+
     const handle100mHurdlesOption = () => {
         if (sex === "Kobieta") {
             return `100m p.pł ${sexFirstLetter}`
@@ -52,15 +71,7 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
         }
     }
 
-    const handleAthleteDataChange = (e) => {
-        const {name, value} = e.target;
-        setAthleteData(prevState => {
-            return {
-                ...prevState,
-                [name]: value
-            }
-        })
-    }
+    // Setting selected competition to athleteData
 
     const handleCompetitionSelect = (e) => {
         setAthleteData(prevState => {
@@ -70,6 +81,9 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
             }
         })
     }
+
+    // On submit athleteData is setting as one of the elements of resultData object array
+    // Inputs are cleared
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -85,6 +99,8 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
             }
         })
     }
+
+
 
     return (
         <div className='form__wrapper'>
