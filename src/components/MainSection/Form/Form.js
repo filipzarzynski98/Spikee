@@ -3,7 +3,7 @@ import "./Form.scss"
 import Competitions from './competitions';
 
 
-const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
+const Form = ({athleteData, setAthleteData, setResultsData}) => {
 
     const [sex, setSex] = useState("")
     const [sexFirstLetter, setSexFirstLetter] = useState("")
@@ -41,7 +41,7 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
             setSex("Mężczyzna")
 
             setSexFirstLetter("M")
-            
+
             setAthleteData(prevState => {
                 return {
                     ...prevState,
@@ -100,7 +100,7 @@ const Form = ({athleteData, setAthleteData, resultsData, setResultsData}) => {
         })
     }
 
-
+    // End of logic section
 
     return (
         <div className='form__wrapper'>

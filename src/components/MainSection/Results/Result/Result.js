@@ -7,12 +7,14 @@ import womanAvatar from "../../../../images/woman-avatar2.png"
 const Result = ({resultsData}) => {
 
     const [avatarGender, setAvatarGender] = useState("")
+    
+
+    // Setting avatar depending of selected gender
 
     useEffect(() => {
         chooseAvatarGender()
     }, [resultsData])
     
-
     const chooseAvatarGender = () => {
         if (resultsData.sex === "Kobieta") {
             setAvatarGender(womanAvatar)
