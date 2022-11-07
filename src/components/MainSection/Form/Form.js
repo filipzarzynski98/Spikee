@@ -5,14 +5,16 @@ import Competitions from './competitions';
 
 const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
 
-    const [sex, setSex] = useState("")
+    
     const [sexFirstLetter, setSexFirstLetter] = useState("")
 
     // form validation states
 
-    const [validationErrorName, setValidadionErrorName] = useState("correct")
-    const [validationErrorSurname, setValidadionErrorSurname] = useState("correct")
-    const [validationErrorLicense, setValidadionErrorLicense] = useState("correct")
+    const [validationErrorName, setValidationErrorName] = useState("correct")
+    const [validationErrorSurname, setValidationErrorSurname] = useState("correct")
+    const [validationErrorSex, setValidationErrorSex] = useState("correct")
+    const [validationErrorCompetition, setValidationErrorCompetition] = useState("correct")
+    const [validationErrorLicense, setValidationErrorLicense] = useState("correct")
 
 
     // Inputs values are setting to athleteData.name and athleteData.surname
@@ -32,8 +34,7 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
 
     const handleSexSelect = (e) => {
         if (e.target.value === "Kobieta") {
-            setSex("Kobieta")
-
+           
             setSexFirstLetter("K")
 
             setAthleteData(prevState => {
@@ -44,8 +45,7 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
             })
         }
         if (e.target.value === "Mężczyzna") {
-            setSex("Mężczyzna")
-
+            
             setSexFirstLetter("M")
 
             setAthleteData(prevState => {
@@ -60,7 +60,7 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
     // There are few competitions which specificity depends on gender
 
     const handle100mHurdlesOption = () => {
-        if (sex === "Kobieta") {
+        if (athleteData.sex === "Kobieta") {
             return `100m p.pł ${sexFirstLetter}`
         }
         else {
@@ -69,7 +69,7 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
     }
 
     const heptathlonOrDecathlon = () => {
-        if (sex === "Kobieta") {
+        if (athleteData.sex === "Kobieta") {
             return `Siedmiobój ${sexFirstLetter}`
         }
         else {
@@ -96,22 +96,34 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
         e.preventDefault();
 
         if (athleteData.name === "" || athleteData.name.length < 2) {
-            setValidadionErrorName("form-error")
+            setValidationErrorName("form-error")
         }
         else {
-                setValidadionErrorName("correct")
+                setValidationErrorName("correct")
         } 
         if (athleteData.surname === "" || athleteData.surname.length < 2) {
-            setValidadionErrorSurname("form-error")
+            setValidationErrorSurname("form-error")
         }
         else {
-            setValidadionErrorSurname("correct")
+            setValidationErrorSurname("correct")
+        }
+        if (athleteData.sex === "") {
+            setValidationErrorSex("form-error")
+        }
+        else {
+            setValidationErrorSex("correct")
+        }
+        if (athleteData.competition === "") {
+            setValidationErrorCompetition("form-error")
+        }
+        else {
+            setValidationErrorCompetition("correct")
         } 
         if (athleteData.license === "" || athleteData.license.length < 2) {
-            setValidadionErrorLicense("form-error")  
+            setValidationErrorLicense("form-error")  
         }
         else{
-            setValidadionErrorLicense("correct")
+            setValidationErrorLicense("correct")
         }
         
         if (
@@ -126,6 +138,8 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
                         ...prevState,
                         name: "",
                         surname: "",
+                        sex: "",
+                        competition: "",
                         license: ""  
                     }
                 }) 
@@ -156,20 +170,26 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
                 </div>
                 <div>
                     <label>Płeć</label>
-                    <select value={sex} onChange={handleSexSelect}>
+                    <select 
+                        value={athleteData.sex} 
+                        onChange={handleSexSelect}>
                         <option></option>
                         <option>Kobieta</option>
                         <option>Mężczyzna</option>
                     </select>
+                    <p className={validationErrorSex}>Wybierz płeć!</p>
                 </div>
                 <div>
                     <label>Konkurencja</label>
-                    <select onChange={handleCompetitionSelect}>
+                    <select 
+                        value={athleteData.competition} 
+                        onChange={handleCompetitionSelect}>
                         <option></option>
                         {Competitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
                         <option>{handle100mHurdlesOption()}</option>
                         <option>{heptathlonOrDecathlon()}</option>                   
                     </select>
+                    <p className={validationErrorCompetition}>Wybierz konkurencję!</p>
                 </div>
                 <div>
                     <label>Nr licencji</label>
