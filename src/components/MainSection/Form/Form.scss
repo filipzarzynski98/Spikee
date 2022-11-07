@@ -6,6 +6,11 @@
     margin-right: 50px;
 }
 
-.option__hide {
+.correct {
     display: none;
+}
+
+.form-error {
+    display: block;
+    background-color: lightcoral;
 }
