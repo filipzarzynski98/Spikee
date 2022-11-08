@@ -89,6 +89,9 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
         })
     }
 
+    // Setting license value to state
+    // Only number validation
+
     const handleLicenseChange = (e) => {
         setAthleteData(prevState => {
             return {
@@ -96,7 +99,15 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
                 license: e.target.value
             }
         })
-        console.log(typeof athleteData.license)
+    }
+
+    const handleOnlyNumber = () => {
+        if (isNaN(parseFloat(athleteData.license))) {
+            setValidationErrorLicense("form-error")
+        }
+        else {
+            setValidationErrorLicense("correct")
+        } 
     }
 
     // Validation logic
@@ -130,7 +141,7 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
         else {
             setValidationErrorCompetition("correct")
         } 
-        if (athleteData.license.includes(",") || athleteData.license.includes("-") || athleteData.license.includes("+")) {
+        if (athleteData.license === "" || isNaN(parseFloat(athleteData.license)) === true) {
             setValidationErrorLicense("form-error")  
         }
         else{
@@ -138,12 +149,12 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
         }
         
         if (
-            athleteData.name !== "" && athleteData.name.length >= 2 &&
-            athleteData.surname !== "" && athleteData.surname.length >= 2 &&
-            athleteData.sex !== "" &&
-            athleteData.competition !== "" && 
-            athleteData.license !== "" && athleteData.license.length >= 2 
-            ) {
+                athleteData.name !== "" && athleteData.name.length >= 2 &&
+                athleteData.surname !== "" && athleteData.surname.length >= 2 &&
+                athleteData.sex !== "" &&
+                athleteData.competition !== "" && 
+                athleteData.license !== "" && isNaN(parseFloat(athleteData.license)) === false 
+        ) {
                 setResultsData(prevState => [...prevState, athleteData])
             
                 setAthleteData(prevState => {
@@ -207,9 +218,10 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
                 <div>
                     <label>Nr licencji</label>
                     <input 
-                        type="number" 
+                        type="text" 
                         name="license" 
-                        value={athleteData.license} 
+                        value={athleteData.license}
+                        onKeyUp={handleOnlyNumber} 
                         onChange={handleLicenseChange}/>
                     <p className={validationErrorLicense}>Nr licencji musi składać się wyłącznie z cyfr!</p>
                 </div>
