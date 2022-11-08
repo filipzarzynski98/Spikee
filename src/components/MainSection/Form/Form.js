@@ -27,6 +27,7 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
                 [name]: value
             }
         })
+        
     }
 
     // Setting gender to sex and athleteData 
@@ -88,6 +89,16 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
         })
     }
 
+    const handleLicenseChange = (e) => {
+        setAthleteData(prevState => {
+            return {
+                ...prevState,
+                license: e.target.value
+            }
+        })
+        console.log(typeof athleteData.license)
+    }
+
     // Validation logic
     // After positive validation, athleteData is setting as one of the elements of resultsData object array
     // Inputs are cleared
@@ -119,7 +130,7 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
         else {
             setValidationErrorCompetition("correct")
         } 
-        if (athleteData.license === "" || athleteData.license.length < 2) {
+        if (athleteData.license.includes(",") || athleteData.license.includes("-") || athleteData.license.includes("+")) {
             setValidationErrorLicense("form-error")  
         }
         else{
@@ -129,7 +140,9 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
         if (
             athleteData.name !== "" && athleteData.name.length >= 2 &&
             athleteData.surname !== "" && athleteData.surname.length >= 2 &&
-            athleteData.license !== "" && athleteData.license.length >= 2
+            athleteData.sex !== "" &&
+            athleteData.competition !== "" && 
+            athleteData.license !== "" && athleteData.license.length >= 2 
             ) {
                 setResultsData(prevState => [...prevState, athleteData])
             
@@ -194,10 +207,10 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
                 <div>
                     <label>Nr licencji</label>
                     <input 
-                        type="text" 
+                        type="number" 
                         name="license" 
                         value={athleteData.license} 
-                        onChange={handleAthleteDataChange}/>
+                        onChange={handleLicenseChange}/>
                     <p className={validationErrorLicense}>Nr licencji musi składać się wyłącznie z cyfr!</p>
                 </div>
                 <button onClick={handleClick}>Dodaj</button>
