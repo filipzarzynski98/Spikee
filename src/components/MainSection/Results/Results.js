@@ -33,7 +33,7 @@ const Results = ({resultsData, setResultsData}) => {
                         </div>
                         )
                     }
-                )} 
+                )}    
             </>
             <div className='buttons__wrapper'>
                 <button>Drukuj</button>

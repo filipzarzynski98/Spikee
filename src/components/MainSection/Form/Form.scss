@@ -6,11 +6,7 @@
     margin-right: 50px;
 }
 
-.correct {
-    display: none;
+input, select {
+    background-color: lightgrey;
 }
 
-.form-error {
-    display: block;
-    background-color: lightcoral;
-}
