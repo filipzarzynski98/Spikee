@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import "./FinalForm.scss"
-import Competitions from '../competitions';
+import IndividualCompetitions from '../individualCompetitions';
 
 const FinalForm = ({
         currentFormType,
@@ -11,7 +11,7 @@ const FinalForm = ({
         resultsData
     }) => {
     
-    const [sexFirstLetter, setSexFirstLetter] = useState("")
+    
 
     // form validation states
 
@@ -37,50 +37,50 @@ const FinalForm = ({
     // Setting gender to sex and athleteData 
     // Also adding first gender letter to a competition
 
-    const handleSexSelect = (e) => {
-        if (e.target.value === "Kobieta") {
+    // const handleSexSelect = (e) => {
+    //     if (e.target.value === "Kobieta") {
            
-            setSexFirstLetter("K")
+    //         setSexFirstLetter("K")
 
-            setAthleteData(prevState => {
-                return {
-                    ...prevState,
-                    sex: "Kobieta"
-                }
-            })
-        }
-        if (e.target.value === "Mężczyzna") {
+    //         setAthleteData(prevState => {
+    //             return {
+    //                 ...prevState,
+    //                 sex: "Kobieta"
+    //             }
+    //         })
+    //     }
+    //     if (e.target.value === "Mężczyzna") {
             
-            setSexFirstLetter("M")
+    //         setSexFirstLetter("M")
 
-            setAthleteData(prevState => {
-                return {
-                    ...prevState,
-                    sex: "Mężczyzna"
-                }
-            })
-        }
-    }
+    //         setAthleteData(prevState => {
+    //             return {
+    //                 ...prevState,
+    //                 sex: "Mężczyzna"
+    //             }
+    //         })
+    //     }
+    // }
 
     // There are few competitions which specificity depends on gender
 
-    const handle100mHurdlesOption = () => {
-        if (athleteData.sex === "Kobieta") {
-            return `100m p.pł ${sexFirstLetter}`
-        }
-        else {
-            return `110m p.pł ${sexFirstLetter}`
-        }
-    }
+    // const handle100mHurdlesOption = () => {
+    //     if (athleteData.sex === "Kobieta") {
+    //         return `100m p.pł ${sexFirstLetter}`
+    //     }
+    //     else {
+    //         return `110m p.pł ${sexFirstLetter}`
+    //     }
+    // }
 
-    const heptathlonOrDecathlon = () => {
-        if (athleteData.sex === "Kobieta") {
-            return `Siedmiobój ${sexFirstLetter}`
-        }
-        else {
-            return `Dziesięciobój ${sexFirstLetter}`
-        }
-    }
+    // const heptathlonOrDecathlon = () => {
+    //     if (athleteData.sex === "Kobieta") {
+    //         return `Siedmiobój ${sexFirstLetter}`
+    //     }
+    //     else {
+    //         return `Dziesięciobój ${sexFirstLetter}`
+    //     }
+    // }
 
     // Setting selected competition to athleteData
 
@@ -125,7 +125,7 @@ const FinalForm = ({
             setValidationErrorName("form-error")
         }
         else {
-                setValidationErrorName("correct")
+            setValidationErrorName("correct")
         } 
         if (athleteData.surname === "" || athleteData.surname.length < 2) {
             setValidationErrorSurname("form-error")
@@ -197,7 +197,7 @@ const FinalForm = ({
                             onChange={handleAthleteDataChange}/>
                         <p className={validationErrorSurname}>Nazwisko musi składać się co najmniej z 2 liter!</p>
                     </div>
-                    <div>
+                    {/* <div>
                         <label>Płeć</label>
                         <select 
                             value={athleteData.sex} 
@@ -207,19 +207,19 @@ const FinalForm = ({
                             <option>Mężczyzna</option>
                         </select>
                         <p className={validationErrorSex}>Wybierz płeć!</p>
-                    </div>
-                    <div>
+                    </div> */}
+                    {/* <div>
                         <label>Konkurencja</label>
                         <select 
                             value={athleteData.competition} 
                             onChange={handleCompetitionSelect}>
                             <option></option>
-                            {Competitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
+                            {IndividualCompetitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
                             <option>{handle100mHurdlesOption()}</option>
                             <option>{heptathlonOrDecathlon()}</option>                   
                         </select>
                         <p className={validationErrorCompetition}>Wybierz konkurencję!</p>
-                    </div>
+                    </div> */}
                     <div>
                         <label>Nr licencji</label>
                         <input 

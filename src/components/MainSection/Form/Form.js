@@ -15,6 +15,8 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
         finalForm: "dezactive"
     })
 
+    const [sexFirstLetter, setSexFirstLetter] = useState("")
+
     return (
         <div className='form__wrapper'>
             <InicialForm
@@ -24,10 +26,18 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
             <IndividualsForm
                 currentFormType={currentFormType}
                 setCurrentFormType={setCurrentFormType}
+                athleteData={athleteData} 
+                setAthleteData={setAthleteData}
+                sexFirstLetter={sexFirstLetter}
+                setSexFirstLetter={setSexFirstLetter}
             />
             <RelaysForm
                 currentFormType={currentFormType}
                 setCurrentFormType={setCurrentFormType}
+                athleteData={athleteData} 
+                setAthleteData={setAthleteData}
+                sexFirstLetter={sexFirstLetter}
+                setSexFirstLetter={setSexFirstLetter}
             />
             <FinalForm 
                 currentFormType={currentFormType}

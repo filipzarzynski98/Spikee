@@ -1,10 +1,43 @@
 import React from 'react';
 import "./RelaysForm.scss"
+import RelaysCompetitions from '../relaysCompetition';
+
 
 const RelaysForm = ({
     currentFormType,
-    setCurrentFormType
+    setCurrentFormType,
+    athleteData, 
+    setAthleteData,
+    sexFirstLetter,
+    setSexFirstLetter
 }) => {
+
+    const setRelaysWomen = (e) => {
+        e.preventDefault();
+
+        setAthleteData(prevState => {
+            return{
+                ...prevState,
+                sex: "female"
+            }
+        })
+
+        setSexFirstLetter("W")
+    }
+
+    const setRelaysMen = (e) => {
+        e.preventDefault();
+
+        setAthleteData(prevState => {
+            return{
+                ...prevState,
+                sex: "male"
+            }
+        })
+
+        setSexFirstLetter("M")
+    }
+
 
     const backToPreviousFormStep = (e) => {
         e.preventDefault();
@@ -26,13 +59,13 @@ const RelaysForm = ({
                 <p>RelaysForm</p>
                 <h3>Ladies or gentlemen...?</h3>
                 <div>
-                    <button>Women</button>
-                    <button>Men</button>
+                    <button onClick={setRelaysWomen}>Women</button>
+                    <button onClick={setRelaysMen}>Men</button>
                 </div>
                 <h3>Choose competition</h3>
                 <select>
                     <option></option>
-                    <option></option>
+                    {RelaysCompetitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
                 </select> 
                 <button onClick={backToPreviousFormStep}>Back</button> 
             </div>
