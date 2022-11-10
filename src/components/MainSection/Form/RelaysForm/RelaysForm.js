@@ -5,9 +5,25 @@ const RelaysForm = ({
     currentFormType,
     setCurrentFormType
 }) => {
+
+    const backToPreviousFormStep = (e) => {
+        e.preventDefault();
+  
+        setCurrentFormType(prevState => {
+          return{
+            ...prevState,
+            inicialForm: "active",
+            individualsForm: "dezactive",
+            relaysForm: "dezctive",
+            finalForm: "dezactive"
+          }
+        })
+      }
+
     if (currentFormType.relaysForm === "active") {
         return (
             <div>
+                <p>RelaysForm</p>
                 <h3>Ladies or gentlemen...?</h3>
                 <div>
                     <button>Women</button>
@@ -18,6 +34,7 @@ const RelaysForm = ({
                     <option></option>
                     <option></option>
                 </select> 
+                <button onClick={backToPreviousFormStep}>Back</button> 
             </div>
         );
     }
