@@ -9,7 +9,9 @@ const IndividualsForm = ({
     setAthleteData,
     sexFirstLetter,
     setSexFirstLetter,
-    setFromIndividualsRedirected
+    setFromIndividualsRedirected,
+    competitionNameAndStage,
+    setCompetitionNameAndStage
 }) => {
 
     
@@ -101,11 +103,23 @@ const IndividualsForm = ({
                     <button onClick={setIndividualMen}>Men</button>
                 </div>
                 <h3>Choose competition</h3>
+                <select 
+                    value={competitionNameAndStage}
+                    onChange={e => setCompetitionNameAndStage(e.target.value)}
+                >
+                        <option></option>
+                        {IndividualCompetitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
+                        <option>{hurdlesCompetition()}</option>
+                        <option>{heptathlonOrDecathlon()}</option>
+                </select>
+                <h3>Choose competition stage</h3>
                 <select>
                     <option></option>
-                    {IndividualCompetitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
-                    <option>{hurdlesCompetition()}</option>
-                    <option>{heptathlonOrDecathlon()}</option>
+                    <option>Heats</option>
+                    <option>Pre-eliminations</option>
+                    <option>Eliminations</option>
+                    <option>Semifinal</option>
+                    <option>Final</option>
                 </select> 
                 <button onClick={previousFormStep}>Back</button> 
                 <button onClick={nextFormStep}>Next</button> 

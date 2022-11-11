@@ -10,7 +10,9 @@ const RelaysForm = ({
     setAthleteData,
     sexFirstLetter,
     setSexFirstLetter,
-    setFromRelaysRedirected
+    setFromRelaysRedirected,
+    competitionNameAndStage,
+    setCompetitionNameAndStage
 }) => {
 
     const setRelaysWomen = (e) => {

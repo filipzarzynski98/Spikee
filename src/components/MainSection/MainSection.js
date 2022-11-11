@@ -7,18 +7,23 @@ const MainSection = () => {
 
     const [athleteData, setAthleteData] = useState({name: "", surname: "", sex: "", competition: "", license: ""})
     const [resultsData, setResultsData] = useState([])
+    const [competitionNameAndStage, setCompetitionNameAndStage] = useState("")
 
     return (
         <div className='mainSection__wrapper'>
             <Results 
                 resultsData={resultsData}
                 setResultsData={setResultsData}
+                competitionNameAndStage={competitionNameAndStage}
+                setCompetitionNameAndStage={setCompetitionNameAndStage}
             />
             <Form 
                 athleteData={athleteData} 
                 setAthleteData={setAthleteData}
                 resultsData={resultsData} 
                 setResultsData={setResultsData}
+                competitionNameAndStage={competitionNameAndStage}
+                setCompetitionNameAndStage={setCompetitionNameAndStage}
             />   
         </div>
     );

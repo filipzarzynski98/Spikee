@@ -213,25 +213,25 @@ const FinalForm = ({
     if (currentFormType.finalForm === "active") {
         return (
             <div className='final-form__wrapper'>
-               <h3>Dodaj zawodnika</h3>
+               <h3>Add athlete</h3>
                <form>
                     <div>
-                        <label>Imię</label>
+                        <label>Name</label>
                         <input 
                             type="text" 
                             name="name" 
                             value={athleteData.name} 
                             onChange={handleAthleteDataChange}/>
-                        <p className={validationErrorName}>Imię musi składać się co najmniej z 2 liter!</p>
+                        <p className={validationErrorName}>The name must consist of numbers only!</p>
                     </div> 
                     <div>
-                        <label>Nazwisko</label>
+                        <label>Surname</label>
                         <input 
                             type="text" 
                             name="surname" 
                             value={athleteData.surname} 
                             onChange={handleAthleteDataChange}/>
-                        <p className={validationErrorSurname}>Nazwisko musi składać się co najmniej z 2 liter!</p>
+                        <p className={validationErrorSurname}>The surname must consist of numbers only!</p>
                     </div>
                     {/* <div>
                         <label>Płeć</label>
@@ -257,17 +257,17 @@ const FinalForm = ({
                         <p className={validationErrorCompetition}>Wybierz konkurencję!</p>
                     </div> */}
                     <div>
-                        <label>Nr licencji</label>
+                        <label>License number</label>
                         <input 
                             type="text" 
                             name="license" 
                             value={athleteData.license}
                             onKeyUp={handleOnlyNumber} 
                             onChange={handleLicenseChange}/>
-                        <p className={validationErrorLicense}>Nr licencji musi składać się wyłącznie z cyfr!</p>
+                        <p className={validationErrorLicense}>The license number must only consist of numbers!</p>
                     </div>
                     <div>
-                        <button onClick={handleClick}>Dodaj</button>
+                        <button onClick={handleClick}>Add</button>
                         <button onClick={previousFormStep}>Back</button>
                     </div>
                     

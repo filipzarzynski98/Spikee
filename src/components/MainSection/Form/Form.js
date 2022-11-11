@@ -6,7 +6,14 @@ import RelaysForm from './RelaysForm/RelaysForm'
 import FinalForm from './FinalForm/FinalForm';
 
 
-const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
+const Form = ({
+    athleteData, 
+    setAthleteData, 
+    setResultsData, 
+    resultsData,
+    competitionNameAndStage,
+    setCompetitionNameAndStage
+}) => {
 
     const [currentFormType, setCurrentFormType] = useState({ 
         inicialForm: "active",
@@ -29,20 +36,32 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
             <IndividualsForm
                 currentFormType={currentFormType}
                 setCurrentFormType={setCurrentFormType}
+
                 athleteData={athleteData} 
                 setAthleteData={setAthleteData}
+
                 sexFirstLetter={sexFirstLetter}
+
                 setSexFirstLetter={setSexFirstLetter}
                 setFromIndividualsRedirected={setFromIndividualsRedirected}
+
+                competitionNameAndStage={competitionNameAndStage}
+                setCompetitionNameAndStage={setCompetitionNameAndStage}
             />
             <RelaysForm
                 currentFormType={currentFormType}
                 setCurrentFormType={setCurrentFormType}
+                
                 athleteData={athleteData} 
                 setAthleteData={setAthleteData}
+                
                 sexFirstLetter={sexFirstLetter}
                 setSexFirstLetter={setSexFirstLetter}
+
                 setFromRelaysRedirected={setFromRelaysRedirected}
+
+                competitionNameAndStage={competitionNameAndStage}
+                setCompetitionNameAndStage={setCompetitionNameAndStage}
             />
             <FinalForm 
                 currentFormType={currentFormType}

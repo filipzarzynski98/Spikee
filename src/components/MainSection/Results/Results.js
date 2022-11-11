@@ -2,7 +2,12 @@ import React from 'react';
 import "./Results.scss"
 import Result from './Result/Result';
 
-const Results = ({resultsData, setResultsData}) => {
+const Results = ({
+    resultsData, 
+    setResultsData,
+    competitionNameAndStage,
+    setCompetitionNameAndStage
+}) => {
 
     
 
@@ -14,7 +19,8 @@ const Results = ({resultsData, setResultsData}) => {
 
     return (
         <div className='results__wrapper'>
-            <>
+            <div>
+                <h4>{competitionNameAndStage}</h4> 
                 {resultsData.map((elem, index) => {
                     const domtelHref = `https://statystyka.pzla.pl/personal.php?page=profile&nr_zaw=${elem.license}&r=1`
                     return(
@@ -34,7 +40,7 @@ const Results = ({resultsData, setResultsData}) => {
                         )
                     }
                 )}    
-            </>
+            </div>
             <div className='buttons__wrapper'>
                 <button>Drukuj</button>
             </div>      
