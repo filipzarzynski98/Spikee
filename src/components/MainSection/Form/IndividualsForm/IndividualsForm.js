@@ -8,7 +8,8 @@ const IndividualsForm = ({
     athleteData, 
     setAthleteData,
     sexFirstLetter,
-    setSexFirstLetter
+    setSexFirstLetter,
+    setFromIndividualsRedirected
 }) => {
 
     
@@ -60,7 +61,7 @@ const IndividualsForm = ({
     }
     
 
-    const backToPreviousFormStep = (e) => {
+    const previousFormStep = (e) => {
         e.preventDefault();
   
         setCurrentFormType(prevState => {
@@ -68,8 +69,24 @@ const IndividualsForm = ({
             ...prevState,
             inicialForm: "active",
             individualsForm: "dezactive",
-            relaysForm: "dezctive",
+            relaysForm: "dezactive",
             finalForm: "dezactive"
+          }
+        })
+      }
+
+      const nextFormStep = (e) => {
+        e.preventDefault();
+
+        setFromIndividualsRedirected("active")
+  
+        setCurrentFormType(prevState => {
+          return{
+            ...prevState,
+            inicialForm: "dezactive",
+            individualsForm: "dezactive",
+            relaysForm: "dezactive",
+            finalForm: "active"
           }
         })
       }
@@ -90,7 +107,8 @@ const IndividualsForm = ({
                     <option>{hurdlesCompetition()}</option>
                     <option>{heptathlonOrDecathlon()}</option>
                 </select> 
-                <button onClick={backToPreviousFormStep}>Back</button> 
+                <button onClick={previousFormStep}>Back</button> 
+                <button onClick={nextFormStep}>Next</button> 
             </div>
         );  
     }

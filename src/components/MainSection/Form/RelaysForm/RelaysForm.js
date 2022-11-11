@@ -9,7 +9,8 @@ const RelaysForm = ({
     athleteData, 
     setAthleteData,
     sexFirstLetter,
-    setSexFirstLetter
+    setSexFirstLetter,
+    setFromRelaysRedirected
 }) => {
 
     const setRelaysWomen = (e) => {
@@ -39,7 +40,7 @@ const RelaysForm = ({
     }
 
 
-    const backToPreviousFormStep = (e) => {
+    const previousFormStep = (e) => {
         e.preventDefault();
   
         setCurrentFormType(prevState => {
@@ -47,8 +48,24 @@ const RelaysForm = ({
             ...prevState,
             inicialForm: "active",
             individualsForm: "dezactive",
-            relaysForm: "dezctive",
+            relaysForm: "dezactive",
             finalForm: "dezactive"
+          }
+        })
+      }
+
+      const nextFormStep = (e) => {
+        e.preventDefault();
+
+        setFromRelaysRedirected("active")
+  
+        setCurrentFormType(prevState => {
+          return{
+            ...prevState,
+            inicialForm: "dezactive",
+            individualsForm: "dezactive",
+            relaysForm: "dezactive",
+            finalForm: "active"
           }
         })
       }
@@ -67,7 +84,8 @@ const RelaysForm = ({
                     <option></option>
                     {RelaysCompetitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
                 </select> 
-                <button onClick={backToPreviousFormStep}>Back</button> 
+                <button onClick={previousFormStep}>Back</button>
+                <button onClick={nextFormStep}>Next</button>  
             </div>
         );
     }

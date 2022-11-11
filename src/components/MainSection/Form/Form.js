@@ -17,6 +17,9 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
 
     const [sexFirstLetter, setSexFirstLetter] = useState("")
 
+    const [fromIndividualsRedirected, setFromIndividualsRedirected] = useState("dezactive") 
+    const [fromRelaysRedirected, setFromRelaysRedirected] = useState("dezactive") 
+
     return (
         <div className='form__wrapper'>
             <InicialForm
@@ -30,6 +33,7 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
                 setAthleteData={setAthleteData}
                 sexFirstLetter={sexFirstLetter}
                 setSexFirstLetter={setSexFirstLetter}
+                setFromIndividualsRedirected={setFromIndividualsRedirected}
             />
             <RelaysForm
                 currentFormType={currentFormType}
@@ -38,6 +42,7 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
                 setAthleteData={setAthleteData}
                 sexFirstLetter={sexFirstLetter}
                 setSexFirstLetter={setSexFirstLetter}
+                setFromRelaysRedirected={setFromRelaysRedirected}
             />
             <FinalForm 
                 currentFormType={currentFormType}
@@ -46,6 +51,12 @@ const Form = ({athleteData, setAthleteData, setResultsData, resultsData}) => {
                 setAthleteData={setAthleteData}
                 resultsData={resultsData} 
                 setResultsData={setResultsData}
+                // Back to IndividualsForm
+                fromIndividualsRedirected={fromIndividualsRedirected}
+                setFromIndividualsRedirected={setFromIndividualsRedirected}
+                // Back to RelaysForm
+                fromRelaysRedirected={fromRelaysRedirected}
+                setFromRelaysRedirected={setFromRelaysRedirected}
             />
         </div>
     )

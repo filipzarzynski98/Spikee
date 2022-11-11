@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import "./FinalForm.scss"
-import IndividualCompetitions from '../individualCompetitions';
+// import IndividualCompetitions from '../individualCompetitions';
 
 const FinalForm = ({
         currentFormType,
@@ -8,7 +8,11 @@ const FinalForm = ({
         athleteData, 
         setAthleteData, 
         setResultsData, 
-        resultsData
+        resultsData,
+        fromIndividualsRedirected,
+        setFromIndividualsRedirected,
+        fromRelaysRedirected,
+        setFromRelaysRedirected
     }) => {
     
     
@@ -174,6 +178,38 @@ const FinalForm = ({
             }
     }
 
+    const previousFormStep = (e) => {
+        e.preventDefault();
+
+        if (fromIndividualsRedirected === "active") {
+            setCurrentFormType(prevState => {
+                return{
+                  ...prevState,
+                  inicialForm: "dezactive",
+                  individualsForm: "active",
+                  relaysForm: "dezactive",
+                  finalForm: "dezactive"
+                }
+            })
+
+            setFromIndividualsRedirected("dezactive")
+        }
+
+        if (fromRelaysRedirected === "active") {
+            setCurrentFormType(prevState => {
+                return{
+                  ...prevState,
+                  inicialForm: "dezactive",
+                  individualsForm: "dezactive",
+                  relaysForm: "active",
+                  finalForm: "dezactive"
+                }
+            })
+
+            setFromRelaysRedirected("dezactive")
+        }
+      }
+
     if (currentFormType.finalForm === "active") {
         return (
             <div className='final-form__wrapper'>
@@ -230,7 +266,11 @@ const FinalForm = ({
                             onChange={handleLicenseChange}/>
                         <p className={validationErrorLicense}>Nr licencji musi składać się wyłącznie z cyfr!</p>
                     </div>
-                    <button onClick={handleClick}>Dodaj</button>
+                    <div>
+                        <button onClick={handleClick}>Dodaj</button>
+                        <button onClick={previousFormStep}>Back</button>
+                    </div>
+                    
                </form>
                 
             </div>
