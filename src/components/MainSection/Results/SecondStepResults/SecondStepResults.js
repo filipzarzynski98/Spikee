@@ -46,7 +46,7 @@ const SecondStepResults = ({
             <div>
                 <p>2 Step</p>
                 <h3>{listName}</h3>
-                <button onClick={nextStepHandler}>New competition</button>
+                
                 {competitionsArray.map((elem, index) => {
                     return (
                         <div key={index}>
@@ -60,7 +60,8 @@ const SecondStepResults = ({
 
                         </div>)} 
                     )
-                }   
+                }
+                <button onClick={nextStepHandler}>New competition</button> 
             </div>
         );
     }
