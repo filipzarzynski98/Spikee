@@ -9,6 +9,9 @@ import SecondStepResults from './SecondStepResults/SecondStepResults'
 
 
 const Results = ({
+    athleteData,
+    setAthleteData,
+
     resultsData, 
     setResultsData,
     competitionNameAndStage,
@@ -48,6 +51,12 @@ const Results = ({
                 setCurrentResultsStep={setCurrentResultsStep}
 
                 listName={listName}
+
+                athleteData={athleteData}
+                setAthleteData={setAthleteData}
+
+                competitionNameAndStage={competitionNameAndStage}
+                setCompetitionNameAndStage={setCompetitionNameAndStage}
             />
             {/* <ThirdStepResults
                 currentResultsStep={currentResultsStep}

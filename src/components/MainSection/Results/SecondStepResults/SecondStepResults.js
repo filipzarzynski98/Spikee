@@ -3,8 +3,14 @@ import "./SecondStepResults"
 import NewCompetition from './NewCompetition/NewCompetition';
 
 const SecondStepResults = ({
+    athleteData,
+    setAthleteData,
+
     currentResultsStep,
     setCurrentResultsStep,
+
+    competitionNameAndStage,
+    setCompetitionNameAndStage,
 
     listName
 }) => {
@@ -21,18 +27,6 @@ const SecondStepResults = ({
         let counter = 1
 
         setCompetitionsArray(prevState => [...prevState, counter + competitionsArray.length])
-       
-
-        // setCurrentResultsStep(prevState => {
-        //     return {
-        //         ...prevState,
-        //         firstStep: "dezactive",
-        //         secondStep: "dezactive",
-        //         thirdStep: "active",
-        //         fourthStep: "dezactive",
-        //         fifthStep: "dezactive"
-        //     }
-        // })
     }
 
     const removeCompetition = (deletingCompetition) => {
@@ -50,10 +44,15 @@ const SecondStepResults = ({
                 {competitionsArray.map((elem, index) => {
                     return (
                         <div key={index}>
-
                             <NewCompetition
                                 competitionsArray={competitionsArray}
                                 setCompetitionsArray={setCompetitionsArray}
+
+                                athleteData={athleteData}
+                                setAthleteData={setAthleteData}
+
+                                competitionNameAndStage={competitionNameAndStage}
+                                setCompetitionNameAndStage={setCompetitionNameAndStage}
                             />
                             <button onClick={() => removeCompetition(elem)}>Delete</button>
                             <br/>
@@ -62,6 +61,7 @@ const SecondStepResults = ({
                     )
                 }
                 <button onClick={nextStepHandler}>New competition</button> 
+                <button>Print</button> 
             </div>
         );
     }

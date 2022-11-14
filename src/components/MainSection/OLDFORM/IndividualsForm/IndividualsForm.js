@@ -1,6 +1,6 @@
 import React from 'react';
 import "./IndividualsForm.scss"
-import IndividualCompetitions from '../individualCompetitions';
+import IndividualCompetitions from '../../Results/SecondStepResults/NewCompetition/individualCompetitions';
 
 const IndividualsForm = ({
     currentFormType,
