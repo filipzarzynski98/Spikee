@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import "./MainSection.scss"
-import Form from './Form/Form';
 import Results from './Results/Results';
 
 const MainSection = () => {
@@ -16,15 +15,7 @@ const MainSection = () => {
                 setResultsData={setResultsData}
                 competitionNameAndStage={competitionNameAndStage}
                 setCompetitionNameAndStage={setCompetitionNameAndStage}
-            />
-            <Form 
-                athleteData={athleteData} 
-                setAthleteData={setAthleteData}
-                resultsData={resultsData} 
-                setResultsData={setResultsData}
-                competitionNameAndStage={competitionNameAndStage}
-                setCompetitionNameAndStage={setCompetitionNameAndStage}
-            />   
+            />  
         </div>
     );
 };

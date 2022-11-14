@@ -3,9 +3,9 @@ import "./Results.scss"
 // import Result from './Result/Result';
 import FirstStepResults from './FirstStepResults/FirstStepResults';
 import SecondStepResults from './SecondStepResults/SecondStepResults'
-import ThirdStepResults from './ThirdStepResults/ThirdStepResults'
-import FourthStepResults from './FourthStepResults/FourthStepResults'
-import FifthStepResults from './FifthStepResults/FifthStepResults'
+// import ThirdStepResults from './ThirdStepResults/ThirdStepResults'
+// import FourthStepResults from './FourthStepResults/FourthStepResults'
+// import FifthStepResults from './FifthStepResults/FifthStepResults'
 
 
 const Results = ({
@@ -49,7 +49,7 @@ const Results = ({
 
                 listName={listName}
             />
-            <ThirdStepResults
+            {/* <ThirdStepResults
                 currentResultsStep={currentResultsStep}
                 setCurrentResultsStep={setCurrentResultsStep}
 
@@ -66,7 +66,7 @@ const Results = ({
                 setCurrentResultsStep={setCurrentResultsStep}
 
                 listName={listName}
-            />
+            /> */}
 
 
 

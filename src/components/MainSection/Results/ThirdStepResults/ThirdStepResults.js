@@ -1,5 +1,6 @@
 import React from 'react';
 import "./ThirdStepResults.scss"
+import InicialForm from "./InicialForm/InicialForm"
 
 const ThirdStepResults = ({
     currentResultsStep,
@@ -13,12 +14,12 @@ const ThirdStepResults = ({
             <div>
                 <p>3 Step</p>
                 <h3>{listName}</h3>
-                <div>
-                    #new-competition
-                    <div>
-                        # InicialForm.js
-                        <button>Next</button>
-                    </div>
+                <div className='newCompetition__wrapper'>
+                    <div>New Competition</div>
+                    <InicialForm  
+                        currentResultsStep={currentResultsStep} 
+                        setCurrentResultsStep={setCurrentResultsStep}
+                    />
                 </div>
                 <button>New competition</button>
                 <button>Print</button>

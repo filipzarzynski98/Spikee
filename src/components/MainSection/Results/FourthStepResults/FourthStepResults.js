@@ -8,6 +8,20 @@ const FourthStepResults = ({
     listName
 }) => {
 
+    const previousStepHandler = (e) => {
+        e.preventDefault()
+        setCurrentResultsStep(prevState => {
+            return {
+                ...prevState,
+                firstStep: "dezactive",
+                secondStep: "dezactive",
+                thirdStep: "active",
+                fourthStep: "dezactive",
+                fifthStep: "dezactive"
+            }
+        })
+    }
+
     if (currentResultsStep.fourthStep === "active") {
         return (
             <div>
@@ -21,6 +35,7 @@ const FourthStepResults = ({
                 </div>
                 <button>New competition</button>
                 <button>Print</button>
+                <button onClick={previousStepHandler}>BACK</button>
             </div>
         ); 
     }

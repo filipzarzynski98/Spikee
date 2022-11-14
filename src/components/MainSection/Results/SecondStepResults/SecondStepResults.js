@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./SecondStepResults"
+import NewCompetition from './NewCompetition/NewCompetition';
 
 const SecondStepResults = ({
     currentResultsStep,
@@ -8,19 +9,24 @@ const SecondStepResults = ({
     listName
 }) => {
 
+    const [competitionsArray, setCompetitionArray] = useState([])
+
     const nextStepHandler = (e) => {
         e.preventDefault()
 
-        setCurrentResultsStep(prevState => {
-            return {
-                ...prevState,
-                firstStep: "dezactive",
-                secondStep: "dezactive",
-                thirdStep: "active",
-                fourthStep: "dezactive",
-                fifthStep: "dezactive"
-            }
-        })
+        setCompetitionArray(prevState => [...prevState, {}])
+        console.log(competitionsArray)
+
+        // setCurrentResultsStep(prevState => {
+        //     return {
+        //         ...prevState,
+        //         firstStep: "dezactive",
+        //         secondStep: "dezactive",
+        //         thirdStep: "active",
+        //         fourthStep: "dezactive",
+        //         fifthStep: "dezactive"
+        //     }
+        // })
     }
 
     if (currentResultsStep.secondStep === "active") {
@@ -28,7 +34,16 @@ const SecondStepResults = ({
             <div>
                 <p>2 Step</p>
                 <h3>{listName}</h3>
-                <button onClick={nextStepHandler}>New competition</button>    
+                <button onClick={nextStepHandler}>New competition</button>
+                {competitionsArray.map((elem, index) => {
+                    return (
+                        <div key={index}>
+
+                            <NewCompetition/>
+
+                        </div>)} 
+                    )
+                }   
             </div>
         );
     }
