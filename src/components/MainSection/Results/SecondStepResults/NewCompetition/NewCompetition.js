@@ -3,7 +3,16 @@ import "./NewCompetition.scss";
 import InicialForm from './InicialForm/InicialForm';
 
 
-const NewCompetition = () => {
+const NewCompetition = ({
+    competitionsArray,
+    setCompetitionsArray
+}) => {
+
+
+
+    
+        
+    
     return (
         <div className='newCompetition__wrapper'>
             <div>New Competition</div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./SecondStepResults"
 import NewCompetition from './NewCompetition/NewCompetition';
 
@@ -9,13 +9,19 @@ const SecondStepResults = ({
     listName
 }) => {
 
-    const [competitionsArray, setCompetitionArray] = useState([])
+    const [competitionsArray, setCompetitionsArray] = useState([])
+
+    useEffect(() => {
+        console.log(competitionsArray)
+    }, [competitionsArray])
 
     const nextStepHandler = (e) => {
         e.preventDefault()
 
-        setCompetitionArray(prevState => [...prevState, {}])
-        console.log(competitionsArray)
+        let counter = 1
+
+        setCompetitionsArray(prevState => [...prevState, counter + competitionsArray.length])
+       
 
         // setCurrentResultsStep(prevState => {
         //     return {
@@ -29,6 +35,12 @@ const SecondStepResults = ({
         // })
     }
 
+    const removeCompetition = (deletingCompetition) => {
+        const updateCompetitionList = competitionsArray.filter((elem) => elem !== deletingCompetition);
+        setCompetitionsArray(updateCompetitionList)
+       
+    }
+
     if (currentResultsStep.secondStep === "active") {
         return (
             <div>
@@ -39,7 +51,12 @@ const SecondStepResults = ({
                     return (
                         <div key={index}>
 
-                            <NewCompetition/>
+                            <NewCompetition
+                                competitionsArray={competitionsArray}
+                                setCompetitionsArray={setCompetitionsArray}
+                            />
+                            <button onClick={() => removeCompetition(elem)}>Delete</button>
+                            <br/>
 
                         </div>)} 
                     )
