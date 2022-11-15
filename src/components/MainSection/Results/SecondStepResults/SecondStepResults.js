@@ -3,14 +3,8 @@ import "./SecondStepResults.scss"
 import NewCompetition from './NewCompetition/NewCompetition';
 
 const SecondStepResults = ({
-    athleteData,
-    setAthleteData,
-
     currentResultsStep,
     setCurrentResultsStep,
-
-    competitionNameAndStage,
-    setCompetitionNameAndStage,
 
     listName
 }) => {
@@ -36,12 +30,6 @@ const SecondStepResults = ({
                                 <NewCompetition
                                     competitionsArray={competitionsArray}
                                     setCompetitionsArray={setCompetitionsArray}
-
-                                    athleteData={athleteData}
-                                    setAthleteData={setAthleteData}
-
-                                    competitionNameAndStage={competitionNameAndStage}
-                                    setCompetitionNameAndStage={setCompetitionNameAndStage}
                                 />
                             </div>)} 
                         )

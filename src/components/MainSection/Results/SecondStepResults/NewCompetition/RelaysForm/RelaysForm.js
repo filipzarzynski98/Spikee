@@ -6,14 +6,13 @@ const RelaysForm = ({
     currentFormType,
     setCurrentFormType,
 
-    athleteData, 
-    setAthleteData,
+    onChangeCompetitionData,
+    setOnChangeCompetitionData,
+    finalCompetitionData,
+    setFinalCompetitionData,
 
     sexFirstLetter,
     setSexFirstLetter,
-
-    competitionNameAndStage,
-    setCompetitionNameAndStage,
 
     setFromRelaysRedirected
 }) => {
@@ -21,7 +20,7 @@ const RelaysForm = ({
     const setRelaysWomen = (e) => {
         e.preventDefault();
 
-        setAthleteData(prevState => {
+        setOnChangeCompetitionData(prevState => {
             return{
                 ...prevState,
                 sex: "female"
@@ -36,7 +35,7 @@ const RelaysForm = ({
     const setRelaysMen = (e) => {
         e.preventDefault();
 
-        setAthleteData(prevState => {
+        setOnChangeCompetitionData(prevState => {
             return{
                 ...prevState,
                 sex: "male"
@@ -46,6 +45,23 @@ const RelaysForm = ({
         setSexFirstLetter("M")
     }
 
+    const setCompetitionHandler = (e) => {
+        setOnChangeCompetitionData(prevState => {
+            return {
+                ...prevState,
+                competition: e.target.value
+            }
+        })
+    }
+
+    const setStageHandler = (e) => {
+        setOnChangeCompetitionData(prevState => {
+            return {
+                ...prevState,
+                stage: e.target.value
+            }
+        })
+      }
 
     const previousFormStep = (e) => {
         e.preventDefault();
@@ -87,10 +103,25 @@ const RelaysForm = ({
                     <button onClick={setRelaysMen}>Men</button>
                 </div>
                 <h3>Choose competition</h3>
-                <select>
+                <select
+                    value={onChangeCompetitionData.competition}
+                    onChange={setCompetitionHandler}
+                >
                     <option></option>
                     {RelaysCompetitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
-                </select> 
+                </select>
+                <h3>Choose stage</h3>
+                <select
+                    value={onChangeCompetitionData.stage}
+                    onChange={setStageHandler}
+                >
+                        <option></option>
+                        <option>Heats</option>
+                        <option>Pre-eliminations</option>
+                        <option>Eliminations</option>
+                        <option>Semifinal</option>
+                        <option>Final</option>
+                </select>  
                 <button onClick={previousFormStep}>Back</button>
                 <button onClick={nextFormStep}>Next</button>  
             </div>

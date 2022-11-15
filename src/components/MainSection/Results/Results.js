@@ -1,21 +1,10 @@
 import React, { useState } from 'react';
 import "./Results.scss"
-// import Result from './Result/Result';
 import FirstStepResults from './FirstStepResults/FirstStepResults';
 import SecondStepResults from './SecondStepResults/SecondStepResults'
-// import ThirdStepResults from './ThirdStepResults/ThirdStepResults'
-// import FourthStepResults from './FourthStepResults/FourthStepResults'
-// import FifthStepResults from './FifthStepResults/FifthStepResults'
-
 
 const Results = ({
-    athleteData,
-    setAthleteData,
-
-    resultsData, 
-    setResultsData,
-    competitionNameAndStage,
-    setCompetitionNameAndStage
+   
 }) => {
 
     const [currentResultsStep, setCurrentResultsStep] = useState({
@@ -51,12 +40,6 @@ const Results = ({
                 setCurrentResultsStep={setCurrentResultsStep}
 
                 listName={listName}
-
-                athleteData={athleteData}
-                setAthleteData={setAthleteData}
-
-                competitionNameAndStage={competitionNameAndStage}
-                setCompetitionNameAndStage={setCompetitionNameAndStage}
             />  
         </div>
     );

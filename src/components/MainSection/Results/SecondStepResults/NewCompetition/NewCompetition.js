@@ -7,11 +7,7 @@ import FinalForm from "./FinalForm/FinalForm"
 
 
 const NewCompetition = ({
-    athleteData,
-    setAthleteData,
 
-    competitionNameAndStage,
-    setCompetitionNameAndStage,
 }) => {
 
     const [currentFormType, setCurrentFormType] = useState({ 
@@ -21,21 +17,19 @@ const NewCompetition = ({
         finalForm: "dezactive"
     })
 
+    const [onChangeCompetitionData, setOnChangeCompetitionData] = useState({competition: "", sex: "", stage: ""})
+    const [finalCompetitionData, setFinalCompetitionData] = useState([])
+
+    const [athleteData, setAthleteData] = useState({name: "", surname: "", license: ""})
     const [sexFirstLetter, setSexFirstLetter] = useState("")
+    const [resultsData, setResultsData] = useState([])
 
     const [fromIndividualsRedirected, setFromIndividualsRedirected] = useState("dezactive") 
     const [fromRelaysRedirected, setFromRelaysRedirected] = useState("dezactive")
 
     const [isComponentActive, setIsComponentActive] = useState("active")
 
-    const classNameSetter = () => {
-        if (isComponentActive === "active") {
-            return "newCompetition__wrapper"
-        }
-        else {
-            return ""
-        }
-    }
+  
     const removeComponent = (e) => {
         e.preventDefault()
 
@@ -44,8 +38,10 @@ const NewCompetition = ({
 
     if (isComponentActive === "active") {
          return (
-            <div className={classNameSetter()}>
-                <div>New Competition</div>
+            <div className='newCompetition__wrapper'>
+                <div>
+                    <h3>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h3>
+                </div>
                 <div>
                     <InicialForm
                         currentFormType={currentFormType}
@@ -55,14 +51,13 @@ const NewCompetition = ({
                         currentFormType={currentFormType}
                         setCurrentFormType={setCurrentFormType}
 
-                        athleteData={athleteData}
-                        setAthleteData={setAthleteData}
+                        onChangeCompetitionData={onChangeCompetitionData}
+                        setOnChangeCompetitionData={setOnChangeCompetitionData}
+                        finalCompetitionData={finalCompetitionData}
+                        setFinalCompetitionData={setFinalCompetitionData}
 
                         sexFirstLetter={sexFirstLetter}
                         setSexFirstLetter={setSexFirstLetter}
-
-                        competitionNameAndStage={competitionNameAndStage}
-                        setCompetitionNameAndStage={setCompetitionNameAndStage}
 
                         setFromIndividualsRedirected={setFromIndividualsRedirected}
                     />
@@ -70,14 +65,13 @@ const NewCompetition = ({
                         currentFormType={currentFormType}
                         setCurrentFormType={setCurrentFormType}
                         
-                        athleteData={athleteData}
-                        setAthleteData={setAthleteData}
+                        onChangeCompetitionData={onChangeCompetitionData}
+                        setOnChangeCompetitionData={setOnChangeCompetitionData}
+                        finalCompetitionData={finalCompetitionData}
+                        setFinalCompetitionData={setFinalCompetitionData}
 
                         sexFirstLetter={sexFirstLetter}
                         setSexFirstLetter={setSexFirstLetter}
-
-                        competitionNameAndStage={competitionNameAndStage}
-                        setCompetitionNameAndStage={setCompetitionNameAndStage}
 
                         setFromRelaysRedirected={setFromRelaysRedirected}
                     />

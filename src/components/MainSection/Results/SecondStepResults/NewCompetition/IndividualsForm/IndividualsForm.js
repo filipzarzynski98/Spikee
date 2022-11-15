@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./IndividualsForm.scss"
 import IndividualCompetitions from '../individualCompetitions';
 
@@ -6,23 +6,30 @@ const IndividualsForm = ({
     currentFormType,
     setCurrentFormType,
 
-    athleteData,
-    setAthleteData,
+    onChangeCompetitionData,
+    setOnChangeCompetitionData,
+    finalCompetitionData,
+    setFinalCompetitionData,
 
     sexFirstLetter,
     setSexFirstLetter,
-
-    competitionNameAndStage,
-    setCompetitionNameAndStage,
-
    
     setFromIndividualsRedirected
 }) => {
 
+    useEffect(() => {
+        console.log(onChangeCompetitionData)
+    }, [onChangeCompetitionData])
+
+    useEffect(() => {
+        console.log(finalCompetitionData)
+    }, [finalCompetitionData])
+
+
     const setIndividualWomen = (e) => {
         e.preventDefault();
 
-        setAthleteData(prevState => {
+        setOnChangeCompetitionData(prevState => {
             return{
                 ...prevState,
                 sex: "female"
@@ -35,7 +42,7 @@ const IndividualsForm = ({
     const setIndividualMen = (e) => {
         e.preventDefault();
 
-        setAthleteData(prevState => {
+        setOnChangeCompetitionData(prevState => {
             return{
                 ...prevState,
                 sex: "male"
@@ -48,7 +55,7 @@ const IndividualsForm = ({
 
 
     const hurdlesCompetition =  () => {
-        if (athleteData.sex === "female") {
+        if (onChangeCompetitionData.sex === "female") {
             return "100m Hurdles"
         }
         else {
@@ -57,7 +64,7 @@ const IndividualsForm = ({
     }
 
     const heptathlonOrDecathlon =  () => {
-        if (athleteData.sex === "female") {
+        if (onChangeCompetitionData.sex === "female") {
             return "Heptathlon"
         }
         else {
@@ -80,11 +87,29 @@ const IndividualsForm = ({
         })
       }
 
+      const setCompetitionHandler = (e) => {
+        setOnChangeCompetitionData(prevState => {
+            return {
+                ...prevState,
+                competition: e.target.value
+            }
+        })
+      }
+
+      const setStageHandler = (e) => {
+        setOnChangeCompetitionData(prevState => {
+            return {
+                ...prevState,
+                stage: e.target.value
+            }
+        })
+      }
+
       const nextFormStep = (e) => {
         e.preventDefault();
 
         setFromIndividualsRedirected("active")
-  
+
         setCurrentFormType(prevState => {
           return{
             ...prevState,
@@ -108,8 +133,8 @@ const IndividualsForm = ({
                 </div>
                 <h3>Choose competition</h3>
                 <select 
-                    value={competitionNameAndStage}
-                    onChange={e => setCompetitionNameAndStage(e.target.value)}
+                    value={onChangeCompetitionData.competition}
+                    onChange={setCompetitionHandler}
                 >
                         <option></option>
                         {IndividualCompetitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
@@ -117,7 +142,10 @@ const IndividualsForm = ({
                         <option>{heptathlonOrDecathlon()}</option>
                 </select>
                 <h3>Choose competition stage</h3>
-                <select>
+                <select
+                    value={onChangeCompetitionData.stage}
+                    onChange={setStageHandler}
+                >
                     <option></option>
                     <option>Heats</option>
                     <option>Pre-eliminations</option>
