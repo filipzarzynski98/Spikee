@@ -3,3 +3,11 @@
     justify-content: space-between;
     border: 2px solid lightgreen
 }
+
+.newCompetitionButton__dezactive {
+    display: none;
+}
+
+.newCompetitionButton__active {
+    display: block;
+}

@@ -8,22 +8,18 @@ const IndividualsForm = ({
 
     onChangeCompetitionData,
     setOnChangeCompetitionData,
-    finalCompetitionData,
-    setFinalCompetitionData,
+  
 
     sexFirstLetter,
     setSexFirstLetter,
+
+    setIsNewHeatPossible
    
-    setFromIndividualsRedirected
 }) => {
 
     useEffect(() => {
         console.log(onChangeCompetitionData)
     }, [onChangeCompetitionData])
-
-    useEffect(() => {
-        console.log(finalCompetitionData)
-    }, [finalCompetitionData])
 
 
     const setIndividualWomen = (e) => {
@@ -72,6 +68,23 @@ const IndividualsForm = ({
         } 
     }
     
+    const setCompetitionHandler = (e) => {
+        setOnChangeCompetitionData(prevState => {
+            return {
+                ...prevState,
+                competition: e.target.value
+            }
+        })
+    }
+
+    const setStageHandler = (e) => {
+        setOnChangeCompetitionData(prevState => {
+            return {
+                ...prevState,
+                stage: e.target.value
+            }
+        })
+    }
 
     const previousFormStep = (e) => {
         e.preventDefault();
@@ -82,33 +95,14 @@ const IndividualsForm = ({
             inicialForm: "active",
             individualsForm: "dezactive",
             relaysForm: "dezactive",
-            finalForm: "dezactive"
+            finalIndividualsForm: "dezactive",
+            finalRelaysForm: "dezactive"
           }
         })
-      }
+    }
 
-      const setCompetitionHandler = (e) => {
-        setOnChangeCompetitionData(prevState => {
-            return {
-                ...prevState,
-                competition: e.target.value
-            }
-        })
-      }
-
-      const setStageHandler = (e) => {
-        setOnChangeCompetitionData(prevState => {
-            return {
-                ...prevState,
-                stage: e.target.value
-            }
-        })
-      }
-
-      const nextFormStep = (e) => {
+    const nextFormStep = (e) => {
         e.preventDefault();
-
-        setFromIndividualsRedirected("active")
 
         setCurrentFormType(prevState => {
           return{
@@ -116,10 +110,13 @@ const IndividualsForm = ({
             inicialForm: "dezactive",
             individualsForm: "dezactive",
             relaysForm: "dezactive",
-            finalForm: "active"
+            finalIndividualsForm: "active",
+            finalRelaysForm: "dezactive"
           }
         })
-      }
+
+        setIsNewHeatPossible("newCompetitionButton__active")
+    }
 
 
     if (currentFormType.individualsForm === "active") {

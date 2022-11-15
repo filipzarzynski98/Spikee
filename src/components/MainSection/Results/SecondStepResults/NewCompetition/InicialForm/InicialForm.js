@@ -16,7 +16,8 @@ const InicialForm = ({
                 inicialForm: "dezactive",
                 individualsForm: "active",
                 relaysForm: "dezactive",
-                finalForm: "dezactive"
+                finalIndividualsForm: "dezactive",
+                finalRelaysForm: "dezactive"
             }
         })
     } 
@@ -30,7 +31,8 @@ const InicialForm = ({
                 inicialForm: "dezactive",
                 individualsForm: "dezactive",
                 relaysForm: "active",
-                finalForm: "dezactive"
+                finalForm: "dezactive",
+                finalRelaysForm: "dezactive"
             }
         })
     }

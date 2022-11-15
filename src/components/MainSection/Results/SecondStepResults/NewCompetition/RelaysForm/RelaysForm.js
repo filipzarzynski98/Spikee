@@ -8,13 +8,9 @@ const RelaysForm = ({
 
     onChangeCompetitionData,
     setOnChangeCompetitionData,
-    finalCompetitionData,
-    setFinalCompetitionData,
 
     sexFirstLetter,
     setSexFirstLetter,
-
-    setFromRelaysRedirected
 }) => {
 
     const setRelaysWomen = (e) => {
@@ -61,7 +57,7 @@ const RelaysForm = ({
                 stage: e.target.value
             }
         })
-      }
+    }
 
     const previousFormStep = (e) => {
         e.preventDefault();
@@ -72,15 +68,14 @@ const RelaysForm = ({
             inicialForm: "active",
             individualsForm: "dezactive",
             relaysForm: "dezactive",
-            finalForm: "dezactive"
+            finalIndividualsForm: "dezactive",
+            finalRelaysForm: "dezactive"
           }
         })
-      }
+    }
 
-      const nextFormStep = (e) => {
+    const nextFormStep = (e) => {
         e.preventDefault();
-
-        setFromRelaysRedirected("active")
   
         setCurrentFormType(prevState => {
           return{
@@ -88,10 +83,11 @@ const RelaysForm = ({
             inicialForm: "dezactive",
             individualsForm: "dezactive",
             relaysForm: "dezactive",
-            finalForm: "active"
+            finalIndividualsForm: "dezactive",
+            finalRelaysForm: "active"
           }
         })
-      }
+    }
 
     if (currentFormType.relaysForm === "active") {
         return (

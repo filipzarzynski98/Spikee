@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import "./FinalForm.scss"
+import "./FinalIndividualsForm.scss"
 
-const FinalForm = ({
+const FinalIndividualsForm = ({
     currentFormType,
     setCurrentFormType,
 
@@ -10,12 +10,6 @@ const FinalForm = ({
 
     setResultsData, 
     resultsData,
-
-    fromIndividualsRedirected,
-    setFromIndividualsRedirected,
-
-    fromRelaysRedirected,
-    setFromRelaysRedirected
 }) => {
 
     // form validation states
@@ -123,36 +117,20 @@ const FinalForm = ({
     const previousFormStep = (e) => {
         e.preventDefault();
 
-        if (fromIndividualsRedirected === "active") {
-            setCurrentFormType(prevState => {
-                return{
-                  ...prevState,
-                  inicialForm: "dezactive",
-                  individualsForm: "active",
-                  relaysForm: "dezactive",
-                  finalForm: "dezactive"
-                }
-            })
+        setCurrentFormType(prevState => {
+            return{
+                ...prevState,
+                inicialForm: "dezactive",
+                individualsForm: "active",
+                relaysForm: "dezactive",
+                finalIndividualsForm: "dezactive",
+                finalRelaysForm: "dezactive"
+            }
+        })
 
-            setFromIndividualsRedirected("dezactive")
-        }
+    }
 
-        if (fromRelaysRedirected === "active") {
-            setCurrentFormType(prevState => {
-                return{
-                  ...prevState,
-                  inicialForm: "dezactive",
-                  individualsForm: "dezactive",
-                  relaysForm: "active",
-                  finalForm: "dezactive"
-                }
-            })
-
-            setFromRelaysRedirected("dezactive")
-        }
-      }
-
-    if (currentFormType.finalForm === "active") {
+    if (currentFormType.finalIndividualsForm === "active") {
         return (
             <div className='final-form__wrapper'>
                <h3>Add athlete</h3>
@@ -201,4 +179,4 @@ const FinalForm = ({
     
 };
 
-export default FinalForm;
+export default FinalIndividualsForm;

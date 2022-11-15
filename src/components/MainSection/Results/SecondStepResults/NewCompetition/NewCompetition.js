@@ -3,44 +3,48 @@ import "./NewCompetition.scss";
 import InicialForm from './InicialForm/InicialForm';
 import IndividualsForm from "./IndividualsForm/IndividualsForm"
 import RelaysForm from "./RelaysForm/RelaysForm"
-import FinalForm from "./FinalForm/FinalForm"
+import FinalIndividualsForm from "./FinalIndividualsForm/FinalIndividualsForm"
+import FinalRelaysForm from './FinalRelaysForm/FinalRelaysForm';
 
 
-const NewCompetition = ({
-
-}) => {
+const NewCompetition = () => {
 
     const [currentFormType, setCurrentFormType] = useState({ 
         inicialForm: "active",
         individualsForm: "dezactive",
         relaysForm: "dezactive",
-        finalForm: "dezactive"
+        finalIndividualsForm: "dezactive",
+        finalRelaysForm: "dezactive"
     })
 
     const [onChangeCompetitionData, setOnChangeCompetitionData] = useState({competition: "", sex: "", stage: ""})
-    const [finalCompetitionData, setFinalCompetitionData] = useState([])
 
     const [athleteData, setAthleteData] = useState({name: "", surname: "", license: ""})
     const [sexFirstLetter, setSexFirstLetter] = useState("")
     const [resultsData, setResultsData] = useState([])
 
-    const [fromIndividualsRedirected, setFromIndividualsRedirected] = useState("dezactive") 
-    const [fromRelaysRedirected, setFromRelaysRedirected] = useState("dezactive")
-
-    const [isComponentActive, setIsComponentActive] = useState("active")
+    const [isCompetitionActive, setIsCompetitionActive] = useState("active")
+    const [isNewHeatPossible, setIsNewHeatPossible] = useState("newCompetitionButton__dezactive")
 
   
-    const removeComponent = (e) => {
+    const removeCompetition = (e) => {
         e.preventDefault()
 
-        setIsComponentActive("dezactive")
+        setIsCompetitionActive("dezactive")
     }
 
-    if (isComponentActive === "active") {
+    // Środa 16.11 - do zrobienia tablica z nowymi seriami, z usuwaczem i automatycznymi oznaczeniami serii
+
+    if (isCompetitionActive === "active") {
          return (
             <div className='newCompetition__wrapper'>
                 <div>
                     <h3>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h3>
+                    <div>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
                 <div>
                     <InicialForm
@@ -53,13 +57,11 @@ const NewCompetition = ({
 
                         onChangeCompetitionData={onChangeCompetitionData}
                         setOnChangeCompetitionData={setOnChangeCompetitionData}
-                        finalCompetitionData={finalCompetitionData}
-                        setFinalCompetitionData={setFinalCompetitionData}
 
                         sexFirstLetter={sexFirstLetter}
                         setSexFirstLetter={setSexFirstLetter}
 
-                        setFromIndividualsRedirected={setFromIndividualsRedirected}
+                        setIsNewHeatPossible={setIsNewHeatPossible}
                     />
                     <RelaysForm
                         currentFormType={currentFormType}
@@ -67,28 +69,30 @@ const NewCompetition = ({
                         
                         onChangeCompetitionData={onChangeCompetitionData}
                         setOnChangeCompetitionData={setOnChangeCompetitionData}
-                        finalCompetitionData={finalCompetitionData}
-                        setFinalCompetitionData={setFinalCompetitionData}
 
                         sexFirstLetter={sexFirstLetter}
-                        setSexFirstLetter={setSexFirstLetter}
-
-                        setFromRelaysRedirected={setFromRelaysRedirected}
+                        setSexFirstLetter={setSexFirstLetter}     
                     />
-                    <FinalForm
+                    <FinalIndividualsForm
                         currentFormType={currentFormType}
                         setCurrentFormType={setCurrentFormType}
 
                         athleteData={athleteData}
                         setAthleteData={setAthleteData}
 
-                        fromIndividualsRedirected={fromIndividualsRedirected}
-                        setFromIndividualsRedirected={setFromIndividualsRedirected}
-                        fromRelaysRedirected={fromRelaysRedirected}
-                        setFromRelaysRedirected={setFromRelaysRedirected}
+                        
                     />
+                    <FinalRelaysForm
+                        currentFormType={currentFormType}
+                        setCurrentFormType={setCurrentFormType}
+                    />
+                    
                 </div>
-                <button onClick={removeComponent}>Delete</button>            
+                <div>
+                    <button className={isNewHeatPossible}>New Heat</button>
+                    <button onClick={removeCompetition}>Delete</button>  
+                </div>
+                           
             </div>
         );
     }
