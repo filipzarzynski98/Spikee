@@ -26,60 +26,83 @@ const NewCompetition = ({
     const [fromIndividualsRedirected, setFromIndividualsRedirected] = useState("dezactive") 
     const [fromRelaysRedirected, setFromRelaysRedirected] = useState("dezactive")
 
-    return (
-        <div className='newCompetition__wrapper'>
-            <div>New Competition</div>
-            <div>
-                <InicialForm
-                    currentFormType={currentFormType}
-                    setCurrentFormType={setCurrentFormType}
-                />
-                <IndividualsForm
-                    currentFormType={currentFormType}
-                    setCurrentFormType={setCurrentFormType}
+    const [isComponentActive, setIsComponentActive] = useState("active")
 
-                    athleteData={athleteData}
-                    setAthleteData={setAthleteData}
+    const classNameSetter = () => {
+        if (isComponentActive === "active") {
+            return "newCompetition__wrapper"
+        }
+        else {
+            return ""
+        }
+    }
+    const removeComponent = (e) => {
+        e.preventDefault()
 
-                    sexFirstLetter={sexFirstLetter}
-                    setSexFirstLetter={setSexFirstLetter}
+        setIsComponentActive("dezactive")
+    }
 
-                    competitionNameAndStage={competitionNameAndStage}
-                    setCompetitionNameAndStage={setCompetitionNameAndStage}
+    if (isComponentActive === "active") {
+         return (
+            <div className={classNameSetter()}>
+                <div>New Competition</div>
+                <div>
+                    <InicialForm
+                        currentFormType={currentFormType}
+                        setCurrentFormType={setCurrentFormType}
+                    />
+                    <IndividualsForm
+                        currentFormType={currentFormType}
+                        setCurrentFormType={setCurrentFormType}
 
-                    setFromIndividualsRedirected={setFromIndividualsRedirected}
-                />
-                <RelaysForm
-                    currentFormType={currentFormType}
-                    setCurrentFormType={setCurrentFormType}
-                    
-                    athleteData={athleteData}
-                    setAthleteData={setAthleteData}
+                        athleteData={athleteData}
+                        setAthleteData={setAthleteData}
 
-                    sexFirstLetter={sexFirstLetter}
-                    setSexFirstLetter={setSexFirstLetter}
+                        sexFirstLetter={sexFirstLetter}
+                        setSexFirstLetter={setSexFirstLetter}
 
-                    competitionNameAndStage={competitionNameAndStage}
-                    setCompetitionNameAndStage={setCompetitionNameAndStage}
+                        competitionNameAndStage={competitionNameAndStage}
+                        setCompetitionNameAndStage={setCompetitionNameAndStage}
 
-                    setFromRelaysRedirected={setFromRelaysRedirected}
-                />
-                <FinalForm
-                    currentFormType={currentFormType}
-                    setCurrentFormType={setCurrentFormType}
+                        setFromIndividualsRedirected={setFromIndividualsRedirected}
+                    />
+                    <RelaysForm
+                        currentFormType={currentFormType}
+                        setCurrentFormType={setCurrentFormType}
+                        
+                        athleteData={athleteData}
+                        setAthleteData={setAthleteData}
 
-                    athleteData={athleteData}
-                    setAthleteData={setAthleteData}
+                        sexFirstLetter={sexFirstLetter}
+                        setSexFirstLetter={setSexFirstLetter}
 
-                    fromIndividualsRedirected={fromIndividualsRedirected}
-                    setFromIndividualsRedirected={setFromIndividualsRedirected}
-                    fromRelaysRedirected={fromRelaysRedirected}
-                    setFromRelaysRedirected={setFromRelaysRedirected}
-                />
+                        competitionNameAndStage={competitionNameAndStage}
+                        setCompetitionNameAndStage={setCompetitionNameAndStage}
+
+                        setFromRelaysRedirected={setFromRelaysRedirected}
+                    />
+                    <FinalForm
+                        currentFormType={currentFormType}
+                        setCurrentFormType={setCurrentFormType}
+
+                        athleteData={athleteData}
+                        setAthleteData={setAthleteData}
+
+                        fromIndividualsRedirected={fromIndividualsRedirected}
+                        setFromIndividualsRedirected={setFromIndividualsRedirected}
+                        fromRelaysRedirected={fromRelaysRedirected}
+                        setFromRelaysRedirected={setFromRelaysRedirected}
+                    />
+                </div>
+                <button onClick={removeComponent}>Delete</button>            
             </div>
-              
-        </div>
-    );
+        );
+    }
+    else {
+        return null
+    }
+
+   
 };
 
 export default NewCompetition;

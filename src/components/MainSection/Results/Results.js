@@ -57,57 +57,7 @@ const Results = ({
 
                 competitionNameAndStage={competitionNameAndStage}
                 setCompetitionNameAndStage={setCompetitionNameAndStage}
-            />
-            {/* <ThirdStepResults
-                currentResultsStep={currentResultsStep}
-                setCurrentResultsStep={setCurrentResultsStep}
-
-                listName={listName}
-            />
-            <FourthStepResults
-                currentResultsStep={currentResultsStep}
-                setCurrentResultsStep={setCurrentResultsStep}
-
-                listName={listName}
-            />
-            <FifthStepResults
-                currentResultsStep={currentResultsStep}
-                setCurrentResultsStep={setCurrentResultsStep}
-
-                listName={listName}
-            /> */}
-
-
-
-
-
-
-
-
-            {/* // POPRZEDNIA WERSJA */}
-
-            {/* <div>
-                <h4>{competitionNameAndStage}</h4> 
-                {resultsData.map((elem, index) => {
-                    const domtelHref = `https://statystyka.pzla.pl/personal.php?page=profile&nr_zaw=${elem.license}&r=1`
-                    return(
-                        <div key={index}>
-                            <Result setResultsData={setResultsData} resultsData={elem}/>
-                            <button onClick={() => removeAthlete(elem)}>Usuń</button>
-                            <button>
-                                <a 
-                                    href={domtelHref} 
-                                    target="_blank" 
-                                    rel="noreferrer"
-                                >
-                                    Domtel
-                                </a>
-                            </button>
-                        </div>
-                        )
-                    }
-                )}    
-            </div> */}     
+            />  
         </div>
     );
 };
