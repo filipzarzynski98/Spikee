@@ -1,14 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./NewCompetition.scss";
 import InicialForm from './InicialForm/InicialForm';
 import IndividualsForm from "./IndividualsForm/IndividualsForm"
 import RelaysForm from "./RelaysForm/RelaysForm"
-import FinalIndividualsForm from "./FinalIndividualsForm/FinalIndividualsForm"
-import FinalRelaysForm from './FinalRelaysForm/FinalRelaysForm';
+import NewHeat from './NewHeat/NewHeat';
 
 
 const NewCompetition = () => {
 
+    const [isNewHeatActive, setIsNewHeatActive] = useState("dezactive")
+    
     const [currentFormType, setCurrentFormType] = useState({ 
         inicialForm: "active",
         individualsForm: "dezactive",
@@ -26,11 +27,36 @@ const NewCompetition = () => {
     const [isCompetitionActive, setIsCompetitionActive] = useState("active")
     const [isNewHeatPossible, setIsNewHeatPossible] = useState("newCompetitionButton__dezactive")
 
+    const [showAddAthletesButton, setShowAddAthletesButton] = useState("dezactive")
+    const [showAddTeamButton, setShowAddTeamButton] = useState("dezactive")
+
+    const [heatsList, setHeatsList] = useState([])
+
+    const [addedAthletesList, setAddedAthletesList] = useState([])
+
+    useEffect(() => {
+        console.log(heatsList)
+    }, [heatsList])
+
+    const addHeatHandler = (e) => {
+        e.preventDefault()
+
+        let counter = 1
+        let index = counter + heatsList.length 
+
+        setHeatsList(prevState => [...prevState, {heat: index}])
+    }
   
-    const removeCompetition = (e) => {
+    const removeCompetitionHandler = (e) => {
         e.preventDefault()
 
         setIsCompetitionActive("dezactive")
+    }
+
+    const removeHeatHandler = ( heatToRemove) => {
+        const position = heatsList.indexOf(heatToRemove)
+        const remove = heatsList.filter((elem) => elem.heat !== heatToRemove)
+        setHeatsList(remove)
     }
 
     // Środa 16.11 - do zrobienia tablica z nowymi seriami, z usuwaczem i automatycznymi oznaczeniami serii
@@ -39,12 +65,31 @@ const NewCompetition = () => {
          return (
             <div className='newCompetition__wrapper'>
                 <div>
+                    {/* Nazwa konkurencji */}
                     <h3>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h3>
-                    <div>
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </div>
+                    {heatsList.map((elem) => {
+                        return (
+                            <div key={elem.heat}>
+                                <div className='newHeat'>
+                                    {/* Kontener na nowe pozycje zawodników/sztafet */}
+                                    <NewHeat
+                                        currentFormType={currentFormType}
+                                        setCurrentFormType={setCurrentFormType}
+                        
+                                        athleteData={athleteData}
+                                        setAthleteData={setAthleteData}
+                        
+                                        setIsNewHeatPossible={setIsNewHeatPossible}
+
+                                        isNewHeatActive={isNewHeatActive}
+
+                                        showAddAthletesButton={showAddAthletesButton}
+                                    />
+                                </div>
+                                <button onClick={() => removeHeatHandler(elem.heat)}>Delete Heat</button>
+                            </div>
+                        )
+                    })}
                 </div>
                 <div>
                     <InicialForm
@@ -71,26 +116,19 @@ const NewCompetition = () => {
                         setOnChangeCompetitionData={setOnChangeCompetitionData}
 
                         sexFirstLetter={sexFirstLetter}
-                        setSexFirstLetter={setSexFirstLetter}     
-                    />
-                    <FinalIndividualsForm
-                        currentFormType={currentFormType}
-                        setCurrentFormType={setCurrentFormType}
-
-                        athleteData={athleteData}
-                        setAthleteData={setAthleteData}
-
+                        setSexFirstLetter={setSexFirstLetter} 
                         
-                    />
-                    <FinalRelaysForm
-                        currentFormType={currentFormType}
-                        setCurrentFormType={setCurrentFormType}
-                    />
-                    
+            
+                    />    
                 </div>
                 <div>
-                    <button className={isNewHeatPossible}>New Heat</button>
-                    <button onClick={removeCompetition}>Delete</button>  
+                    <button 
+                        className={isNewHeatPossible}
+                        onClick={addHeatHandler}
+                    >
+                            New Heat
+                    </button>
+                    <button onClick={removeCompetitionHandler}>Delete</button>  
                 </div>
                            
             </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "./IndividualsForm.scss"
 import IndividualCompetitions from '../individualCompetitions';
 
@@ -13,13 +13,10 @@ const IndividualsForm = ({
     sexFirstLetter,
     setSexFirstLetter,
 
-    setIsNewHeatPossible
-   
+    setIsNewHeatPossible,
 }) => {
 
-    useEffect(() => {
-        console.log(onChangeCompetitionData)
-    }, [onChangeCompetitionData])
+  
 
 
     const setIndividualWomen = (e) => {

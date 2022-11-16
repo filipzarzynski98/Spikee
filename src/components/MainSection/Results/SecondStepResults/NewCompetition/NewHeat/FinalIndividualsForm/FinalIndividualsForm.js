@@ -10,6 +10,8 @@ const FinalIndividualsForm = ({
 
     setResultsData, 
     resultsData,
+
+    setIsNewHeatPossible
 }) => {
 
     // form validation states
@@ -58,7 +60,7 @@ const FinalIndividualsForm = ({
     // After positive validation, athleteData is setting as one of the elements of resultsData object array
     // Inputs are cleared
 
-    const handleClick = (e) => {
+    const addAthleteHandler = (e) => {
         e.preventDefault();
 
         if (athleteData.name === "" || athleteData.name.length < 2 ) {
@@ -73,18 +75,6 @@ const FinalIndividualsForm = ({
         else {
             setValidationErrorSurname("correct")
         }
-        if (athleteData.sex === "") {
-            setValidationErrorSex("form-error")
-        }
-        else {
-            setValidationErrorSex("correct")
-        }
-        if (athleteData.competition === "") {
-            setValidationErrorCompetition("form-error")
-        }
-        else {
-            setValidationErrorCompetition("correct")
-        } 
         if (athleteData.license === "" || isNaN(parseFloat(athleteData.license)) === true || athleteData.license.length === 1) {
             setValidationErrorLicense("form-error")  
         }
@@ -95,8 +85,6 @@ const FinalIndividualsForm = ({
         if (
                 athleteData.name !== "" && athleteData.name.length >= 2 &&
                 athleteData.surname !== "" && athleteData.surname.length >= 2 &&
-                athleteData.sex !== "" &&
-                athleteData.competition !== "" && 
                 athleteData.license !== "" && athleteData.license.length > 1 && isNaN(parseFloat(athleteData.license)) === false 
         ) {
                 setResultsData(prevState => [...prevState, athleteData])
@@ -106,8 +94,6 @@ const FinalIndividualsForm = ({
                         ...prevState,
                         name: "",
                         surname: "",
-                        sex: "",
-                        competition: "",
                         license: ""  
                     }
                 }) 
@@ -128,6 +114,7 @@ const FinalIndividualsForm = ({
             }
         })
 
+        setIsNewHeatPossible("newCompetitionButton__dezactive")
     }
 
     if (currentFormType.finalIndividualsForm === "active") {
@@ -164,7 +151,7 @@ const FinalIndividualsForm = ({
                         <p className={validationErrorLicense}>The license number must only consist of numbers!</p>
                     </div>
                     <div>
-                        <button onClick={handleClick}>Add</button>
+                        <button onClick={addAthleteHandler}>Add athlete</button>
                         <button onClick={previousFormStep}>Back</button>
                     </div>
                     

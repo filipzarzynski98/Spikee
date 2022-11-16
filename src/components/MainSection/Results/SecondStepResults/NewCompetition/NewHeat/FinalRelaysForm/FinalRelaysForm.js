@@ -38,8 +38,8 @@ const FinalRelaysForm = ({
                     {countryList.map((elem, index) => <option key={index}>{elem}</option>)}
                 </select>
                 <br/>
+                <button>Add team</button>
                 <button onClick={previousFormStep}>Back</button> 
-                <button>Submit</button>
             </div>
         );
     }
