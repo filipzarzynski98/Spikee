@@ -13,7 +13,9 @@ const NewHeat = ({
     setIsNewHeatPossible,
 
     showAddAthletesButton,
+    setShowAddAthletesButton,
     showAddTeamButton,
+    setShowAddTeamButton,
 
     isNewHeatActive,
 }) => {
@@ -23,9 +25,11 @@ const NewHeat = ({
 
     const isFinalIndividualsFormActivation = (e) => {
         setIsFinalIndividualsFormActive("finalIndividualsForm-active")
+        setShowAddAthletesButton("addAthleteButton-dezactive")
     }
     const isFinalRelaysFormActivation = (e) => {
         setIsFinalRelaysFormActive("finalRelaysForm-active")
+        setShowAddTeamButton("addTeamButton-dezactive")
     }
 
 

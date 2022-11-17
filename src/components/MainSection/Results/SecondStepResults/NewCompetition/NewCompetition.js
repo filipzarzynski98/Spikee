@@ -88,7 +88,9 @@ const NewCompetition = () => {
                                         isNewHeatActive={isNewHeatActive}
 
                                         showAddAthletesButton={showAddAthletesButton}
+                                        setShowAddAthletesButton={setShowAddAthletesButton}
                                         showAddTeamButton={showAddTeamButton}
+                                        setShowAddTeamButton={setShowAddTeamButton}
                                     />
                                 </div>
                                 <button onClick={() => removeHeatHandler(elem)}>Delete Heat</button>
