@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./NewHeat.scss"
 import FinalIndividualsForm from './FinalIndividualsForm/FinalIndividualsForm';
 import FinalRelaysForm from './FinalRelaysForm/FinalRelaysForm';
@@ -12,28 +12,13 @@ const NewHeat = ({
 
     setIsNewHeatPossible,
 
-    showAddAthletesButton,
-    setShowAddAthletesButton,
-    showAddTeamButton,
-    setShowAddTeamButton,
-
     isNewHeatActive,
+
+    isFinalIndividualsFormActive,
+    isFinalRelaysFormActive,
+  
+
 }) => {
-
-    const [isFinalIndividualsFormActive, setIsFinalIndividualsFormActive] = useState("finalIndividualsForm-dezactive")
-    const [isFinalRelaysFormActive, setIsFinalRelaysFormActive] = useState("finalRelaysForm-dezactive")
-
-    const isFinalIndividualsFormActivation = (e) => {
-        setIsFinalIndividualsFormActive("finalIndividualsForm-active")
-        setShowAddAthletesButton("addAthleteButton-dezactive")
-    }
-    const isFinalRelaysFormActivation = (e) => {
-        setIsFinalRelaysFormActive("finalRelaysForm-active")
-        setShowAddTeamButton("addTeamButton-dezactive")
-    }
-
-
-    // PO TRENINGU - DODAJ ZNIKANIE "ADD ATLETE" I "ADD TEAM"
 
     if (isNewHeatActive === "newHeat-active") {
         return (
@@ -57,19 +42,6 @@ const NewHeat = ({
 
                     isFinalRelaysFormActive={isFinalRelaysFormActive}
                 />
-                <br/>
-                <button 
-                    className={showAddAthletesButton}
-                    onClick={isFinalIndividualsFormActivation}
-                >
-                    New Athlete
-                </button>
-                <button 
-                    className={showAddTeamButton}
-                    onClick={isFinalRelaysFormActivation}
-                >
-                    New Team
-                </button>
             </div>
         ); 
     }

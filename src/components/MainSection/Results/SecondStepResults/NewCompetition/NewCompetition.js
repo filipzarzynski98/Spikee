@@ -9,6 +9,8 @@ import NewHeat from './NewHeat/NewHeat';
 const NewCompetition = () => {
 
     const [isNewHeatActive, setIsNewHeatActive] = useState("newHeat-dezactive")
+
+    
     
     const [currentFormType, setCurrentFormType] = useState({ 
         inicialForm: "active",
@@ -27,12 +29,12 @@ const NewCompetition = () => {
     const [isCompetitionActive, setIsCompetitionActive] = useState("active")
     const [isNewHeatPossible, setIsNewHeatPossible] = useState("newCompetitionButton__dezactive")
 
-    const [showAddAthletesButton, setShowAddAthletesButton] = useState("addAthleteButton-dezactive")
-    const [showAddTeamButton, setShowAddTeamButton] = useState("addTeamButton-dezactive")
-
     const [heatsList, setHeatsList] = useState([]) 
 
     const [addedAthletesList, setAddedAthletesList] = useState([])
+
+    const [isFinalIndividualsFormActive, setIsFinalIndividualsFormActive] = useState("finalIndividualsForm-dezactive")
+    const [isFinalRelaysFormActive, setIsFinalRelaysFormActive] = useState("finalRelaysForm-dezactive")
 
     
 
@@ -46,7 +48,6 @@ const NewCompetition = () => {
         e.preventDefault()
         let counter = 1
         setHeatsList(prevState => [...prevState, counter + heatsList.length])
-
         
     }
   
@@ -61,8 +62,6 @@ const NewCompetition = () => {
         const remove = heatsList.filter((elem) => heatsList.indexOf(elem) !== position)
         setHeatsList(remove)
     }
-
-    // Środa 16.11 - do zrobienia tablica z nowymi seriami, z usuwaczem i automatycznymi oznaczeniami serii
 
     if (isCompetitionActive === "active") {
          return (
@@ -87,17 +86,18 @@ const NewCompetition = () => {
 
                                         isNewHeatActive={isNewHeatActive}
 
-                                        showAddAthletesButton={showAddAthletesButton}
-                                        setShowAddAthletesButton={setShowAddAthletesButton}
-                                        showAddTeamButton={showAddTeamButton}
-                                        setShowAddTeamButton={setShowAddTeamButton}
+                                        isFinalIndividualsFormActive={isFinalIndividualsFormActive}
+                                        isFinalRelaysFormActive={isFinalRelaysFormActive}
                                     />
                                 </div>
                                 <button onClick={() => removeHeatHandler(elem)}>Delete Heat</button>
                             </div>
+                              
+                            
                         )
                     })}
                 </div>
+              
                 <div>
                     <InicialForm
                         currentFormType={currentFormType}
@@ -115,9 +115,9 @@ const NewCompetition = () => {
 
                         setIsNewHeatPossible={setIsNewHeatPossible}
 
-                        setShowAddAthletesButton={setShowAddAthletesButton}
-
                         setIsNewHeatActive={setIsNewHeatActive}
+                        
+                        setIsFinalIndividualsFormActive={setIsFinalIndividualsFormActive}
                     />
                     <RelaysForm
                         currentFormType={currentFormType}
@@ -131,21 +131,23 @@ const NewCompetition = () => {
                         
                         setIsNewHeatPossible={setIsNewHeatPossible}
 
-                        setShowAddTeamButton={setShowAddTeamButton}
-
                         setIsNewHeatActive={setIsNewHeatActive}
+
+                        setIsFinalRelaysFormActive={setIsFinalRelaysFormActive}
                         
                     />    
                 </div>
-                <div>
-                    <button 
-                        className={isNewHeatPossible}
-                        onClick={addHeatHandler}
+                <div className='newCompetitions__buttons__wrapper'>
+                   <button 
+                    className={isNewHeatPossible}
+                    onClick={addHeatHandler}
                     >
                             New Heat
                     </button>
-                    <button onClick={removeCompetitionHandler}>Delete</button>  
+                    <button onClick={removeCompetitionHandler}>Delete Competition</button>  
                 </div>
+                 
+                
                            
             </div>
         );

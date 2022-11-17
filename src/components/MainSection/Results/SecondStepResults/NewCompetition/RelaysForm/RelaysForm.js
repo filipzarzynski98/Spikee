@@ -14,9 +14,9 @@ const RelaysForm = ({
 
     setIsNewHeatPossible,
 
-    setShowAddTeamButton,
+    setIsNewHeatActive,
 
-    setIsNewHeatActive
+    setIsFinalRelaysFormActive
 }) => {
 
     const setRelaysWomen = (e) => {
@@ -96,9 +96,9 @@ const RelaysForm = ({
 
         setIsNewHeatPossible("newCompetitionButton__active")
 
-        setShowAddTeamButton("addTeamButton-active")
-
         setIsNewHeatActive("newHeat-active")
+
+        setIsFinalRelaysFormActive("finalRelaysForm-active")
     }
 
     if (currentFormType.relaysForm === "active") {

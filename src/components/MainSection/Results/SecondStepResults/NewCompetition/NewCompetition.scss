@@ -1,5 +1,6 @@
 .newCompetition__wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     border: 2px solid lightgreen
 }
@@ -16,5 +17,10 @@
     border: 2px solid orange;
     width: 300px;
     height: 300px;
+}
+
+.newCompetitions__buttons__wrapper {
+    display: flex;
+    justify-content: space-between;
 }
 
