@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./FinalIndividualsForm.scss"
 
 const FinalIndividualsForm = ({
@@ -8,22 +8,30 @@ const FinalIndividualsForm = ({
     athleteData, 
     setAthleteData,
 
-    setResultsData, 
-    resultsData,
-
     setIsNewHeatPossible,
 
     isFinalIndividualsFormActive,
 
+    athletesList,
+    setAthletesList,
+
 }) => {
+
+    useEffect(() => {
+        console.log(athleteData)
+    }, [athleteData])
+
+    useEffect(() => {
+        console.log(athletesList)
+    }, [athletesList])
 
     // form validation states
 
     const [validationErrorName, setValidationErrorName] = useState("correct")
     const [validationErrorSurname, setValidationErrorSurname] = useState("correct")
-    const [validationErrorSex, setValidationErrorSex] = useState("correct")
-    const [validationErrorCompetition, setValidationErrorCompetition] = useState("correct")
     const [validationErrorLicense, setValidationErrorLicense] = useState("correct")
+
+    const [tracks, setTracks] = useState([1,2,3,4,5,6,7,8,9])
 
 
     // Inputs values are setting to athleteData.name and athleteData.surname
@@ -59,6 +67,15 @@ const FinalIndividualsForm = ({
         } 
     }
 
+    const handleTrackChange = (e) => {
+        setAthleteData(prevState => {
+            return {
+                ...prevState,
+                track: parseInt(e.target.value)
+            }
+        })
+    }
+
     // Validation logic
     // After positive validation, athleteData is setting as one of the elements of resultsData object array
     // Inputs are cleared
@@ -78,7 +95,7 @@ const FinalIndividualsForm = ({
         else {
             setValidationErrorSurname("correct")
         }
-        if (athleteData.license === "" || isNaN(parseFloat(athleteData.license)) === true || athleteData.license.length === 1) {
+        if (athleteData.license === "" || isNaN(parseFloat(athleteData.license)) === true || athleteData.license.length <= 2) {
             setValidationErrorLicense("form-error")  
         }
         else{
@@ -88,36 +105,20 @@ const FinalIndividualsForm = ({
         if (
                 athleteData.name !== "" && athleteData.name.length >= 2 &&
                 athleteData.surname !== "" && athleteData.surname.length >= 2 &&
-                athleteData.license !== "" && athleteData.license.length > 1 && isNaN(parseFloat(athleteData.license)) === false 
+                athleteData.license !== "" && athleteData.license.length >= 2 && isNaN(parseFloat(athleteData.license)) === false    
         ) {
-                setResultsData(prevState => [...prevState, athleteData])
+                setAthletesList(prevState => [...prevState, athleteData])
             
                 setAthleteData(prevState => {
                     return {
                         ...prevState,
                         name: "",
                         surname: "",
-                        license: ""  
+                        license: "",
+                        track: ""  
                     }
                 }) 
             }
-    }
-
-    const previousFormStep = (e) => {
-        e.preventDefault();
-
-        setCurrentFormType(prevState => {
-            return{
-                ...prevState,
-                inicialForm: "dezactive",
-                individualsForm: "active",
-                relaysForm: "dezactive",
-                finalIndividualsForm: "dezactive",
-                finalRelaysForm: "dezactive"
-            }
-        })
-
-        setIsNewHeatPossible("newCompetitionButton__dezactive")
     }
 
     if (isFinalIndividualsFormActive === "finalIndividualsForm-active") {
@@ -150,12 +151,22 @@ const FinalIndividualsForm = ({
                             name="license" 
                             value={athleteData.license}
                             onKeyUp={handleOnlyNumber} 
-                            onChange={handleLicenseChange}/>
-                        <p className={validationErrorLicense}>The license number must only consist of numbers!</p>
+                            onChange={handleLicenseChange}
+                        />
+                        <p className={validationErrorLicense}>Only numbers! Min 2 digits!</p>
+                    </div>
+                    <div>
+                        <label>Select track - optional</label>
+                        <select
+                            value={athleteData.track}
+                            onChange={handleTrackChange}
+                        >
+                                <option></option>
+                                {tracks.map((elem, index) => <option key={index}>{elem}</option>)}
+                        </select>
                     </div>
                     <div>
                         <button onClick={addAthleteHandler}>Add athlete</button>
-                        <button onClick={previousFormStep}>Back</button>
                     </div>
                     
                </form>

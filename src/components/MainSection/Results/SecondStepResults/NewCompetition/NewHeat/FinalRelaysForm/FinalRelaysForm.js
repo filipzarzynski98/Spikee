@@ -35,6 +35,7 @@ const FinalRelaysForm = ({
                 <input></input>
                 <h4>Choose country</h4>
                 <select>
+                    <option></option>
                     {countryList.map((elem, index) => <option key={index}>{elem}</option>)}
                 </select>
                 <br/>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "./NewCompetition.scss";
 import InicialForm from './InicialForm/InicialForm';
 import IndividualsForm from "./IndividualsForm/IndividualsForm"
@@ -22,7 +22,7 @@ const NewCompetition = () => {
 
     const [onChangeCompetitionData, setOnChangeCompetitionData] = useState({competition: "", sex: "", stage: ""})
 
-    const [athleteData, setAthleteData] = useState({name: "", surname: "", license: ""})
+    
     const [sexFirstLetter, setSexFirstLetter] = useState("")
     const [resultsData, setResultsData] = useState([])
 
@@ -31,17 +31,8 @@ const NewCompetition = () => {
 
     const [heatsList, setHeatsList] = useState([]) 
 
-    const [addedAthletesList, setAddedAthletesList] = useState([])
-
     const [isFinalIndividualsFormActive, setIsFinalIndividualsFormActive] = useState("finalIndividualsForm-dezactive")
     const [isFinalRelaysFormActive, setIsFinalRelaysFormActive] = useState("finalRelaysForm-dezactive")
-
-    
-
-    useEffect(() => {
-        console.log(heatsList)
-    }, [heatsList])
-
     
 
     const addHeatHandler = (e) => {
@@ -78,9 +69,6 @@ const NewCompetition = () => {
                                     <NewHeat
                                         currentFormType={currentFormType}
                                         setCurrentFormType={setCurrentFormType}
-                        
-                                        athleteData={athleteData}
-                                        setAthleteData={setAthleteData}
                         
                                         setIsNewHeatPossible={setIsNewHeatPossible}
 
