@@ -11,7 +11,10 @@ const FinalIndividualsForm = ({
     setResultsData, 
     resultsData,
 
-    setIsNewHeatPossible
+    setIsNewHeatPossible,
+
+    isFinalIndividualsFormActive,
+
 }) => {
 
     // form validation states
@@ -117,7 +120,7 @@ const FinalIndividualsForm = ({
         setIsNewHeatPossible("newCompetitionButton__dezactive")
     }
 
-    if (currentFormType.finalIndividualsForm === "active") {
+    if (isFinalIndividualsFormActive === "finalIndividualsForm-active") {
         return (
             <div className='final-form__wrapper'>
                <h3>Add athlete</h3>

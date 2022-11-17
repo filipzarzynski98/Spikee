@@ -14,6 +14,10 @@ const IndividualsForm = ({
     setSexFirstLetter,
 
     setIsNewHeatPossible,
+
+    setShowAddAthletesButton,
+
+    setIsNewHeatActive
 }) => {
 
   
@@ -113,6 +117,10 @@ const IndividualsForm = ({
         })
 
         setIsNewHeatPossible("newCompetitionButton__active")
+
+        setShowAddAthletesButton("addAthleteButton-active")
+
+        setIsNewHeatActive("newHeat-active")
     }
 
 

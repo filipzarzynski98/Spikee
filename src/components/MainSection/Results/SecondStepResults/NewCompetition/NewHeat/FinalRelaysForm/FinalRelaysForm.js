@@ -6,7 +6,7 @@ const FinalRelaysForm = ({
     currentFormType,
     setCurrentFormType,
 
-
+    isFinalRelaysFormActive
 }) => {
 
     const previousFormStep = (e) => {
@@ -25,7 +25,7 @@ const FinalRelaysForm = ({
 
     }
 
-    if (currentFormType.finalRelaysForm === "active") {
+    if (isFinalRelaysFormActive === "finalRelaysForm-active") {
         return (
             <div>
                 <p>FinalRelaysForm</p>

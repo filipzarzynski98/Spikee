@@ -8,7 +8,7 @@ import NewHeat from './NewHeat/NewHeat';
 
 const NewCompetition = () => {
 
-    const [isNewHeatActive, setIsNewHeatActive] = useState("dezactive")
+    const [isNewHeatActive, setIsNewHeatActive] = useState("newHeat-dezactive")
     
     const [currentFormType, setCurrentFormType] = useState({ 
         inicialForm: "active",
@@ -27,8 +27,8 @@ const NewCompetition = () => {
     const [isCompetitionActive, setIsCompetitionActive] = useState("active")
     const [isNewHeatPossible, setIsNewHeatPossible] = useState("newCompetitionButton__dezactive")
 
-    const [showAddAthletesButton, setShowAddAthletesButton] = useState("dezactive")
-    const [showAddTeamButton, setShowAddTeamButton] = useState("dezactive")
+    const [showAddAthletesButton, setShowAddAthletesButton] = useState("addAthleteButton-dezactive")
+    const [showAddTeamButton, setShowAddTeamButton] = useState("addTeamButton-dezactive")
 
     const [heatsList, setHeatsList] = useState([]) 
 
@@ -46,6 +46,8 @@ const NewCompetition = () => {
         e.preventDefault()
         let counter = 1
         setHeatsList(prevState => [...prevState, counter + heatsList.length])
+
+        
     }
   
     const removeCompetitionHandler = (e) => {
@@ -86,6 +88,7 @@ const NewCompetition = () => {
                                         isNewHeatActive={isNewHeatActive}
 
                                         showAddAthletesButton={showAddAthletesButton}
+                                        showAddTeamButton={showAddTeamButton}
                                     />
                                 </div>
                                 <button onClick={() => removeHeatHandler(elem)}>Delete Heat</button>
@@ -109,6 +112,10 @@ const NewCompetition = () => {
                         setSexFirstLetter={setSexFirstLetter}
 
                         setIsNewHeatPossible={setIsNewHeatPossible}
+
+                        setShowAddAthletesButton={setShowAddAthletesButton}
+
+                        setIsNewHeatActive={setIsNewHeatActive}
                     />
                     <RelaysForm
                         currentFormType={currentFormType}
@@ -120,7 +127,12 @@ const NewCompetition = () => {
                         sexFirstLetter={sexFirstLetter}
                         setSexFirstLetter={setSexFirstLetter} 
                         
-            
+                        setIsNewHeatPossible={setIsNewHeatPossible}
+
+                        setShowAddTeamButton={setShowAddTeamButton}
+
+                        setIsNewHeatActive={setIsNewHeatActive}
+                        
                     />    
                 </div>
                 <div>

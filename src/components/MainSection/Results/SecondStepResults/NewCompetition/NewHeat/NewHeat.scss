@@ -1,7 +1,15 @@
-.showAddAthletesButton-dezactive {
+.addAthleteButton-dezactive {
     display: none;
 }
 
-.showAddAthletesButton-active {
+.addAthleteButton-active {
+    display: block;
+}
+
+.addTeamButton-dezactive {
+ display: none;
+}
+
+.addTeamButton-active {
     display: block;
 }
