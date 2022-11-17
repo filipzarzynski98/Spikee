@@ -14,14 +14,15 @@ const NewHeat = ({
 
     showAddAthletesButton,
 
-    isNewHeatActive
+    isNewHeatActive,
+
+    heatsList
 }) => {
 
     if (isNewHeatActive === "active") {
         return (
             <div>
                 <div>
-
                 </div>
                 <FinalIndividualsForm
                     currentFormType={currentFormType}

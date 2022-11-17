@@ -30,21 +30,22 @@ const NewCompetition = () => {
     const [showAddAthletesButton, setShowAddAthletesButton] = useState("dezactive")
     const [showAddTeamButton, setShowAddTeamButton] = useState("dezactive")
 
-    const [heatsList, setHeatsList] = useState([])
+    const [heatsList, setHeatsList] = useState([]) 
 
     const [addedAthletesList, setAddedAthletesList] = useState([])
+
+    
 
     useEffect(() => {
         console.log(heatsList)
     }, [heatsList])
 
+    
+
     const addHeatHandler = (e) => {
         e.preventDefault()
-
         let counter = 1
-        let index = counter + heatsList.length 
-
-        setHeatsList(prevState => [...prevState, {heat: index}])
+        setHeatsList(prevState => [...prevState, counter + heatsList.length])
     }
   
     const removeCompetitionHandler = (e) => {
@@ -53,9 +54,9 @@ const NewCompetition = () => {
         setIsCompetitionActive("dezactive")
     }
 
-    const removeHeatHandler = ( heatToRemove) => {
+    const removeHeatHandler = (heatToRemove) => {
         const position = heatsList.indexOf(heatToRemove)
-        const remove = heatsList.filter((elem) => elem.heat !== heatToRemove)
+        const remove = heatsList.filter((elem) => heatsList.indexOf(elem) !== position)
         setHeatsList(remove)
     }
 
@@ -67,10 +68,11 @@ const NewCompetition = () => {
                 <div>
                     {/* Nazwa konkurencji */}
                     <h3>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h3>
-                    {heatsList.map((elem) => {
+                    {heatsList.map((elem, index) => {
                         return (
-                            <div key={elem.heat}>
+                            <div key={index}>
                                 <div className='newHeat'>
+                                    <h4>Heat {heatsList.indexOf(elem) + 1}/{heatsList.length}</h4>
                                     {/* Kontener na nowe pozycje zawodników/sztafet */}
                                     <NewHeat
                                         currentFormType={currentFormType}
@@ -86,7 +88,7 @@ const NewCompetition = () => {
                                         showAddAthletesButton={showAddAthletesButton}
                                     />
                                 </div>
-                                <button onClick={() => removeHeatHandler(elem.heat)}>Delete Heat</button>
+                                <button onClick={() => removeHeatHandler(elem)}>Delete Heat</button>
                             </div>
                         )
                     })}
