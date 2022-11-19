@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./NewHeat.scss"
 import FinalIndividualsForm from './FinalIndividualsForm/FinalIndividualsForm';
 import FinalRelaysForm from './FinalRelaysForm/FinalRelaysForm';
+import Athlete from './Athlete/Athlete';
 
 const NewHeat = ({
     currentFormType,
@@ -24,24 +25,17 @@ const NewHeat = ({
     const [teamData, setTeamData] = useState({})
 
 
-    // Do zrobienia: Usuwacz zawodnika, komponent NewAthlete
+    
     
 
     if (isNewHeatActive === "newHeat-active") {
         return (
             <div>
                 <div>
-                    {athletesList.map((elem, index) => {
-                        return(
-                            <div key={index}>
-                                <p>{elem.name}</p>
-                                <p>{elem.surname}</p>
-                                <p>{elem.license}</p>
-                                <p>{elem.track}</p>
-                                <button>Remove Athlete</button>
-                            </div>
-                        )
-                    })}
+                    <Athlete
+                        athletesList={athletesList}
+                        setAthletesList={setAthletesList}
+                    />
                 </div>
                 <FinalIndividualsForm
                     currentFormType={currentFormType}
