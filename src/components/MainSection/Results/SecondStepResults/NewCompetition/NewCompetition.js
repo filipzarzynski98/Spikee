@@ -1,17 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./NewCompetition.scss";
 import InicialForm from './InicialForm/InicialForm';
 import IndividualsForm from "./IndividualsForm/IndividualsForm"
 import RelaysForm from "./RelaysForm/RelaysForm"
+import Heats from './Heats/Heats';
 import NewHeat from './NewHeat/NewHeat';
 
 
 const NewCompetition = () => {
-
-    const [isNewHeatActive, setIsNewHeatActive] = useState("newHeat-dezactive")
-
-    
-    
+ 
     const [currentFormType, setCurrentFormType] = useState({ 
         inicialForm: "active",
         individualsForm: "dezactive",
@@ -20,71 +17,44 @@ const NewCompetition = () => {
         finalRelaysForm: "dezactive"
     })
 
+    //Nazwa konkurencji, płeć oraz etap
     const [onChangeCompetitionData, setOnChangeCompetitionData] = useState({competition: "", sex: "", stage: ""})
 
-    
+    // Przypisanie pierwszej litery płci do konkurencji
     const [sexFirstLetter, setSexFirstLetter] = useState("")
-    const [resultsData, setResultsData] = useState([])
 
+    // Warunek renderowania NewCompetition
     const [isCompetitionActive, setIsCompetitionActive] = useState("active")
-    const [isNewHeatPossible, setIsNewHeatPossible] = useState("newCompetitionButton__dezactive")
 
-    const [heatsList, setHeatsList] = useState([]) 
-
+    // Warunek wyświetlania buttona "New Heat" inicjowany przez pomyślne przejście IndividualsForm/RelaysForm
+    const [isNewHeatPossible, setIsNewHeatPossible] = useState("newHeat -dezactive")
+    
+    // Warunek renderowania FinalIndividualsForm/FinalRelaysForm, który spełniony zostaje podczas kliknięcia "New Heat"
     const [isFinalIndividualsFormActive, setIsFinalIndividualsFormActive] = useState("finalIndividualsForm-dezactive")
     const [isFinalRelaysFormActive, setIsFinalRelaysFormActive] = useState("finalRelaysForm-dezactive")
-    
 
-    const addHeatHandler = (e) => {
-        e.preventDefault()
-        let counter = 1
-        setHeatsList(prevState => [...prevState, counter + heatsList.length])
-        
-    }
-  
+   
+       
     const removeCompetitionHandler = (e) => {
         e.preventDefault()
 
         setIsCompetitionActive("dezactive")
     }
 
-    const removeHeatHandler = (heatToRemove) => {
-        const position = heatsList.indexOf(heatToRemove)
-        const remove = heatsList.filter((elem) => heatsList.indexOf(elem) !== position)
-        setHeatsList(remove)
-    }
-
     if (isCompetitionActive === "active") {
          return (
             <div className='newCompetition__wrapper'>
-                <div>
-                    {/* Nazwa konkurencji */}
-                    <h3>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h3>
-                    {heatsList.map((elem, index) => {
-                        return (
-                            <div key={index}>
-                                <div className='newHeat'>
-                                    <h4>Heat {heatsList.indexOf(elem) + 1}/{heatsList.length}</h4>
-                                    {/* Kontener na nowe pozycje zawodników/sztafet */}
-                                    <NewHeat
-                                        currentFormType={currentFormType}
-                                        setCurrentFormType={setCurrentFormType}
-                        
-                                        setIsNewHeatPossible={setIsNewHeatPossible}
+                <h3>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h3>
+                <Heats
+                    onChangeCompetitionData={onChangeCompetitionData}
 
-                                        isNewHeatActive={isNewHeatActive}
+                    isFinalIndividualsFormActive={isFinalIndividualsFormActive}
+                    isFinalRelaysFormActive={isFinalRelaysFormActive}
 
-                                        isFinalIndividualsFormActive={isFinalIndividualsFormActive}
-                                        isFinalRelaysFormActive={isFinalRelaysFormActive}
-                                    />
-                                </div>
-                                <button onClick={() => removeHeatHandler(elem)}>Delete Heat</button>
-                            </div>
-                              
-                            
-                        )
-                    })}
-                </div>
+                    isNewHeatPossible={isNewHeatPossible}
+
+                   
+                />
               
                 <div>
                     <InicialForm
@@ -102,8 +72,6 @@ const NewCompetition = () => {
                         setSexFirstLetter={setSexFirstLetter}
 
                         setIsNewHeatPossible={setIsNewHeatPossible}
-
-                        setIsNewHeatActive={setIsNewHeatActive}
                         
                         setIsFinalIndividualsFormActive={setIsFinalIndividualsFormActive}
                     />
@@ -119,21 +87,12 @@ const NewCompetition = () => {
                         
                         setIsNewHeatPossible={setIsNewHeatPossible}
 
-                        setIsNewHeatActive={setIsNewHeatActive}
-
                         setIsFinalRelaysFormActive={setIsFinalRelaysFormActive}
                         
                     />    
-                </div>
-                <div className='newCompetitions__buttons__wrapper'>
-                   <button 
-                    className={isNewHeatPossible}
-                    onClick={addHeatHandler}
-                    >
-                            New Heat
-                    </button>
-                    <button onClick={removeCompetitionHandler}>Delete Competition</button>  
-                </div>
+                </div>   
+                <button onClick={removeCompetitionHandler}>Delete Competition</button>  
+                
                  
                 
                            

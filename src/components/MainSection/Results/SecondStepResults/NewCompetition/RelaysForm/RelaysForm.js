@@ -14,8 +14,6 @@ const RelaysForm = ({
 
     setIsNewHeatPossible,
 
-    setIsNewHeatActive,
-
     setIsFinalRelaysFormActive
 }) => {
 
@@ -65,6 +63,7 @@ const RelaysForm = ({
         })
     }
 
+
     const previousFormStep = (e) => {
         e.preventDefault();
   
@@ -94,9 +93,7 @@ const RelaysForm = ({
           }
         })
 
-        setIsNewHeatPossible("newCompetitionButton__active")
-
-        setIsNewHeatActive("newHeat-active")
+        setIsNewHeatPossible("newHeat-possible")
 
         setIsFinalRelaysFormActive("finalRelaysForm-active")
     }

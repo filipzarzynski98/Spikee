@@ -15,8 +15,6 @@ const IndividualsForm = ({
 
     setIsNewHeatPossible,
 
-    setIsNewHeatActive,
-
     setIsFinalIndividualsFormActive
 }) => {
 
@@ -116,9 +114,7 @@ const IndividualsForm = ({
           }
         })
 
-        setIsNewHeatPossible("newCompetitionButton__active")
-
-        setIsNewHeatActive("newHeat-active")
+        setIsNewHeatPossible("newHeat-possible")
 
         setIsFinalIndividualsFormActive("finalIndividualsForm-active")
     }

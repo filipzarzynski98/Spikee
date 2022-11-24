@@ -2,13 +2,12 @@ import React, {useEffect, useState} from 'react';
 import "./FinalIndividualsForm.scss"
 
 const FinalIndividualsForm = ({
-    currentFormType,
-    setCurrentFormType,
+    
 
     athleteData, 
     setAthleteData,
 
-    setIsNewHeatPossible,
+   
 
     isFinalIndividualsFormActive,
 
@@ -16,14 +15,6 @@ const FinalIndividualsForm = ({
     setAthletesList,
 
 }) => {
-
-    useEffect(() => {
-        console.log(athleteData)
-    }, [athleteData])
-
-    useEffect(() => {
-        console.log(athletesList)
-    }, [athletesList])
 
     // form validation states
 

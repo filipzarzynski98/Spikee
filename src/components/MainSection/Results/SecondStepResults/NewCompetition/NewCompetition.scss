@@ -5,22 +5,9 @@
     border: 2px solid lightgreen
 }
 
-.newCompetitionButton__dezactive {
-    display: none;
-}
-
-.newCompetitionButton__active {
-    display: block;
-}
-
 .newHeat {
     border: 2px solid orange;
     width: 300px;
     height: 300px;
-}
-
-.newCompetitions__buttons__wrapper {
-    display: flex;
-    justify-content: space-between;
 }
 
