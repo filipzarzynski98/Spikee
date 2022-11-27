@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./SecondStepResults.scss"
+import CompetitionContainer from './CompetitionContainer/CompetitionContainer';
 import NewCompetition from './NewCompetition/NewCompetition';
 
 const SecondStepResults = ({
@@ -24,7 +25,7 @@ const SecondStepResults = ({
                     <p>2 Step</p>
                     <h3>{listName}</h3>
                     
-                    {competitionsArray.map((elem) => {
+                    {/* {competitionsArray.map((elem) => {
                         return (
                             <div key={elem.id}>
                                 <NewCompetition
@@ -33,7 +34,13 @@ const SecondStepResults = ({
                                 />
                             </div>)} 
                         )
-                    } 
+                    }  */}
+
+                    <CompetitionContainer
+                        competitionsArray={competitionsArray}
+                        setCompetitionsArray={setCompetitionsArray}
+                    />
+                    
                 </div>
                 <div>
                     <button onClick={addNewCompetition}>New competition</button> 
