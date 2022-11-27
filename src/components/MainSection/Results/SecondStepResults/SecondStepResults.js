@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import "./SecondStepResults.scss"
 import CompetitionContainer from './CompetitionContainer/CompetitionContainer';
-import NewCompetition from './NewCompetition/NewCompetition';
+import { useReactToPrint } from 'react-to-print';
 
 const SecondStepResults = ({
     currentResultsStep,
@@ -11,6 +11,13 @@ const SecondStepResults = ({
 }) => {
     
     const [competitionsArray, setCompetitionsArray] = useState([])
+
+    const competitionsRef = useRef();
+    const printHandler = useReactToPrint({
+        content: () => competitionsRef.current,
+        documentTitle: `${listName}`,
+        onAfterPrint: () => console.log("printing succesfull!")
+    })
     
     const addNewCompetition = (e) => {
         e.preventDefault()
@@ -21,30 +28,17 @@ const SecondStepResults = ({
     if (currentResultsStep.secondStep === "active") {
         return (
             <div className='secondStep__wrapper'>
-                <div>
-                    <p>2 Step</p>
-                    <h3>{listName}</h3>
-                    
-                    {/* {competitionsArray.map((elem) => {
-                        return (
-                            <div key={elem.id}>
-                                <NewCompetition
-                                    competitionsArray={competitionsArray}
-                                    setCompetitionsArray={setCompetitionsArray}
-                                />
-                            </div>)} 
-                        )
-                    }  */}
-
+                <p>2 Step</p>
+                <div ref={competitionsRef}>
+                    <h2>{listName}</h2>
                     <CompetitionContainer
                         competitionsArray={competitionsArray}
                         setCompetitionsArray={setCompetitionsArray}
                     />
-                    
                 </div>
                 <div>
                     <button onClick={addNewCompetition}>New competition</button> 
-                    <button>Print</button>
+                    <button onClick={printHandler}>Print</button>
                 </div>
             </div>
         );

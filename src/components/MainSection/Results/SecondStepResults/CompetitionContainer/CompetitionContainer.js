@@ -1,5 +1,5 @@
 import React from 'react';
-import NewCompetition from '../NewCompetition/NewCompetition';
+import NewCompetition from './NewCompetition/NewCompetition';
 import "./CompetitionContainer.scss"
 
 const CompetitionContainer = ({
