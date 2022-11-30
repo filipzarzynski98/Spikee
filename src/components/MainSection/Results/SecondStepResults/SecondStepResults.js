@@ -5,8 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 
 const SecondStepResults = ({
     currentResultsStep,
-    setCurrentResultsStep,
-
+    
     listName
 }) => {
     

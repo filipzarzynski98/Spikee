@@ -27,9 +27,6 @@ const FirstStepResults = ({
                     ...prevState,
                     firstStep: "dezactive",
                     secondStep: "active",
-                    thirdStep: "dezactive",
-                    fourthStep: "dezactive",
-                    fifthStep: "dezactive"
                 }
             })
         }

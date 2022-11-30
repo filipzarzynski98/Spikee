@@ -12,7 +12,6 @@ const Heats = ({
 
     const [heatsList, setHeatsList] = useState([])
     const [counter, setCounter] = useState(0)
-    const [listLength, setListLength] = useState(heatsList.length) 
 
     useEffect(() => {
         console.log(heatsList)

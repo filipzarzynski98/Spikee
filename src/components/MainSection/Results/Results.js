@@ -3,27 +3,14 @@ import "./Results.scss"
 import FirstStepResults from './FirstStepResults/FirstStepResults';
 import SecondStepResults from './SecondStepResults/SecondStepResults'
 
-const Results = ({
-   
-}) => {
+const Results = () => {
 
     const [currentResultsStep, setCurrentResultsStep] = useState({
         firstStep: "active",
         secondStep: "dezactive",
-        thirdStep: "dezactive",
-        fourthStep: "dezactive",
-        fifthStep: "dezactive"
     })
 
     const [listName, setListName] = useState("")
-
-    
-
-    // const removeAthlete = (deletingAthleteLicense) => {
-    //     const updateAthletesList = resultsData.filter((athlete) => athlete !== deletingAthleteLicense);
-    //     setResultsData(updateAthletesList)
-    // }
-
 
     return (
         <div className='results__wrapper'>
