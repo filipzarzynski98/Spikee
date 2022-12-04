@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "./NewCompetition.scss";
 import InicialForm from './InicialForm/InicialForm';
 import IndividualsForm from "./IndividualsForm/IndividualsForm"
 import RelaysForm from "./RelaysForm/RelaysForm"
 import Heats from './Heats/Heats';
-import NewHeat from './NewHeat/NewHeat';
-
 
 const NewCompetition = () => {
  

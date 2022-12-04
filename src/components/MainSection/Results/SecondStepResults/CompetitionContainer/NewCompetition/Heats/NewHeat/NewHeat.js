@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import "./NewHeat.scss"
 import FinalIndividualsForm from './FinalIndividualsForm/FinalIndividualsForm';
 import FinalRelaysForm from './FinalRelaysForm/FinalRelaysForm';
@@ -10,10 +10,7 @@ const NewHeat = ({
     isFinalIndividualsFormActive,
     isFinalRelaysFormActive,
 
-    heatLabel,
-
-    setCounter
-    
+    heatLabel,    
 }) => {
 
     const [athletesList, setAthletesList] = useState([])
@@ -62,47 +59,3 @@ const NewHeat = ({
 }
 
 export default NewHeat;
-
-
-//////////////////////////////////////////////////////////
-// Do ew. weryfikacji
-
-// import React, {useState} from 'react';
-
-// const NewHeat = () => {
-
-//     const [heatsList, setHeatsList] = useState([])
-//     const [counterID, setCounterID] = useState(0)
-
-//     const addHeatHandler = (e) => {
-//         e.preventDefault();
-//         setCounterID(prevState => prevState + 1)
-//         setHeatsList(prevState => [...prevState, counterID])
-//     }
-
-//     const removeHeatHandler = (heatToRemove) => {
-//         const position = heatsList.indexOf(heatToRemove);
-//         const filteredHeatsList = heatsList.filter((elem) => heatsList.indexOf(elem) !== position);
-//         setHeatsList(filteredHeatsList);
-//     }
-
-//     return (
-//         <div>
-//             {heatsList.map((elem, index) => {
-//                 return(
-//                     <div key={index}>
-//                         <h4>Heat {heatsList.indexOf(elem) + 1} / {heatsList.length}</h4>
-//                         <SomeComponent/>
-//                         <AnotherComponent/>
-//                         <button onClick={() => removeHeatHandler(elem)}>Remove Heat</button>
-//                     </div>
-//                 ) 
-//             })}
-//             <button onClick={addHeatHandler}>Add Heat</button>
-//         </div>
-//     )
-// }
-
-// export default NewHeat;
-
-/////////////////////////////////////////////////////////

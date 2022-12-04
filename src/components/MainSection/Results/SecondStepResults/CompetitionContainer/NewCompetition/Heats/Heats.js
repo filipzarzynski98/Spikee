@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import "./Heats.scss"
-import NewHeat from '../NewHeat/NewHeat';
+import NewHeat from './NewHeat/NewHeat';
 
 const Heats = ({
 
