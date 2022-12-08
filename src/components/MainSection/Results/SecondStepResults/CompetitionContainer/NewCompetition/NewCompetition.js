@@ -5,7 +5,9 @@ import IndividualsForm from "./IndividualsForm/IndividualsForm"
 import RelaysForm from "./RelaysForm/RelaysForm"
 import Heats from './Heats/Heats';
 
-const NewCompetition = () => {
+const NewCompetition = ({
+    hideToPrint
+}) => {
  
     const [currentFormType, setCurrentFormType] = useState({ 
         inicialForm: "active",
@@ -30,12 +32,9 @@ const NewCompetition = () => {
     // Warunek renderowania FinalIndividualsForm/FinalRelaysForm, który spełniony zostaje podczas kliknięcia "New Heat"
     const [isFinalIndividualsFormActive, setIsFinalIndividualsFormActive] = useState("finalIndividualsForm-dezactive")
     const [isFinalRelaysFormActive, setIsFinalRelaysFormActive] = useState("finalRelaysForm-dezactive")
-
-   
-       
+  
     const removeCompetitionHandler = (e) => {
         e.preventDefault()
-
         setIsCompetitionActive("dezactive")
     }
 
@@ -45,63 +44,47 @@ const NewCompetition = () => {
                 <h3>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h3>
                 <Heats
                     onChangeCompetitionData={onChangeCompetitionData}
-
                     isFinalIndividualsFormActive={isFinalIndividualsFormActive}
                     isFinalRelaysFormActive={isFinalRelaysFormActive}
-
                     isNewHeatPossible={isNewHeatPossible}
-
-                   
+                    hideToPrint={hideToPrint}
                 />
-              
                 <div>
                     <InicialForm
                         currentFormType={currentFormType}
                         setCurrentFormType={setCurrentFormType}
+                        hideToPrint={hideToPrint}
                     />
                     <IndividualsForm
                         currentFormType={currentFormType}
                         setCurrentFormType={setCurrentFormType}
-
                         onChangeCompetitionData={onChangeCompetitionData}
                         setOnChangeCompetitionData={setOnChangeCompetitionData}
-
                         sexFirstLetter={sexFirstLetter}
                         setSexFirstLetter={setSexFirstLetter}
-
                         setIsNewHeatPossible={setIsNewHeatPossible}
-                        
                         setIsFinalIndividualsFormActive={setIsFinalIndividualsFormActive}
+                        hideToPrint={hideToPrint}
                     />
                     <RelaysForm
                         currentFormType={currentFormType}
-                        setCurrentFormType={setCurrentFormType}
-                        
+                        setCurrentFormType={setCurrentFormType}                      
                         onChangeCompetitionData={onChangeCompetitionData}
                         setOnChangeCompetitionData={setOnChangeCompetitionData}
-
                         sexFirstLetter={sexFirstLetter}
                         setSexFirstLetter={setSexFirstLetter} 
-                        
                         setIsNewHeatPossible={setIsNewHeatPossible}
-
                         setIsFinalRelaysFormActive={setIsFinalRelaysFormActive}
-                        
+                        hideToPrint={hideToPrint}
                     />    
                 </div>   
-                <button onClick={removeCompetitionHandler}>Delete Competition</button>  
-                
-                 
-                
-                           
+                <button className={hideToPrint} onClick={removeCompetitionHandler}>Delete Competition</button>      
             </div>
         );
     }
     else {
         return null
     }
-
-   
 };
 
 export default NewCompetition;

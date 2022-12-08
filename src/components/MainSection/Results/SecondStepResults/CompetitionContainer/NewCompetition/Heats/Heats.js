@@ -1,21 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "./Heats.scss"
 import NewHeat from './NewHeat/NewHeat';
 
 const Heats = ({
-
     isFinalIndividualsFormActive,
     isFinalRelaysFormActive, 
-
     isNewHeatPossible,
+    hideToPrint
 }) => {
 
     const [heatsList, setHeatsList] = useState([])
     const [counter, setCounter] = useState(0)
-
-    useEffect(() => {
-        console.log(heatsList)
-    }, [heatsList])
 
     const addHeatHandler = (e) => {
         e.preventDefault()
@@ -40,12 +35,13 @@ const Heats = ({
                                     heatLabel={<h3>Heat {heatsList.indexOf(elem) + 1}/{heatsList.length}</h3>}
                                     isFinalIndividualsFormActive={isFinalIndividualsFormActive}
                                     isFinalRelaysFormActive={isFinalRelaysFormActive}
+                                    hideToPrint={hideToPrint}
                                 />
-                                <button onClick={() => removeHeatHandler(elem)}>Delete Heat</button>
+                                <button className={hideToPrint} onClick={() => removeHeatHandler(elem)}>Delete Heat</button>
                             </div>
                         )
                     })}
-                    <button onClick={addHeatHandler}>Add Heat</button>
+                    <button className={hideToPrint} onClick={addHeatHandler}>Add Heat</button>
                 </div>
             </div>
         );  
@@ -53,7 +49,6 @@ const Heats = ({
     else {
         return null
     }
-    
 };
 
 export default Heats;

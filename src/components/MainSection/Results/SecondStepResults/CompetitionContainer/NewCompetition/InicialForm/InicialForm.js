@@ -4,12 +4,11 @@ import "./InicialForm.scss"
 const InicialForm = ({
     currentFormType,
     setCurrentFormType,
-
+    hideToPrint
 }) => {
 
     const redirectToIndividualsHandler = (e) => {
         e.preventDefault();
-
         setCurrentFormType(prevState => {
             return {
                 ...prevState,
@@ -24,7 +23,6 @@ const InicialForm = ({
     
     const redirectToRelaysHandler = (e) => {
         e.preventDefault();
-
         setCurrentFormType(prevState => {
             return {
                 ...prevState,
@@ -39,7 +37,7 @@ const InicialForm = ({
     
     if (currentFormType.inicialForm === "active") {
          return (
-            <div className='inicialForm__wrapper'>
+            <div className={`inicialForm__wrapper ${hideToPrint}`}>
                 <h2>Choose competition type...</h2>
                 <button onClick={redirectToIndividualsHandler}>Inividuals</button>  
                 <button onClick={redirectToRelaysHandler}>Relays</button> 
@@ -49,7 +47,6 @@ const InicialForm = ({
     else {
         return null
     }
-   
 };
 
 export default InicialForm;

@@ -1,19 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "./FinalIndividualsForm.scss"
 
 const FinalIndividualsForm = ({
-    
-
     athleteData, 
     setAthleteData,
-
-   
-
     isFinalIndividualsFormActive,
-
-    athletesList,
     setAthletesList,
-
+    hideToPrint
 }) => {
 
     // form validation states
@@ -22,8 +15,7 @@ const FinalIndividualsForm = ({
     const [validationErrorSurname, setValidationErrorSurname] = useState("correct")
     const [validationErrorLicense, setValidationErrorLicense] = useState("correct")
 
-    const [tracks, setTracks] = useState([1,2,3,4,5,6,7,8,9])
-
+    const tracks = [1,2,3,4,5,6,7,8,9];
 
     // Inputs values are setting to athleteData.name and athleteData.surname
     
@@ -99,7 +91,6 @@ const FinalIndividualsForm = ({
                 athleteData.license !== "" && athleteData.license.length >= 2 && isNaN(parseFloat(athleteData.license)) === false    
         ) {
                 setAthletesList(prevState => [...prevState, athleteData])
-            
                 setAthleteData(prevState => {
                     return {
                         ...prevState,
@@ -114,7 +105,7 @@ const FinalIndividualsForm = ({
 
     if (isFinalIndividualsFormActive === "finalIndividualsForm-active") {
         return (
-            <div className='final-form__wrapper'>
+            <div className={`final-form__wrapper ${hideToPrint}`}>
                <h3>Add athlete</h3>
                <form>
                     <div>
@@ -148,10 +139,7 @@ const FinalIndividualsForm = ({
                     </div>
                     <div>
                         <label>Select track - optional</label>
-                        <select
-                            value={athleteData.track}
-                            onChange={handleTrackChange}
-                        >
+                        <select value={athleteData.track} onChange={handleTrackChange}>
                                 <option></option>
                                 {tracks.map((elem, index) => <option key={index}>{elem}</option>)}
                         </select>
@@ -159,16 +147,13 @@ const FinalIndividualsForm = ({
                     <div>
                         <button onClick={addAthleteHandler}>Add athlete</button>
                     </div>
-                    
                </form>
-                
             </div>
         );  
     }
     else {
         return null
     }
-    
 };
 
 export default FinalIndividualsForm;

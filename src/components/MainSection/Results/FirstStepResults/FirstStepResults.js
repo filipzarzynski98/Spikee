@@ -4,7 +4,6 @@ import "./FirstStepResults.scss"
 const FirstStepResults = ({
     currentResultsStep,
     setCurrentResultsStep,
-
     listName,
     setListName
 }) => {
@@ -17,7 +16,6 @@ const FirstStepResults = ({
 
     const nextStepHandler = (e) => {
         e.preventDefault()
-
         if (listName === "") {
             setListNameValidation("error")
         }
@@ -29,8 +27,7 @@ const FirstStepResults = ({
                     secondStep: "active",
                 }
             })
-        }
-        
+        } 
     }
 
     if (currentResultsStep.firstStep === "active") {

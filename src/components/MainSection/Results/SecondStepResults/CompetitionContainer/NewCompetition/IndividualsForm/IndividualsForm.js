@@ -5,49 +5,36 @@ import IndividualCompetitions from '../individualCompetitions';
 const IndividualsForm = ({
     currentFormType,
     setCurrentFormType,
-
     onChangeCompetitionData,
     setOnChangeCompetitionData,
-  
-
     sexFirstLetter,
     setSexFirstLetter,
-
     setIsNewHeatPossible,
-
-    setIsFinalIndividualsFormActive
+    setIsFinalIndividualsFormActive,
+    hideToPrint
 }) => {
-
-  
-
 
     const setIndividualWomen = (e) => {
         e.preventDefault();
-
         setOnChangeCompetitionData(prevState => {
             return{
                 ...prevState,
                 sex: "female"
             }
         })
-
         setSexFirstLetter("W")
     }
 
     const setIndividualMen = (e) => {
         e.preventDefault();
-
         setOnChangeCompetitionData(prevState => {
             return{
                 ...prevState,
                 sex: "male"
             }
         })
-
         setSexFirstLetter("M")
     }
-
-
 
     const hurdlesCompetition =  () => {
         if (onChangeCompetitionData.sex === "female") {
@@ -87,7 +74,6 @@ const IndividualsForm = ({
 
     const previousFormStep = (e) => {
         e.preventDefault();
-  
         setCurrentFormType(prevState => {
           return{
             ...prevState,
@@ -102,7 +88,6 @@ const IndividualsForm = ({
 
     const nextFormStep = (e) => {
         e.preventDefault();
-
         setCurrentFormType(prevState => {
           return{
             ...prevState,
@@ -113,16 +98,13 @@ const IndividualsForm = ({
             finalRelaysForm: "dezactive"
           }
         })
-
         setIsNewHeatPossible("newHeat-possible")
-
         setIsFinalIndividualsFormActive("finalIndividualsForm-active")
     }
 
-
     if (currentFormType.individualsForm === "active") {
         return (
-            <div>
+            <div className={hideToPrint}>
                 <p>IndividualsForm</p>
                 <h3>Ladies or gentlemen...?</h3>
                 <div>
@@ -140,10 +122,7 @@ const IndividualsForm = ({
                         <option>{heptathlonOrDecathlon()}</option>
                 </select>
                 <h3>Choose competition stage</h3>
-                <select
-                    value={onChangeCompetitionData.stage}
-                    onChange={setStageHandler}
-                >
+                <select value={onChangeCompetitionData.stage} onChange={setStageHandler}>
                     <option></option>
                     <option>Heats</option>
                     <option>Pre-eliminations</option>

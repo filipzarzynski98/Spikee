@@ -4,7 +4,8 @@ import "./CompetitionContainer.scss"
 
 const CompetitionContainer = ({
     competitionsArray,
-    setCompetitionsArray
+    setCompetitionsArray,
+    hideToPrint
 }) => {
     return (
         <div>
@@ -14,6 +15,7 @@ const CompetitionContainer = ({
                         <NewCompetition
                             competitionsArray={competitionsArray}
                             setCompetitionsArray={setCompetitionsArray}
+                            hideToPrint={hideToPrint}
                         />
                     </div>)} 
                 )

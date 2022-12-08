@@ -3,7 +3,8 @@ import "./Team.scss"
 
 const Team = ({
     teamsList,
-    setTeamsList
+    setTeamsList,
+    hideToPrint
 }) => {
 
     const removeTeamHandler = (teamToRemove) => {
@@ -17,8 +18,8 @@ const Team = ({
                 return(
                     <div key={index}>
                         <h4>{elem.clubName} {elem.country} Track: {elem.track}</h4>
-                        <button>Domtel</button>
-                        <button onClick={() => removeTeamHandler(elem)}>Remove Team</button>
+                        <button className={hideToPrint}>Domtel</button>
+                        <button className={hideToPrint} onClick={() => removeTeamHandler(elem)}>Remove Team</button>
                     </div>
                 )
             })}

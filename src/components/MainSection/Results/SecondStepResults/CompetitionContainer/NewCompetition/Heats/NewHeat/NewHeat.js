@@ -6,11 +6,10 @@ import Athlete from './Athlete/Athlete';
 import Team from './Team/Team';
 
 const NewHeat = ({
-  
     isFinalIndividualsFormActive,
     isFinalRelaysFormActive,
-
-    heatLabel,    
+    heatLabel, 
+    hideToPrint
 }) => {
 
     const [athletesList, setAthletesList] = useState([])
@@ -28,30 +27,29 @@ const NewHeat = ({
                     <Athlete
                         athletesList={athletesList}
                         setAthletesList={setAthletesList}
+                        hideToPrint={hideToPrint}
                     />
                 </div>
                 <div>
                     <Team
                         teamsList={teamsList}
                         setTeamsList={setTeamsList}
+                        hideToPrint={hideToPrint}
                     />
                 </div>
                 <FinalIndividualsForm
                     athleteData={athleteData}
                     setAthleteData={setAthleteData}
-
                     isFinalIndividualsFormActive={isFinalIndividualsFormActive}
-
-                    athletesList={athletesList}
                     setAthletesList={setAthletesList}
+                    hideToPrint={hideToPrint}
                 />
                 <FinalRelaysForm
                     teamData={teamData}
                     setTeamData={setTeamData}
-                    teamsList={teamsList}
                     setTeamsList={setTeamsList}
-
                     isFinalRelaysFormActive={isFinalRelaysFormActive}
+                    hideToPrint={hideToPrint}
                 />
             </div>   
         </div>

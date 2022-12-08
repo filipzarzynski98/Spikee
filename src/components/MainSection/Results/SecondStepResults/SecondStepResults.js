@@ -5,12 +5,10 @@ import { useReactToPrint } from 'react-to-print';
 
 const SecondStepResults = ({
     currentResultsStep,
-    
     listName
 }) => {
     
     const [competitionsArray, setCompetitionsArray] = useState([])
-    
     const [listConfirmed, setListConfirmed] = useState("unconfirmed")
     const [isEditButtonActive, setIsEditButtonActive] = useState("hide")
 
@@ -18,7 +16,6 @@ const SecondStepResults = ({
     const printHandler = useReactToPrint({
         content: () => competitionsRef.current,
         documentTitle: `${listName}`,
-        onAfterPrint: () => console.log("printing succesfull!")
     })
     
     const addNewCompetition = (e) => {
@@ -26,7 +23,6 @@ const SecondStepResults = ({
         let counter = 1
         setCompetitionsArray(prevState => [...prevState, {id: counter + competitionsArray.length}])
     }
-
 
     const confirmButton = () => {
        if (listConfirmed === "unconfirmed") {
@@ -55,6 +51,15 @@ const SecondStepResults = ({
         setIsEditButtonActive("hide")
         setListConfirmed("unconfirmed")
     }
+
+    const hideToPrint = () => {
+        if (listConfirmed === "unconfirmed") {
+            return "active"
+        }
+        else {
+            return "hide"
+        }
+    }
  
     if (currentResultsStep.secondStep === "active") {
         return (
@@ -65,6 +70,7 @@ const SecondStepResults = ({
                     <CompetitionContainer
                         competitionsArray={competitionsArray}
                         setCompetitionsArray={setCompetitionsArray}
+                        hideToPrint={hideToPrint()}
                     />
                 </div>
                 <div>

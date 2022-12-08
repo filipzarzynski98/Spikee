@@ -5,43 +5,35 @@ import RelaysCompetitions from '../relaysCompetition';
 const RelaysForm = ({
     currentFormType,
     setCurrentFormType,
-
     onChangeCompetitionData,
     setOnChangeCompetitionData,
-
     sexFirstLetter,
     setSexFirstLetter,
-
     setIsNewHeatPossible,
-
-    setIsFinalRelaysFormActive
+    setIsFinalRelaysFormActive,
+    hideToPrint
 }) => {
 
     const setRelaysWomen = (e) => {
         e.preventDefault();
-
         setOnChangeCompetitionData(prevState => {
             return{
                 ...prevState,
                 sex: "female"
             }
         })
-
         setSexFirstLetter("W")
-
         console.log(sexFirstLetter)
     }
 
     const setRelaysMen = (e) => {
         e.preventDefault();
-
         setOnChangeCompetitionData(prevState => {
             return{
                 ...prevState,
                 sex: "male"
             }
         })
-
         setSexFirstLetter("M")
     }
 
@@ -66,7 +58,6 @@ const RelaysForm = ({
 
     const previousFormStep = (e) => {
         e.preventDefault();
-  
         setCurrentFormType(prevState => {
           return{
             ...prevState,
@@ -81,7 +72,6 @@ const RelaysForm = ({
 
     const nextFormStep = (e) => {
         e.preventDefault();
-  
         setCurrentFormType(prevState => {
           return{
             ...prevState,
@@ -92,15 +82,13 @@ const RelaysForm = ({
             finalRelaysForm: "active"
           }
         })
-
         setIsNewHeatPossible("newHeat-possible")
-
         setIsFinalRelaysFormActive("finalRelaysForm-active")
     }
 
     if (currentFormType.relaysForm === "active") {
         return (
-            <div>
+            <div className={hideToPrint}>
                 <p>RelaysForm</p>
                 <h3>Ladies or gentlemen...?</h3>
                 <div>
@@ -108,18 +96,12 @@ const RelaysForm = ({
                     <button onClick={setRelaysMen}>Men</button>
                 </div>
                 <h3>Choose competition</h3>
-                <select
-                    value={onChangeCompetitionData.competition}
-                    onChange={setCompetitionHandler}
-                >
+                <select value={onChangeCompetitionData.competition} onChange={setCompetitionHandler}>
                     <option></option>
                     {RelaysCompetitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
                 </select>
                 <h3>Choose stage</h3>
-                <select
-                    value={onChangeCompetitionData.stage}
-                    onChange={setStageHandler}
-                >
+                <select value={onChangeCompetitionData.stage} onChange={setStageHandler}>
                         <option></option>
                         <option>Heats</option>
                         <option>Pre-eliminations</option>
@@ -135,7 +117,6 @@ const RelaysForm = ({
     else {
         return null
     }
-    
 };
 
 export default RelaysForm;
