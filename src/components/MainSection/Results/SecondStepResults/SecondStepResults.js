@@ -10,6 +10,9 @@ const SecondStepResults = ({
 }) => {
     
     const [competitionsArray, setCompetitionsArray] = useState([])
+    
+    const [listConfirmed, setListConfirmed] = useState("unconfirmed")
+    const [isEditButtonActive, setIsEditButtonActive] = useState("hide")
 
     const competitionsRef = useRef();
     const printHandler = useReactToPrint({
@@ -24,6 +27,35 @@ const SecondStepResults = ({
         setCompetitionsArray(prevState => [...prevState, {id: counter + competitionsArray.length}])
     }
 
+
+    const confirmButton = () => {
+       if (listConfirmed === "unconfirmed") {
+            return "active" 
+       }
+       else {
+        return "hide"
+       } 
+    }
+
+    const printButton = () => {
+       if (listConfirmed === "unconfirmed") {
+            return "hide"
+       }
+       else {
+            return "active"
+       } 
+    }
+
+    const confirmList = () => {
+        setListConfirmed("confirmed")
+        setIsEditButtonActive("active")
+    }
+
+    const editList = () => {
+        setIsEditButtonActive("hide")
+        setListConfirmed("unconfirmed")
+    }
+ 
     if (currentResultsStep.secondStep === "active") {
         return (
             <div className='secondStep__wrapper'>
@@ -36,8 +68,10 @@ const SecondStepResults = ({
                     />
                 </div>
                 <div>
-                    <button onClick={addNewCompetition}>New competition</button> 
-                    <button onClick={printHandler}>Print</button>
+                    <button onClick={addNewCompetition}>New competition</button>
+                    <button className={isEditButtonActive} onClick={editList}>Edit</button> 
+                    <button className={printButton()} onClick={printHandler}>Print</button>
+                    <button className={confirmButton()} onClick={confirmList}>Confirm</button>
                 </div>
             </div>
         );
