@@ -14,17 +14,21 @@ const Results = () => {
 
     return (
         <div className='results__wrapper'>
-            <FirstStepResults
-                currentResultsStep={currentResultsStep}
-                setCurrentResultsStep={setCurrentResultsStep}
-                listName={listName}
-                setListName={setListName}
-            />
-            <SecondStepResults
-                currentResultsStep={currentResultsStep}
-                setCurrentResultsStep={setCurrentResultsStep}
-                listName={listName}
-            />  
+            <div >
+                <FirstStepResults
+                    currentResultsStep={currentResultsStep}
+                    setCurrentResultsStep={setCurrentResultsStep}
+                    listName={listName}
+                    setListName={setListName}
+                />
+            </div>
+            <div>
+                <SecondStepResults
+                    currentResultsStep={currentResultsStep}
+                    setCurrentResultsStep={setCurrentResultsStep}
+                    listName={listName}
+                />  
+            </div>
         </div>
     );
 };

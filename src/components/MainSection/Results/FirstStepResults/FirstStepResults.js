@@ -32,16 +32,19 @@ const FirstStepResults = ({
 
     if (currentResultsStep.firstStep === "active") {
          return (
-            <div>
+            <div className='firstStepResults__wrapper'>
                 <p>1 Step</p>
                 <h2>Set your list name</h2>
-                <input
-                    value={listName}
-                    placeholder="e.g. My List"
-                    onChange={setListNameHandler}
-                ></input>
-                <p className={listNameValidation}>Type the name</p>
-                <button onClick={nextStepHandler}>Next</button>    
+                <div className='listNameInput__wrapper'>
+                    <input
+                        className='listNameInput'
+                        value={listName}
+                        placeholder="e.g. My List"
+                        onChange={setListNameHandler}
+                    ></input>
+                    <p className={listNameValidation}>Type the name</p>
+                </div>
+                <button className='setListNameButton' onClick={nextStepHandler}>Let's roll!</button>    
             </div>
          );
     }

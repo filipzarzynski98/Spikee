@@ -64,8 +64,8 @@ const SecondStepResults = ({
     if (currentResultsStep.secondStep === "active") {
         return (
             <div className='secondStep__wrapper'>
-                <p>2 Step</p>
-                <div ref={competitionsRef}>
+                {/* <p>2 Step</p> */}
+                <div className='competitionContainer__wrapper' ref={competitionsRef}>
                     <h2>{listName}</h2>
                     <CompetitionContainer
                         competitionsArray={competitionsArray}
@@ -73,7 +73,7 @@ const SecondStepResults = ({
                         hideToPrint={hideToPrint()}
                     />
                 </div>
-                <div>
+                <div className='secondStep__buttons'>
                     <button onClick={addNewCompetition}>New competition</button>
                     <button className={isEditButtonActive} onClick={editList}>Edit</button> 
                     <button className={printButton()} onClick={printHandler}>Print</button>

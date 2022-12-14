@@ -8,3 +8,36 @@
     font-weight: 500;
 }
 
+.firstStepResults__wrapper {
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.listNameInput {
+    width: 40vw;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.setListNameButton {
+    margin-top: 20px;
+    width: 15vw;
+    height: 3vw;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: rgb(10, 203, 61);
+    color: white;
+    cursor: pointer;
+}
+
+.setListNameButton:hover {
+    background-color: rgb(0, 255, 17);
+    color: black;
+}
