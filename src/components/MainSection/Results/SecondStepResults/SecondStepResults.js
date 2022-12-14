@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import "./SecondStepResults.scss"
 import CompetitionContainer from './CompetitionContainer/CompetitionContainer';
 import { useReactToPrint } from 'react-to-print';
@@ -9,8 +9,14 @@ const SecondStepResults = ({
 }) => {
     
     const [competitionsArray, setCompetitionsArray] = useState([])
+    const [competitionsCounter, setCompetitionsCounter] = useState(0)
     const [listConfirmed, setListConfirmed] = useState("unconfirmed")
     const [isEditButtonActive, setIsEditButtonActive] = useState("hide")
+    const [isThereAnyCompetition, setIsThereAnyCompetition] = useState(false)
+
+    useEffect(() => {
+        console.log(competitionsArray)
+    }, [competitionsArray])
 
     const competitionsRef = useRef();
     const printHandler = useReactToPrint({
@@ -20,12 +26,19 @@ const SecondStepResults = ({
     
     const addNewCompetition = (e) => {
         e.preventDefault()
-        let counter = 1
-        setCompetitionsArray(prevState => [...prevState, {id: counter + competitionsArray.length}])
+        setCompetitionsCounter(prevState => prevState + 1)
+        setCompetitionsArray(prevState => [...prevState, {id: competitionsCounter}]) 
+        setIsThereAnyCompetition(true)
+    }
+
+    const removeCompetitionHandler = (competitionToRemove) => {
+        const position = competitionsArray.indexOf(competitionToRemove)
+        const filteredCompetitionsArray = competitionsArray.filter((elem) => competitionsArray.indexOf(elem) !== position)
+        setCompetitionsArray(filteredCompetitionsArray)
     }
 
     const confirmButton = () => {
-       if (listConfirmed === "unconfirmed") {
+       if (listConfirmed === "unconfirmed" && isThereAnyCompetition === true ) {
             return "active" 
        }
        else {
@@ -69,15 +82,20 @@ const SecondStepResults = ({
                     <h2>{listName}</h2>
                     <CompetitionContainer
                         competitionsArray={competitionsArray}
+                        removeCompetitionHandler={removeCompetitionHandler}
                         setCompetitionsArray={setCompetitionsArray}
                         hideToPrint={hideToPrint()}
                     />
                 </div>
                 <div className='secondStep__buttons'>
-                    <button onClick={addNewCompetition}>New competition</button>
-                    <button className={isEditButtonActive} onClick={editList}>Edit</button> 
-                    <button className={printButton()} onClick={printHandler}>Print</button>
-                    <button className={confirmButton()} onClick={confirmList}>Confirm</button>
+                    <div className='newCompetitionAndConfirmListButtons'>
+                        <button className='newCompetitionButton' onClick={addNewCompetition}>New competition</button>
+                        <button className={`confirmListButton ${confirmButton()}`} onClick={confirmList}>Confirm List</button> 
+                    </div>
+                    <div className='editAndPrintButtons'>
+                        <button className={`editListButton ${isEditButtonActive}`} onClick={editList}>Edit</button> 
+                        <button className={`printListButton ${printButton()}`} onClick={printHandler}>Print</button>
+                    </div>
                 </div>
             </div>
         );

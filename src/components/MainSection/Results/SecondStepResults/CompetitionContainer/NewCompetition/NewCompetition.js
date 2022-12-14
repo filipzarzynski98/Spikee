@@ -6,7 +6,9 @@ import RelaysForm from "./RelaysForm/RelaysForm"
 import Heats from './Heats/Heats';
 
 const NewCompetition = ({
-    hideToPrint
+    hideToPrint,
+    competitionsArray,
+    removeCompetitionHandler
 }) => {
  
     const [currentFormType, setCurrentFormType] = useState({ 
@@ -33,10 +35,10 @@ const NewCompetition = ({
     const [isFinalIndividualsFormActive, setIsFinalIndividualsFormActive] = useState("finalIndividualsForm-dezactive")
     const [isFinalRelaysFormActive, setIsFinalRelaysFormActive] = useState("finalRelaysForm-dezactive")
   
-    const removeCompetitionHandler = (e) => {
-        e.preventDefault()
-        setIsCompetitionActive("dezactive")
-    }
+    // const removeCompetitionHandler = (e) => {
+    //     e.preventDefault()
+    //     setIsCompetitionActive("dezactive")
+    // }
 
     if (isCompetitionActive === "active") {
          return (
@@ -77,8 +79,7 @@ const NewCompetition = ({
                         setIsFinalRelaysFormActive={setIsFinalRelaysFormActive}
                         hideToPrint={hideToPrint}
                     />    
-                </div>   
-                <button className={hideToPrint} onClick={removeCompetitionHandler}>Delete Competition</button>      
+                </div>        
             </div>
         );
     }

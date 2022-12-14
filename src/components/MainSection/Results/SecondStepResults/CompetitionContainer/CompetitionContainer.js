@@ -4,6 +4,7 @@ import "./CompetitionContainer.scss"
 
 const CompetitionContainer = ({
     competitionsArray,
+    removeCompetitionHandler,
     setCompetitionsArray,
     hideToPrint
 }) => {
@@ -17,6 +18,12 @@ const CompetitionContainer = ({
                             setCompetitionsArray={setCompetitionsArray}
                             hideToPrint={hideToPrint}
                         />
+                        <button 
+                            className={hideToPrint} 
+                            onClick={() => removeCompetitionHandler(elem)}
+                        >
+                            Delete Competition
+                        </button> 
                     </div>)} 
                 )
             } 

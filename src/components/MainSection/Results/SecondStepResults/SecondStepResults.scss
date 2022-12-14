@@ -1,22 +1,85 @@
 .secondStep__wrapper {
-    width: 100vw;
-    height: 50vh;
+    max-width: 94vw;
+    height: 65vh;
     display: flex;
     flex-direction: column;
-    gap: 20vh;
+    justify-content: space-between;
+    margin-left: 20px;
+   
 }
 
 .competitionContainer__wrapper{
-    margin-top: 15px;
-    margin-left: 15px;
+
 }
 
 .secondStep__buttons {
     width: 100%;
+    display: flex; 
+    gap: 300px;   
+}
+
+.newCompetitionAndConfirmListButtons {
     display: flex;
-    margin-left: 30px;
-    gap: 300px;
+    gap: 450px;
     
+}
+
+.editAndPrintButtons {
+    display: flex;
+    gap: 100px;
+}
+
+.newCompetitionButton {
+    height: 45px;
+    width: 200px;
+    background-color: rgb(10, 203, 61);
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 15px;
+    color: white;
+}
+.newCompetitionButton:hover {
+    background-color: rgb(3, 139, 12);
+}
+
+.confirmListButton {
+    height: 45px;
+    width: 200px;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 15px;
+}
+.confirmListButton:hover {
+    background-color: rgb(222, 2, 2);
+    color: white;
+}
+
+.editListButton {
+    height: 45px;
+    width: 100px;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 15px;   
+}
+.editListButton:hover {
+    background-color: rgb(222, 2, 2);
+    color: white;
+}
+
+.printListButton {
+    height: 45px;
+    width: 100px;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 15px;   
+}
+.printListButton:hover {
+    background-color: rgb(222, 2, 2);
+    color: white;
 }
 
 .active {

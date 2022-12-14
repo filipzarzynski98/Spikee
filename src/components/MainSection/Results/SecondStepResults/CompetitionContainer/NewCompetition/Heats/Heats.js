@@ -10,12 +10,12 @@ const Heats = ({
 }) => {
 
     const [heatsList, setHeatsList] = useState([])
-    const [counter, setCounter] = useState(0)
+    const [heatsCounter, setHeatsCounter] = useState(0)
 
     const addHeatHandler = (e) => {
         e.preventDefault()
-        setCounter(prevState => prevState + 1)
-        setHeatsList(prevState => [...prevState, {id: counter}]) 
+        setHeatsCounter(prevState => prevState + 1)
+        setHeatsList(prevState => [...prevState, {id: heatsCounter}]) 
     }
 
     const removeHeatHandler = (heatToRemove) => {
