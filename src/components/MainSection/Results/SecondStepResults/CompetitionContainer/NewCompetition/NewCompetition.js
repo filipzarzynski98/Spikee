@@ -43,14 +43,16 @@ const NewCompetition = ({
     if (isCompetitionActive === "active") {
          return (
             <div className='newCompetition__wrapper'>
-                <h3>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h3>
-                <Heats
-                    onChangeCompetitionData={onChangeCompetitionData}
-                    isFinalIndividualsFormActive={isFinalIndividualsFormActive}
-                    isFinalRelaysFormActive={isFinalRelaysFormActive}
-                    isNewHeatPossible={isNewHeatPossible}
-                    hideToPrint={hideToPrint}
-                />
+                <div className='heatsContainer'>
+                    <h3>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h3>
+                    <Heats
+                        onChangeCompetitionData={onChangeCompetitionData}
+                        isFinalIndividualsFormActive={isFinalIndividualsFormActive}
+                        isFinalRelaysFormActive={isFinalRelaysFormActive}
+                        isNewHeatPossible={isNewHeatPossible}
+                        hideToPrint={hideToPrint}
+                    />
+                </div>
                 <div>
                     <InicialForm
                         currentFormType={currentFormType}

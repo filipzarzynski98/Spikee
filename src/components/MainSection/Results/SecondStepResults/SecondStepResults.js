@@ -1,7 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef} from 'react';
 import "./SecondStepResults.scss"
 import CompetitionContainer from './CompetitionContainer/CompetitionContainer';
 import { useReactToPrint } from 'react-to-print';
+import NewCompAndConfirmListButtons from './NewCompAndConfirmListButtons/NewCompAndConfirmListButtons';
+import EditAndPrintButtons from './EditAndPrintButtons/EditAndPrintButtons';
+
 
 const SecondStepResults = ({
     currentResultsStep,
@@ -10,13 +13,8 @@ const SecondStepResults = ({
     
     const [competitionsArray, setCompetitionsArray] = useState([])
     const [competitionsCounter, setCompetitionsCounter] = useState(0)
-    const [listConfirmed, setListConfirmed] = useState("unconfirmed")
-    const [isEditButtonActive, setIsEditButtonActive] = useState("hide")
+    const [listConfirmed, setListConfirmed] = useState(false)
     const [isThereAnyCompetition, setIsThereAnyCompetition] = useState(false)
-
-    useEffect(() => {
-        console.log(competitionsArray)
-    }, [competitionsArray])
 
     const competitionsRef = useRef();
     const printHandler = useReactToPrint({
@@ -37,40 +35,16 @@ const SecondStepResults = ({
         setCompetitionsArray(filteredCompetitionsArray)
     }
 
-    const confirmButton = () => {
-       if (listConfirmed === "unconfirmed" && isThereAnyCompetition === true ) {
-            return "active" 
-       }
-       else {
-        return "hide"
-       } 
-    }
-
-    const printButton = () => {
-       if (listConfirmed === "unconfirmed") {
-            return "hide"
-       }
-       else {
-            return "active"
-       } 
-    }
-
     const confirmList = () => {
-        setListConfirmed("confirmed")
-        setIsEditButtonActive("active")
-    }
-
-    const editList = () => {
-        setIsEditButtonActive("hide")
-        setListConfirmed("unconfirmed")
+        setListConfirmed(true)
     }
 
     const hideToPrint = () => {
-        if (listConfirmed === "unconfirmed") {
-            return "active"
+        if (listConfirmed === true) {
+            return "hide"
         }
         else {
-            return "hide"
+            return "active"
         }
     }
  
@@ -88,14 +62,17 @@ const SecondStepResults = ({
                     />
                 </div>
                 <div className='secondStep__buttons'>
-                    <div className='newCompetitionAndConfirmListButtons'>
-                        <button className='newCompetitionButton' onClick={addNewCompetition}>New competition</button>
-                        <button className={`confirmListButton ${confirmButton()}`} onClick={confirmList}>Confirm List</button> 
-                    </div>
-                    <div className='editAndPrintButtons'>
-                        <button className={`editListButton ${isEditButtonActive}`} onClick={editList}>Edit</button> 
-                        <button className={`printListButton ${printButton()}`} onClick={printHandler}>Print</button>
-                    </div>
+                    <NewCompAndConfirmListButtons
+                        addNewCompetition={addNewCompetition}
+                        isThereAnyCompetition={isThereAnyCompetition}
+                        confirmList={confirmList}
+                        listConfirmed={listConfirmed}
+                    />
+                    <EditAndPrintButtons
+                        listConfirmed={listConfirmed}
+                        setListConfirmed={setListConfirmed}
+                        printHandler={printHandler}
+                    />
                 </div>
             </div>
         );
