@@ -6,20 +6,32 @@ const CompetitionContainer = ({
     competitionsArray,
     removeCompetitionHandler,
     setCompetitionsArray,
-    hideToPrint
+    hideToPrint,
+    listConfirmed
 }) => {
+
+    const isListConfirmed = (wrapperName) => {
+        if (listConfirmed === false) {
+            return wrapperName
+        }
+        else {
+            return `hide`
+        }
+    }
+
     return (
-        <div>
+        <div className='competitions__wrapper'>
             {competitionsArray.map((elem) => {
                 return (
                     <div key={elem.id}>
                         <NewCompetition
                             competitionsArray={competitionsArray}
                             setCompetitionsArray={setCompetitionsArray}
-                            hideToPrint={hideToPrint}
+                            listConfirmed={listConfirmed}
+                            isListConfirmed={isListConfirmed}
                         />
                         <button 
-                            className={hideToPrint} 
+                            className={isListConfirmed('active')} 
                             onClick={() => removeCompetitionHandler(elem)}
                         >
                             Delete Competition

@@ -6,7 +6,7 @@ const FinalIndividualsForm = ({
     setAthleteData,
     isFinalIndividualsFormActive,
     setAthletesList,
-    hideToPrint
+    isListConfirmed
 }) => {
 
     // form validation states
@@ -105,7 +105,7 @@ const FinalIndividualsForm = ({
 
     if (isFinalIndividualsFormActive === "finalIndividualsForm-active") {
         return (
-            <div className={`final-form__wrapper ${hideToPrint}`}>
+            <div className={isListConfirmed('final-form__wrapper')}>
                <h3>Add athlete</h3>
                <form>
                     <div>

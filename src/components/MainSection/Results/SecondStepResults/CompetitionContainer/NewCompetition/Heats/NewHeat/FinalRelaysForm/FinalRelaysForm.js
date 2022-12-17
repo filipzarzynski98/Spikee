@@ -7,7 +7,7 @@ const FinalRelaysForm = ({
     teamData,
     setTeamData,
     setTeamsList,
-    hideToPrint
+    isListConfirmed
 }) => {
 
     const [kindOfTeam, setKindOfTeam] = useState({club: "clubInput-dezactive", country: "countrySelect-dezactive"})
@@ -91,7 +91,7 @@ const FinalRelaysForm = ({
 
     if (isFinalRelaysFormActive === "finalRelaysForm-active") {
         return (
-            <div className={hideToPrint}>
+            <div className={isListConfirmed('active')}>
                 <p>FinalRelaysForm</p>
                 <button onClick={selectClubHandler}>Club</button>
                 <button onClick={selectCountryHandler}>Country</button>

@@ -4,7 +4,8 @@ import "./InicialForm.scss"
 const InicialForm = ({
     currentFormType,
     setCurrentFormType,
-    hideToPrint
+    hideToPrint,
+    isListConfirmed
 }) => {
 
     const redirectToIndividualsHandler = (e) => {
@@ -37,10 +38,23 @@ const InicialForm = ({
     
     if (currentFormType.inicialForm === "active") {
          return (
-            <div className={`inicialForm__wrapper ${hideToPrint}`}>
+            <div className={isListConfirmed('inicialForm__wrapper')}>
                 <h2>Choose competition type...</h2>
-                <button onClick={redirectToIndividualsHandler}>Inividuals</button>  
-                <button onClick={redirectToRelaysHandler}>Relays</button> 
+                <div className='individualsAndRelaysButtons__wrapper'>
+                    <button 
+                        className='individualsButton' 
+                        onClick={redirectToIndividualsHandler}
+                    >
+                    Inividuals
+                    </button>  
+                    <button
+                        className='relaysButton'
+                        onClick={redirectToRelaysHandler}
+                    >
+                    Relays
+                    </button>
+                </div>
+                
             </div>
         );
     }

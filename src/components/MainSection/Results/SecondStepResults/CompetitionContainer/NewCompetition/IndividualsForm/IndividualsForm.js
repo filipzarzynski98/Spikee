@@ -11,7 +11,7 @@ const IndividualsForm = ({
     setSexFirstLetter,
     setIsNewHeatPossible,
     setIsFinalIndividualsFormActive,
-    hideToPrint
+    isListConfirmed
 }) => {
 
     const setIndividualWomen = (e) => {
@@ -104,15 +104,16 @@ const IndividualsForm = ({
 
     if (currentFormType.individualsForm === "active") {
         return (
-            <div className={hideToPrint}>
+            <div className={isListConfirmed('individualsForm__wrapper')}>
                 <p>IndividualsForm</p>
-                <h3>Ladies or gentlemen...?</h3>
-                <div>
-                    <button onClick={setIndividualWomen}>Women</button>
-                    <button onClick={setIndividualMen}>Men</button>
+                <h2>Ladies or gentlemen...?</h2>
+                <div className='womenAndManButtons__wrapper'>
+                    <button className="womenButton" onClick={setIndividualWomen}>Women</button>
+                    <button className='menButton' onClick={setIndividualMen}>Men</button>
                 </div>
-                <h3>Choose competition</h3>
-                <select 
+                <h2>Choose competition</h2>
+                <select
+                    className='individualsForm__select' 
                     value={onChangeCompetitionData.competition}
                     onChange={setCompetitionHandler}
                 >
@@ -121,17 +122,23 @@ const IndividualsForm = ({
                         <option>{hurdlesCompetition()}</option>
                         <option>{heptathlonOrDecathlon()}</option>
                 </select>
-                <h3>Choose competition stage</h3>
-                <select value={onChangeCompetitionData.stage} onChange={setStageHandler}>
-                    <option></option>
-                    <option>Heats</option>
-                    <option>Pre-eliminations</option>
-                    <option>Eliminations</option>
-                    <option>Semifinal</option>
-                    <option>Final</option>
+                <h2>Choose competition stage</h2>
+                <select 
+                    className='individualsForm__select' 
+                    value={onChangeCompetitionData.stage} 
+                    onChange={setStageHandler}
+                >
+                        <option></option>
+                        <option>Heats</option>
+                        <option>Pre-eliminations</option>
+                        <option>Eliminations</option>
+                        <option>Semifinal</option>
+                        <option>Final</option>
                 </select> 
-                <button onClick={previousFormStep}>Back</button> 
-                <button onClick={nextFormStep}>Next</button> 
+                <div className='backAndNextButtons__wrapper'>
+                    <button className='backButton' onClick={previousFormStep}>Back</button> 
+                    <button className='nextButton' onClick={nextFormStep}>Next</button>
+                </div> 
             </div>
         ); 
     }

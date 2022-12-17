@@ -6,7 +6,7 @@ const Heats = ({
     isFinalIndividualsFormActive,
     isFinalRelaysFormActive, 
     isNewHeatPossible,
-    hideToPrint
+    isListConfirmed
 }) => {
 
     const [heatsList, setHeatsList] = useState([])
@@ -35,13 +35,13 @@ const Heats = ({
                                     heatLabel={<h3>Heat {heatsList.indexOf(elem) + 1}/{heatsList.length}</h3>}
                                     isFinalIndividualsFormActive={isFinalIndividualsFormActive}
                                     isFinalRelaysFormActive={isFinalRelaysFormActive}
-                                    hideToPrint={hideToPrint}
+                                    isListConfirmed={isListConfirmed}
                                 />
-                                <button className={hideToPrint} onClick={() => removeHeatHandler(elem)}>Delete Heat</button>
+                                <button className={isListConfirmed('active')} onClick={() => removeHeatHandler(elem)}>Delete Heat</button>
                             </div>
                         )
                     })}
-                    <button className={hideToPrint} onClick={addHeatHandler}>Add Heat</button>
+                    <button className={isListConfirmed('active')} onClick={addHeatHandler}>Add Heat</button>
                 </div>
             </div>
         );  

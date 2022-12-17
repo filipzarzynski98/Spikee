@@ -8,7 +8,9 @@ import Heats from './Heats/Heats';
 const NewCompetition = ({
     hideToPrint,
     competitionsArray,
-    removeCompetitionHandler
+    removeCompetitionHandler,
+    listConfirmed,
+    isListConfirmed
 }) => {
  
     const [currentFormType, setCurrentFormType] = useState({ 
@@ -18,27 +20,18 @@ const NewCompetition = ({
         finalIndividualsForm: "dezactive",
         finalRelaysForm: "dezactive"
     })
-
-    //Nazwa konkurencji, płeć oraz etap
-    const [onChangeCompetitionData, setOnChangeCompetitionData] = useState({competition: "", sex: "", stage: ""})
-
-    // Przypisanie pierwszej litery płci do konkurencji
+    const [onChangeCompetitionData, setOnChangeCompetitionData] = useState({
+        competition: "", 
+        sex: "", 
+        stage: ""
+    })
     const [sexFirstLetter, setSexFirstLetter] = useState("")
-
-    // Warunek renderowania NewCompetition
     const [isCompetitionActive, setIsCompetitionActive] = useState("active")
-
-    // Warunek wyświetlania buttona "New Heat" inicjowany przez pomyślne przejście IndividualsForm/RelaysForm
     const [isNewHeatPossible, setIsNewHeatPossible] = useState("newHeat -dezactive")
-    
-    // Warunek renderowania FinalIndividualsForm/FinalRelaysForm, który spełniony zostaje podczas kliknięcia "New Heat"
     const [isFinalIndividualsFormActive, setIsFinalIndividualsFormActive] = useState("finalIndividualsForm-dezactive")
     const [isFinalRelaysFormActive, setIsFinalRelaysFormActive] = useState("finalRelaysForm-dezactive")
-  
-    // const removeCompetitionHandler = (e) => {
-    //     e.preventDefault()
-    //     setIsCompetitionActive("dezactive")
-    // }
+
+   
 
     if (isCompetitionActive === "active") {
          return (
@@ -50,14 +43,15 @@ const NewCompetition = ({
                         isFinalIndividualsFormActive={isFinalIndividualsFormActive}
                         isFinalRelaysFormActive={isFinalRelaysFormActive}
                         isNewHeatPossible={isNewHeatPossible}
-                        hideToPrint={hideToPrint}
+                        isListConfirmed={isListConfirmed}
                     />
                 </div>
-                <div>
+                <div className='forms__wrapper'>
                     <InicialForm
                         currentFormType={currentFormType}
                         setCurrentFormType={setCurrentFormType}
                         hideToPrint={hideToPrint}
+                        isListConfirmed={isListConfirmed}
                     />
                     <IndividualsForm
                         currentFormType={currentFormType}
@@ -68,7 +62,7 @@ const NewCompetition = ({
                         setSexFirstLetter={setSexFirstLetter}
                         setIsNewHeatPossible={setIsNewHeatPossible}
                         setIsFinalIndividualsFormActive={setIsFinalIndividualsFormActive}
-                        hideToPrint={hideToPrint}
+                        isListConfirmed={isListConfirmed}
                     />
                     <RelaysForm
                         currentFormType={currentFormType}
@@ -79,7 +73,7 @@ const NewCompetition = ({
                         setSexFirstLetter={setSexFirstLetter} 
                         setIsNewHeatPossible={setIsNewHeatPossible}
                         setIsFinalRelaysFormActive={setIsFinalRelaysFormActive}
-                        hideToPrint={hideToPrint}
+                        isListConfirmed={isListConfirmed}
                     />    
                 </div>        
             </div>

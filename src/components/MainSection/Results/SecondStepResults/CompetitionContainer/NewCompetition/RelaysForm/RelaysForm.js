@@ -11,7 +11,7 @@ const RelaysForm = ({
     setSexFirstLetter,
     setIsNewHeatPossible,
     setIsFinalRelaysFormActive,
-    hideToPrint
+    isListConfirmed
 }) => {
 
     const setRelaysWomen = (e) => {
@@ -88,29 +88,38 @@ const RelaysForm = ({
 
     if (currentFormType.relaysForm === "active") {
         return (
-            <div className={hideToPrint}>
+            <div className={isListConfirmed('relaysForm__wrapper')}>
                 <p>RelaysForm</p>
-                <h3>Ladies or gentlemen...?</h3>
-                <div>
-                    <button onClick={setRelaysWomen}>Women</button>
-                    <button onClick={setRelaysMen}>Men</button>
+                <h2>Ladies or gentlemen...?</h2>
+                <div className='womenAndManButtons__wrapper'>
+                    <button className='womenButton' onClick={setRelaysWomen}>Women</button>
+                    <button className='menButton' onClick={setRelaysMen}>Men</button>
                 </div>
-                <h3>Choose competition</h3>
-                <select value={onChangeCompetitionData.competition} onChange={setCompetitionHandler}>
-                    <option></option>
-                    {RelaysCompetitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
+                <h2>Choose competition</h2>
+                <select
+                    className='relaysForm__select'
+                    value={onChangeCompetitionData.competition} 
+                    onChange={setCompetitionHandler}
+                    >
+                        <option></option>
+                        {RelaysCompetitions.map((elem, index) => <option key={index}>{elem} {sexFirstLetter}</option>)}
                 </select>
-                <h3>Choose stage</h3>
-                <select value={onChangeCompetitionData.stage} onChange={setStageHandler}>
+                <h2>Choose stage</h2>
+                <select
+                    className='relaysForm__select' 
+                    value={onChangeCompetitionData.stage} 
+                    onChange={setStageHandler}>
                         <option></option>
                         <option>Heats</option>
                         <option>Pre-eliminations</option>
                         <option>Eliminations</option>
                         <option>Semifinal</option>
                         <option>Final</option>
-                </select>  
-                <button onClick={previousFormStep}>Back</button>
-                <button onClick={nextFormStep}>Next</button>  
+                </select>
+                <div className='backAndNextButtons__wrapper'>
+                    <button className='backButton' onClick={previousFormStep}>Back</button>
+                    <button className='nextButton' onClick={nextFormStep}>Next</button> 
+                </div>   
             </div>
         );
     }

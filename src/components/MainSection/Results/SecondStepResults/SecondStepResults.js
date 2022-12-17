@@ -39,14 +39,14 @@ const SecondStepResults = ({
         setListConfirmed(true)
     }
 
-    const hideToPrint = () => {
-        if (listConfirmed === true) {
-            return "hide"
-        }
-        else {
-            return "active"
-        }
-    }
+    // const hideToPrint = () => {
+    //     if (listConfirmed === true) {
+    //         return "hide"
+    //     }
+    //     else {
+    //         return "active"
+    //     }
+    // }
  
     if (currentResultsStep.secondStep === "active") {
         return (
@@ -58,7 +58,7 @@ const SecondStepResults = ({
                         competitionsArray={competitionsArray}
                         removeCompetitionHandler={removeCompetitionHandler}
                         setCompetitionsArray={setCompetitionsArray}
-                        hideToPrint={hideToPrint()}
+                        listConfirmed={listConfirmed}
                     />
                 </div>
                 <div className='secondStep__buttons'>

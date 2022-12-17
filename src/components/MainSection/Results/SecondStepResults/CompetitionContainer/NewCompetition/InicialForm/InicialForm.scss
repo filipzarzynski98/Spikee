@@ -1,0 +1,38 @@
+.inicialForm__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.individualsAndRelaysButtons__wrapper {
+    display: flex;
+    gap: 30px
+}
+
+.individualsButton {
+    height: 45px;
+    width: 150px;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 15px; 
+}
+.individualsButton:hover {
+    background-color: rgb(222, 2, 2);
+    color: white; 
+}
+
+.relaysButton {
+    height: 45px;
+    width: 150px;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 15px;  
+}
+.relaysButton:hover {
+    background-color: rgb(222, 2, 2);
+    color: white;
+}
