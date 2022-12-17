@@ -1,6 +1,7 @@
 .footer__wrapper {
     height: 5vh;
-    border: 2px solid rgb(220, 7, 7);
+    display: flex;
+    align-items: center;
 }
 
 .footer__nav-list {

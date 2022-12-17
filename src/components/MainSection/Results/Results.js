@@ -14,7 +14,7 @@ const Results = () => {
 
     return (
         <div className='results__wrapper'>
-            <div >
+            <div>
                 <FirstStepResults
                     currentResultsStep={currentResultsStep}
                     setCurrentResultsStep={setCurrentResultsStep}
@@ -22,7 +22,7 @@ const Results = () => {
                     setListName={setListName}
                 />
             </div>
-            <div>
+            <div className='secondStep__container'>
                 <SecondStepResults
                     currentResultsStep={currentResultsStep}
                     setCurrentResultsStep={setCurrentResultsStep}
