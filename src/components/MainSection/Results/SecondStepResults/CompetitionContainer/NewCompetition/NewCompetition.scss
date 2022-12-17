@@ -1,5 +1,6 @@
 .newCompetition__wrapper {
     display: flex;
+    height: 100%;
 }
 
 .heatsContainer {
@@ -9,6 +10,7 @@
 .forms__wrapper {
     display: flex;
     width: 100%;
-    
+    justify-content: flex-end;
+    padding-right: 100px;
 }
 

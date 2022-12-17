@@ -23,19 +23,21 @@ const CompetitionContainer = ({
         <div className='competitions__wrapper'>
             {competitionsArray.map((elem) => {
                 return (
-                    <div key={elem.id}>
+                    <div className='seperate__wrapper' key={elem.id}>
                         <NewCompetition
                             competitionsArray={competitionsArray}
                             setCompetitionsArray={setCompetitionsArray}
                             listConfirmed={listConfirmed}
                             isListConfirmed={isListConfirmed}
                         />
-                        <button 
-                            className={isListConfirmed('active')} 
-                            onClick={() => removeCompetitionHandler(elem)}
-                        >
-                            Delete Competition
-                        </button> 
+                        <div className='deleteCompButton__wrapper'>
+                            <button 
+                                className={`deleteCompButton ${isListConfirmed('active')}`} 
+                                onClick={() => removeCompetitionHandler(elem)}
+                            >
+                                Delete Competition
+                            </button>
+                        </div> 
                     </div>)} 
                 )
             } 

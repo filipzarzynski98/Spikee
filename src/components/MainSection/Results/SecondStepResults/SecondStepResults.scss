@@ -6,6 +6,12 @@
     justify-content: space-between;
 }
 
+.competitionContainer__wrapper {
+    min-height: 90%;
+    overflow-y: auto;
+    background-color: rgba($color: #17171c8a, $alpha: 1.0);
+}
+
 .secondStep__buttons {
     display: flex;
     width: 100%;
