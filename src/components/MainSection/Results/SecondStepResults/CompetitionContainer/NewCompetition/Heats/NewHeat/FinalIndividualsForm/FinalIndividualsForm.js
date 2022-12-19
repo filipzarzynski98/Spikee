@@ -105,10 +105,10 @@ const FinalIndividualsForm = ({
 
     if (isFinalIndividualsFormActive === "finalIndividualsForm-active") {
         return (
-            <div className={isListConfirmed('final-form__wrapper')}>
+            <div className={isListConfirmed('FinalIndividualsForm__wrapper')}>
                <h3>Add athlete</h3>
                <form>
-                    <div>
+                    <div className='nameLabelAndInput__wrapper'>
                         <label>Name</label>
                         <input 
                             type="text" 
@@ -117,7 +117,7 @@ const FinalIndividualsForm = ({
                             onChange={handleAthleteDataChange}/>
                         <p className={validationErrorName}>The name must consist of numbers only!</p>
                     </div> 
-                    <div>
+                    <div className='surnameLabelAndInput_wrapper'>
                         <label>Surname</label>
                         <input 
                             type="text" 
@@ -126,7 +126,7 @@ const FinalIndividualsForm = ({
                             onChange={handleAthleteDataChange}/>
                         <p className={validationErrorSurname}>The surname must consist of numbers only!</p>
                     </div>
-                    <div>
+                    <div className='licenseLabelAndInput_wrapper'>
                         <label>License number</label>
                         <input 
                             type="text" 
@@ -137,15 +137,15 @@ const FinalIndividualsForm = ({
                         />
                         <p className={validationErrorLicense}>Only numbers! Min 2 digits!</p>
                     </div>
-                    <div>
+                    <div className='trackLabelAndSelect__wrapper'>
                         <label>Select track - optional</label>
                         <select value={athleteData.track} onChange={handleTrackChange}>
                                 <option></option>
                                 {tracks.map((elem, index) => <option key={index}>{elem}</option>)}
                         </select>
                     </div>
-                    <div>
-                        <button onClick={addAthleteHandler}>Add athlete</button>
+                    <div className='addAthleteButton__wrapper'>
+                        <button className='addAthleteButton' onClick={addAthleteHandler}>Add athlete</button>
                     </div>
                </form>
             </div>

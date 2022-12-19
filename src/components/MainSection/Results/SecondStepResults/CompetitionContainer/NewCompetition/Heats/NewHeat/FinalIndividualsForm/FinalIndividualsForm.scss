@@ -1,3 +1,47 @@
+.FinalIndividualsForm__wrapper {
+    width: 30vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nameLabelAndInput__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.surnameLabelAndInput_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;   
+}
+
+.licenseLabelAndInput_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px; 
+}
+
+.trackLabelAndSelect__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.addAthleteButton {
+    height: 45px;
+    width: 150px;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 15px;
+    margin-top: 20px; 
+    background-color: rgb(140, 9, 247);
+    color: white;
+}
+
 .form-error {
     display: block;
     font-weight: 700;

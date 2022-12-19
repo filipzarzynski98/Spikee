@@ -12,19 +12,43 @@ const Athlete = ({
          const remove = athletesList.filter((elem) => athletesList.indexOf(elem) !== position)
          setAthletesList(remove)
     }
+
+    const listElemsColour = (index) => {
+        if (index % 2 === 0) {
+            return "darkRed"
+        }
+        else {
+            return "black"
+        }
+    }
     return (
-        <div>
-            {athletesList.map((elem, index) => {
-                return(
-                    <div key={index}>
-                        <h4>{elem.name} {elem.surname}</h4> 
-                        <p>{elem.track}</p>
-                        {/* Do zrobienia przekierowanie z pomocą routera!   */}
-                        <button className={hideToPrint}>Domtel</button>
-                        <button className={hideToPrint} onClick={() => removeAthleteHandler(elem)}>Remove Athlete</button>
-                    </div>
+        <div className='athletesList__wrapper'>
+            <table>
+                <tr>
+                    <th className='name__flex-start'>Name</th>
+                    <th>Track</th>
+                    <th>License</th>
+                    <th>Data Base</th>
+                    <th>Remove</th>
+                </tr>
+                {athletesList.map((elem, index) => {
+                    return(
+                    <>
+                        <tr className={listElemsColour(index)} key={index}>
+                            <td><h4>{elem.name} {elem.surname}</h4></td>
+                            <td className='center'><p>{elem.track}</p></td>
+                            <td className='center'><p>{elem.license}</p></td>
+                            <td className='center'><button className={hideToPrint}>Domtel</button></td>
+                            <td className='center'><button className={hideToPrint} onClick={() => removeAthleteHandler(elem)}>Remove</button></td>
+                        </tr>
+                        <div className='buttons__wrapper'>
+                            
+                        </div>
+                        
+                    </>
                 )
             })}
+            </table>
         </div>
     );
 };
