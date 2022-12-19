@@ -20,7 +20,7 @@ const NewHeat = ({
 
 
     return (
-        <div>
+        <div className='newHeat__sizer'>
             {heatLabel}
             <div>
                 <div>

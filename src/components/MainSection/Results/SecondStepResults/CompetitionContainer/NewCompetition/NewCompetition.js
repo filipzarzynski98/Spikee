@@ -31,6 +31,15 @@ const NewCompetition = ({
     const [isFinalIndividualsFormActive, setIsFinalIndividualsFormActive] = useState("finalIndividualsForm-dezactive")
     const [isFinalRelaysFormActive, setIsFinalRelaysFormActive] = useState("finalRelaysForm-dezactive")
 
+    const formWrapperNarrowing = () => {
+        if (isNewHeatPossible === "newHeat-possible") {
+            return "formsNarrow"
+        }
+        else {
+            return 'forms__wrapper'
+        }
+    }
+
    
 
     if (isCompetitionActive === "active") {
@@ -46,7 +55,7 @@ const NewCompetition = ({
                         isListConfirmed={isListConfirmed}
                     />
                 </div>
-                <div className='forms__wrapper'>
+                <div className={formWrapperNarrowing()}>
                     <InicialForm
                         currentFormType={currentFormType}
                         setCurrentFormType={setCurrentFormType}

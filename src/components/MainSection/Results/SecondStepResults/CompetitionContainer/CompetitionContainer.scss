@@ -1,6 +1,6 @@
 .competitions__wrapper {
     width: 100%;
-    height: 94%;
+    height: 89%;
 }
 
 .seperate__wrapper {
@@ -8,22 +8,29 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+   
+}
+
+.competitionsSeperator {
+    height: 30px;
+    background-color: black;
 }
 
 .deleteCompButton__wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 50px;
-    border-top: 3px solid rgba(132, 113, 3, 0.284);
-    padding-top: 15px;
-    padding-bottom: 15px;
+    margin-top: 15px;
+    border-top: 1px solid rgba(132, 113, 3, 0.284);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
 }
 
 .deleteCompButton {
-    height: 45px;
+    height: 30px;
     width: 500px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 700;
     padding: 5px;
     border-radius: 15px; 

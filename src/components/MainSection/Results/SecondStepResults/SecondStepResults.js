@@ -53,7 +53,9 @@ const SecondStepResults = ({
             <div className='secondStep__wrapper'>
                 {/* <p>2 Step</p> */}
                 <div className='competitionContainer__wrapper' ref={competitionsRef}>
-                    <h2>{listName}</h2>
+                    <div className='listName__wrapper'>
+                        <h2 className='listName'>{listName}</h2>
+                    </div>
                     <CompetitionContainer
                         competitionsArray={competitionsArray}
                         removeCompetitionHandler={removeCompetitionHandler}

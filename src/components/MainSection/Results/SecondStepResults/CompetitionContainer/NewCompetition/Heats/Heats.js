@@ -26,7 +26,7 @@ const Heats = ({
 
     if (isNewHeatPossible === "newHeat-possible") {
         return (
-            <div>
+            <div className='heatsWrapper__sizer'>
                 <div className='heats__wrapper'>
                     {heatsList.map((elem) => {
                         return (
@@ -41,13 +41,13 @@ const Heats = ({
                             </div>
                         )
                     })}
-                    <button 
-                        className={`addHeatButton ${isListConfirmed('active')}`} 
-                        onClick={addHeatHandler}
-                    >
-                        Add Heat
-                    </button>
                 </div>
+                <button 
+                    className={`addHeatButton ${isListConfirmed('active')}`} 
+                    onClick={addHeatHandler}
+                >
+                    Add Heat
+                </button>
             </div>
         );  
     }
