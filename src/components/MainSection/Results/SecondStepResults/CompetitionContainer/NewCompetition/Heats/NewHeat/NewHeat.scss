@@ -1,6 +1,22 @@
 .newHeat__sizer {
     width: 100%;
 }
+
+.athletesList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.teamsList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
  
 .addAthleteButton-dezactive {
     display: none;

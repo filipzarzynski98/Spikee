@@ -23,32 +23,33 @@ const NewHeat = ({
         <div className='newHeat__sizer'>
             {heatLabel}
             <div>
-                <div>
+                <div className='athletesList'>
                     <Athlete
                         athletesList={athletesList}
                         setAthletesList={setAthletesList}
                     />
-                </div>
-                <div>
-                    <Team
-                        teamsList={teamsList}
-                        setTeamsList={setTeamsList} 
-                    />
-                </div>
-                <FinalIndividualsForm
+                    <FinalIndividualsForm
                     athleteData={athleteData}
                     setAthleteData={setAthleteData}
                     isFinalIndividualsFormActive={isFinalIndividualsFormActive}
                     setAthletesList={setAthletesList}
                     isListConfirmed={isListConfirmed}
-                />
-                <FinalRelaysForm
+                    />
+                </div>
+                <div className='teamsList'>
+                    <Team
+                        teamsList={teamsList}
+                        setTeamsList={setTeamsList} 
+                    />
+                    <FinalRelaysForm
                     teamData={teamData}
                     setTeamData={setTeamData}
                     setTeamsList={setTeamsList}
                     isFinalRelaysFormActive={isFinalRelaysFormActive}
                     isListConfirmed={isListConfirmed}
-                />
+                    />
+                </div>
+               
             </div>   
         </div>
     )

@@ -30,6 +30,15 @@ const FinalRelaysForm = ({
             }
         })
     }
+
+    const isKindOfTeamChoosed = () => {
+        if (kindOfTeam.club ===  "clubInput-active" || kindOfTeam.country === "countrySelect-active") {
+            return 'addTeamButton'
+        }
+        else {
+            return "hide"
+        }
+    }
     
     const selectCountryHandler = (e) => {
         e.preventDefault()
@@ -91,13 +100,21 @@ const FinalRelaysForm = ({
 
     if (isFinalRelaysFormActive === "finalRelaysForm-active") {
         return (
-            <div className={isListConfirmed('active')}>
+            <div className={isListConfirmed('finalRelaysForm__wrapper')}>
                 <p>FinalRelaysForm</p>
-                <button onClick={selectClubHandler}>Club</button>
-                <button onClick={selectCountryHandler}>Country</button>
+                <h2>Set kind of team</h2>
+                <div className='clubAndCountryButtons__wrapper'>
+                    <button className='clubButton' onClick={selectClubHandler}>Club</button>
+                    <button className='countryButton' onClick={selectCountryHandler}>Country</button>
+                </div>
                 <div className={kindOfTeam.club}>
                     <h4>Enter the name of the club</h4>
                     <input value={teamData.clubName} onChange={clubNameHandler}/>
+                    <label>Select track</label>
+                    <select className='track__selectField' value={teamData.track} onChange={selectTrackHandler}>
+                        <option></option>
+                        {tracks.map((elem, index) => <option key={index}>{elem}</option>)}
+                    </select> 
                 </div>
                 <div className={kindOfTeam.country}>
                     <h4>Choose country</h4>
@@ -105,15 +122,16 @@ const FinalRelaysForm = ({
                         <option></option>
                         {countryList.map((elem, index) => <option key={index}>{elem}</option>)}
                     </select>
-                </div>
-                <div>
                     <label>Select track</label>
-                    <select value={teamData.track} onChange={selectTrackHandler}>
+                    <select className='track__selectField' value={teamData.track} onChange={selectTrackHandler}>
                         <option></option>
                         {tracks.map((elem, index) => <option key={index}>{elem}</option>)}
                     </select> 
                 </div>
-                <button onClick={addTeamHandler}>Add team</button> 
+                <div className='addTeamButton__wrapper'>
+                    <button className={isKindOfTeamChoosed()} onClick={addTeamHandler}>Add team</button> 
+                </div>
+                
             </div>
         );
     }
