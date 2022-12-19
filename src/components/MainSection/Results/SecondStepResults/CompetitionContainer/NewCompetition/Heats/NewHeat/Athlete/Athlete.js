@@ -4,7 +4,9 @@ import "./Athlete.scss"
 const Athlete = ({
     athletesList,
     setAthletesList,
-    hideToPrint
+    hideToPrint,
+    isFinalIndividualsFormActive
+
 }) => {
 
     const removeAthleteHandler = (athleteToRemove) => {
@@ -21,36 +23,33 @@ const Athlete = ({
             return "black"
         }
     }
-    return (
-        <div className='athletesList__wrapper'>
-            <table>
-                <tr>
-                    <th className='name__flex-start'>Name</th>
-                    <th>Track</th>
-                    <th>License</th>
-                    <th>Data Base</th>
-                    <th>Remove</th>
-                </tr>
-                {athletesList.map((elem, index) => {
-                    return(
-                    <>
+
+    if (isFinalIndividualsFormActive === "finalIndividualsForm-active") {
+        return (
+            <div className='athletesList__wrapper'>
+                <table>
+                    <tr>
+                        <th className='name__flex-start'>Name</th>
+                        <th>Track</th>
+                        <th>License</th>
+                        <th>Data Base</th>
+                        <th>Remove</th>
+                    </tr>
+                    {athletesList.map((elem, index) => {
+                        return(
                         <tr className={listElemsColour(index)} key={index}>
                             <td><h4>{elem.name} {elem.surname}</h4></td>
                             <td className='center'><p>{elem.track}</p></td>
                             <td className='center'><p>{elem.license}</p></td>
                             <td className='center'><button className={hideToPrint}>Domtel</button></td>
                             <td className='center'><button className={hideToPrint} onClick={() => removeAthleteHandler(elem)}>Remove</button></td>
-                        </tr>
-                        <div className='buttons__wrapper'>
-                            
-                        </div>
-                        
-                    </>
-                )
-            })}
-            </table>
-        </div>
-    );
+                        </tr>   
+                    )
+                })}
+                </table>
+            </div>
+        );
+    }
 };
 
 export default Athlete;

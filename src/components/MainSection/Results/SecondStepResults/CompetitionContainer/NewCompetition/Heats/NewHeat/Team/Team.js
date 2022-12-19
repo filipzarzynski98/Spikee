@@ -4,7 +4,8 @@ import "./Team.scss"
 const Team = ({
     teamsList,
     setTeamsList,
-    hideToPrint
+    hideToPrint,
+    isFinalRelaysFormActive
 }) => {
 
     const removeTeamHandler = (teamToRemove) => {
@@ -12,19 +13,40 @@ const Team = ({
         const remove = teamsList.filter(elem => teamsList.indexOf(elem) !== position)
         setTeamsList(remove)
     }
-    return (
-        <div>
-            {teamsList.map((elem, index) => {
-                return(
-                    <div key={index}>
-                        <h4>{elem.clubName} {elem.country} Track: {elem.track}</h4>
-                        <button className={hideToPrint}>Domtel</button>
-                        <button className={hideToPrint} onClick={() => removeTeamHandler(elem)}>Remove Team</button>
-                    </div>
-                )
-            })}
-        </div>
-    );
+
+    const listElemsColour = (index) => {
+        if (index % 2 === 0) {
+            return "darkRed"
+        }
+        else {
+            return "black"
+        }
+    }
+
+    if (isFinalRelaysFormActive === "finalRelaysForm-active") {
+        return (
+            <div className='teamsList__wrapper'>
+                <table className='teamsTable'>
+                    <tr>
+                        <th className='name__flex-start'>Name</th>
+                        <th>Track</th>
+                        <th>Club/country</th>
+                        <th>Remove</th>
+                    </tr>
+                    {teamsList.map((elem, index) => {
+                        return(
+                            <tr className={listElemsColour(index)} key={index}>
+                                <td><h4>{elem.clubName} {elem.country}</h4></td>
+                                <td className='center'><h4>{elem.track}</h4></td>                        
+                                <td className='center'><button className={hideToPrint}>Domtel</button></td>
+                                <td className='center'><button className={hideToPrint} onClick={() => removeTeamHandler(elem)}>Remove Team</button></td> 
+                            </tr>
+                        )
+                    })}
+                </table>
+            </div>
+        );
+    }
 };
 
 export default Team;

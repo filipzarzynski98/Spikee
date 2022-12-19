@@ -18,7 +18,7 @@ const NewHeat = ({
     const [teamsList, setTeamsList] = useState([])
     const [teamData, setTeamData] = useState({type: "", clubName: "", country: "", track: ""})
 
-
+   
     return (
         <div className='newHeat__sizer'>
             {heatLabel}
@@ -27,26 +27,28 @@ const NewHeat = ({
                     <Athlete
                         athletesList={athletesList}
                         setAthletesList={setAthletesList}
+                        isFinalIndividualsFormActive={isFinalIndividualsFormActive}
                     />
                     <FinalIndividualsForm
-                    athleteData={athleteData}
-                    setAthleteData={setAthleteData}
-                    isFinalIndividualsFormActive={isFinalIndividualsFormActive}
-                    setAthletesList={setAthletesList}
-                    isListConfirmed={isListConfirmed}
+                        athleteData={athleteData}
+                        setAthleteData={setAthleteData}
+                        isFinalIndividualsFormActive={isFinalIndividualsFormActive}
+                        setAthletesList={setAthletesList}
+                        isListConfirmed={isListConfirmed}
                     />
                 </div>
                 <div className='teamsList'>
                     <Team
                         teamsList={teamsList}
-                        setTeamsList={setTeamsList} 
+                        setTeamsList={setTeamsList}
+                        isFinalRelaysFormActive={isFinalRelaysFormActive}
                     />
                     <FinalRelaysForm
-                    teamData={teamData}
-                    setTeamData={setTeamData}
-                    setTeamsList={setTeamsList}
-                    isFinalRelaysFormActive={isFinalRelaysFormActive}
-                    isListConfirmed={isListConfirmed}
+                        teamData={teamData}
+                        setTeamData={setTeamData}
+                        setTeamsList={setTeamsList}
+                        isFinalRelaysFormActive={isFinalRelaysFormActive}
+                        isListConfirmed={isListConfirmed}
                     />
                 </div>
                
