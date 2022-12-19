@@ -41,7 +41,17 @@ const Athlete = ({
                             <td><h4>{elem.name} {elem.surname}</h4></td>
                             <td className='center'><p>{elem.track}</p></td>
                             <td className='center'><p>{elem.license}</p></td>
-                            <td className='center'><button className={hideToPrint}>Domtel</button></td>
+                            <td className='center'>
+                                <button className={hideToPrint}>
+                                    <a 
+                                    href={`https://statystyka.pzla.pl/personal.php?page=profile&nr_zaw=${elem.license}&r=1&sezon_Z_L=Z`}
+                                    target='_blank'
+                                    rel="noreferrer"
+                                    >
+                                        Domtel
+                                    </a>
+                                </button>
+                            </td>
                             <td className='center'><button className={hideToPrint} onClick={() => removeAthleteHandler(elem)}>Remove</button></td>
                         </tr>   
                     )

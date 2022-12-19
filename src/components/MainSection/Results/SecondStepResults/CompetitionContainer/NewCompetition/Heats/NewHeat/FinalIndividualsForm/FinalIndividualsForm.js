@@ -109,7 +109,7 @@ const FinalIndividualsForm = ({
                <h3>Add athlete</h3>
                <form>
                     <div className='nameLabelAndInput__wrapper'>
-                        <label>Name</label>
+                        <label>Name<span>*</span></label>
                         <input 
                             type="text" 
                             name="name" 
@@ -118,7 +118,7 @@ const FinalIndividualsForm = ({
                         <p className={validationErrorName}>The name must consist of numbers only!</p>
                     </div> 
                     <div className='surnameLabelAndInput_wrapper'>
-                        <label>Surname</label>
+                        <label>Surname<span>*</span></label>
                         <input 
                             type="text" 
                             name="surname" 
