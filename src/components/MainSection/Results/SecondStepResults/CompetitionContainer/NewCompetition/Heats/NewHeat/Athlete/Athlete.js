@@ -15,15 +15,6 @@ const Athlete = ({
          setAthletesList(remove)
     }
 
-    const listElemsColour = (index) => {
-        if (index % 2 === 0) {
-            return "darkRed"
-        }
-        else {
-            return "black"
-        }
-    }
-
     if (isFinalIndividualsFormActive === "finalIndividualsForm-active") {
         return (
             <div className='athletesList__wrapper'>
@@ -37,7 +28,7 @@ const Athlete = ({
                     </tr>
                     {athletesList.map((elem, index) => {
                         return(
-                        <tr className={listElemsColour(index)} key={index}>
+                        <tr key={index}>
                             <td><h4>{elem.name} {elem.surname}</h4></td>
                             <td className='center'><p>{elem.track}</p></td>
                             <td className='center'><p>{elem.license}</p></td>

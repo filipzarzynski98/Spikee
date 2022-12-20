@@ -4,15 +4,9 @@
     flex-direction: column;
 }
 
-
-.darkRed {
-    background-color: darkred;
-    color: white;
-}
-
-.black {
-    background-color: black;
-    color: white;
+td {
+    padding-bottom: 5px;
+    border-bottom: 2px solid red;
 }
 
 .name__flex-start {
