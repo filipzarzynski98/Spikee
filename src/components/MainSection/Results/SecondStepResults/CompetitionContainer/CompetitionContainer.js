@@ -35,7 +35,7 @@ const CompetitionContainer = ({
                                 className={`deleteCompButton ${isListConfirmed('active')}`} 
                                 onClick={() => removeCompetitionHandler(elem)}
                             >
-                                Delete Competition
+                              Delete Competition
                             </button>
                         </div>
                         <div className='competitionsSeperator'></div> 

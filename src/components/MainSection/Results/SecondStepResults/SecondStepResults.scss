@@ -8,18 +8,22 @@
 .listName__wrapper {
     display: flex;
     justify-content: center; 
-    border-bottom: 2px solid rgba(132, 113, 3, 0.284);
     padding-bottom: 10px;  
 }
 
 .listName {
     font-size: 35px;
+    display: flex;
+    justify-content: center;
+    min-width: 200px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid red;
 }
 
 .competitionContainer__wrapper {
     min-height: 95%;
     overflow-y: auto;
-    background-color: rgba($color: #17171c8a, $alpha: 1.0);
+    background-color: black;
 }
 
 .secondStep__buttons {

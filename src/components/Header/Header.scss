@@ -1,8 +1,8 @@
 .header {
-    width: 100%;
+    width: 100vw;
     height: 10vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     color: white;
     background-color: black;
 }
@@ -14,9 +14,69 @@
     color: white;
     font-size: 40px;
     background-color: black;
+    margin-left: 1vw;
+}
 
+.header__nav-list {
+    display: flex;
+    gap: 3vw;
+    list-style-type: none;
+    height: 100%;
+    align-items: flex-end;
+    justify-content: center;
+    margin-left: 2vw;
+}
+
+li {
+    font-size: 18px;
+    padding: 15px;
+}
+
+li:hover {
+    border-bottom: 2px solid red;
+    background-color: rgba(240, 248, 255, 0.093);
 }
 
 .header__login-and-menu__wrapper {
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 10vw;
+    width: 100%;
+    gap: 3vw;
+}
+
+.login {
+    width: auto;
+}
+
+.menu__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 5vw;
+}
+
+.menu__wrapper:hover {
+ background-color: rgba(240, 248, 255, 0.093);
+}
+
+.menu-squeres__top {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 3px;
+}
+
+.menu-squeres__bottom {
+    display: flex;
+    gap: 3px;
+}
+
+.squere {
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 20%;
 }
