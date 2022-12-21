@@ -28,9 +28,8 @@ const Team = ({
             <div className='teamsList__wrapper'>
                 <table className='teamsTable'>
                     <tr>
-                        <th className='name__flex-start'>Name</th>
+                        <th className='name__flex-start'>Club/country</th>
                         <th>Track</th>
-                        <th>Club/country</th>
                         <th>Remove</th>
                     </tr>
                     {teamsList.map((elem, index) => {
@@ -38,7 +37,6 @@ const Team = ({
                             <tr className={listElemsColour(index)} key={index}>
                                 <td><h4>{elem.clubName} {elem.country}</h4></td>
                                 <td className='center'><h4>{elem.track}</h4></td>                        
-                                <td className='center'><button className={hideToPrint}>Domtel</button></td>
                                 <td className='center'><button className={hideToPrint} onClick={() => removeTeamHandler(elem)}>Remove Team</button></td> 
                             </tr>
                         )

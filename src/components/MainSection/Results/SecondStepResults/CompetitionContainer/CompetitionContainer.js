@@ -38,7 +38,6 @@ const CompetitionContainer = ({
                               Delete Competition
                             </button>
                         </div>
-                        <div className='competitionsSeperator'></div> 
                     </div>)} 
                     
                 )

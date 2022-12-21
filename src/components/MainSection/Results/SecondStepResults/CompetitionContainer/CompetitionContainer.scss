@@ -8,12 +8,8 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    // background-color: #8080802b;
    
-}
-
-.competitionsSeperator {
-    height: 30px;
-    background-color: black;
 }
 
 .deleteCompButton__wrapper {
@@ -21,7 +17,6 @@
     display: flex;
     justify-content: center;
     margin-top: 15px;
-    border-top: 1px solid rgba(132, 113, 3, 0.284);
     padding-top: 5px;
     padding-bottom: 5px;
     

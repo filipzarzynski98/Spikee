@@ -3,12 +3,14 @@
     height: 75vh;
     display: flex;
     flex-direction: column;
+    background-color: #8080802b; 
 }
 
 .listName__wrapper {
     display: flex;
     justify-content: center; 
-    padding-bottom: 10px;  
+    padding-bottom: 10px; 
+    // background-color: #8080802b; 
 }
 
 .listName {
@@ -23,7 +25,6 @@
 .competitionContainer__wrapper {
     min-height: 95%;
     overflow-y: auto;
-    background-color: black;
 }
 
 .secondStep__buttons {
