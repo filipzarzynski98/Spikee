@@ -22,7 +22,8 @@ const Athlete = ({
                     <tr>
                         <th className='name__flex-start'>Name</th>
                         <th>Track</th>
-                        <th>License</th>
+                        <th>Age Category</th>
+                        <th>Year of birth</th>
                         <th>Data Base</th>
                         <th>Remove</th>
                     </tr>
@@ -31,7 +32,8 @@ const Athlete = ({
                         <tr key={index}>
                             <td><h4>{elem.name} {elem.surname}</h4></td>
                             <td className='center'><p>{elem.track}</p></td>
-                            <td className='center'><p>{elem.license}</p></td>
+                            <td className='center'>{elem.ageCategory}</td>
+                            <td className='center'>{elem.yearOfBirth}</td>
                             <td className='center'>
                                 <button className={hideToPrint}>
                                     <a 

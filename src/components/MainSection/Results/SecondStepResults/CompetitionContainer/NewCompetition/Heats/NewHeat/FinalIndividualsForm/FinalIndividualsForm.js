@@ -15,6 +15,7 @@ const FinalIndividualsForm = ({
     const [validationErrorSurname, setValidationErrorSurname] = useState("correct")
     const [validationErrorLicense, setValidationErrorLicense] = useState("correct")
 
+    const ageCategories = ["Dziecko mł.", "Dziecko st.", "U16", "U18", "U20", "U23", "Senior", "Weteran", "Masters"]
     const tracks = [1,2,3,4,5,6,7,8,9];
 
     // Inputs values are setting to athleteData.name and athleteData.surname
@@ -25,6 +26,36 @@ const FinalIndividualsForm = ({
             return {
                 ...prevState,
                 [name]: value
+            }
+        })
+    }
+
+    const handleAgeCategoryChange = (e) => {
+        setAthleteData(prevState => {
+            return {
+                ...prevState,
+                ageCategory: e.target.value
+            }
+        })
+    } 
+
+    const yearsGenerator = () => {
+        let currentYear = new Date().getFullYear()
+        let earliestYear = 1900
+        const years = []
+
+        for (let i = currentYear; i >= earliestYear; i--) {
+            years.push(i)
+        }
+        
+        return years.map((elem, index) => <option key={index}>{elem}</option>)
+    }
+
+    const handleYearOfBirthChange = (e) => {
+        setAthleteData(prevState => {
+            return {
+                ...prevState,
+                yearOfBirth: e.target.value
             }
         })
     }
@@ -108,7 +139,7 @@ const FinalIndividualsForm = ({
             <div className={isListConfirmed('FinalIndividualsForm__wrapper')}>
                <h3>Add athlete</h3>
                <form>
-                    <div className='nameLabelAndInput__wrapper'>
+                    <div className='labelAndData__wrapper'>
                         <label>Name<span>*</span></label>
                         <input 
                             type="text" 
@@ -117,7 +148,7 @@ const FinalIndividualsForm = ({
                             onChange={handleAthleteDataChange}/>
                         <p className={validationErrorName}>The name must consist of numbers only!</p>
                     </div> 
-                    <div className='surnameLabelAndInput_wrapper'>
+                    <div className='labelAndData__wrapper'>
                         <label>Surname<span>*</span></label>
                         <input 
                             type="text" 
@@ -126,7 +157,21 @@ const FinalIndividualsForm = ({
                             onChange={handleAthleteDataChange}/>
                         <p className={validationErrorSurname}>The surname must consist of numbers only!</p>
                     </div>
-                    <div className='licenseLabelAndInput_wrapper'>
+                    <div className='labelAndData__wrapper'>
+                        <label>Age Category</label>
+                        <select value={athleteData.ageCategory} onChange={handleAgeCategoryChange}>
+                            <option></option>
+                            {ageCategories.map((elem, index) => <option key={index}>{elem}</option>)}
+                        </select>
+                    </div>
+                    <div className='labelAndData__wrapper'>
+                        <label>Year of birth</label>
+                        <select value={athleteData.yearOfBirth} onChange={handleYearOfBirthChange}>
+                            <option></option>
+                            {yearsGenerator()}
+                        </select>
+                    </div>
+                    <div className='labelAndData__wrapper'>
                         <label>License number</label>
                         <input 
                             type="text" 
@@ -137,7 +182,7 @@ const FinalIndividualsForm = ({
                         />
                         <p className={validationErrorLicense}>Only numbers! Min 2 digits!</p>
                     </div>
-                    <div className='trackLabelAndSelect__wrapper'>
+                    <div className='labelAndData__wrapper'>
                         <label>Select track - optional</label>
                         <select value={athleteData.track} onChange={handleTrackChange}>
                                 <option></option>

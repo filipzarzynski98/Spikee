@@ -13,7 +13,7 @@ const NewHeat = ({
 }) => {
 
     const [athletesList, setAthletesList] = useState([])
-    const [athleteData, setAthleteData] = useState({name: "", surname: "", license: "", track: ""})
+    const [athleteData, setAthleteData] = useState({name: "", surname: "", ageCategory: "", yearOfBirth: "", license: "", track: ""})
 
     const [teamsList, setTeamsList] = useState([])
     const [teamData, setTeamData] = useState({type: "", clubName: "", country: "", track: ""})
