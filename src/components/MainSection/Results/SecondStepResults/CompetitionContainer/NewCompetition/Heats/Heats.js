@@ -32,7 +32,7 @@ const Heats = ({
                         return (
                             <div className='newHeat-wrapper' key={elem.id}>
                                 <NewHeat
-                                    heatLabel={<h3>Heat {heatsList.indexOf(elem) + 1}/{heatsList.length}</h3>}
+                                    heatLabel={<p className='heat__label'>Heat {heatsList.indexOf(elem) + 1}/{heatsList.length}</p>}
                                     isFinalIndividualsFormActive={isFinalIndividualsFormActive}
                                     isFinalRelaysFormActive={isFinalRelaysFormActive}
                                     isListConfirmed={isListConfirmed}

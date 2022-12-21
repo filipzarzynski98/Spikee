@@ -19,7 +19,7 @@ const Athlete = ({
         return (
             <div className='athletesList__wrapper'>
                 <table>
-                    <tr>
+                    <tr className='tableLabel'>
                         <th className='name__flex-start'>Name</th>
                         <th>Track</th>
                         <th>Age Category</th>

@@ -3,10 +3,16 @@
     height: 100%;
 }
 
+.competition {
+    padding-left: 15px;
+    padding-top: 20px;
+    padding-bottom: 1px;
+}
+
 .heatsContainer {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .formsNarrow {

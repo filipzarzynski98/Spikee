@@ -4,9 +4,19 @@
     flex-direction: column;
 }
 
+th {
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 1px;
+    border-bottom: 1px solid lightgray; 
+}
+
 td {
-    padding-bottom: 5px;
-    border-bottom: 2px solid red;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid red;
+    border-right: 1px solid lightgrey;
+    
 }
 
 .name__flex-start {

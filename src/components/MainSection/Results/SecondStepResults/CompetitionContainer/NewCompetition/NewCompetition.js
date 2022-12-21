@@ -46,7 +46,7 @@ const NewCompetition = ({
          return (
             <div className='newCompetition__wrapper'>
                 <div className='heatsContainer'>
-                    <h3>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h3>
+                    <h2 className='competition'>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h2>
                     <Heats
                         onChangeCompetitionData={onChangeCompetitionData}
                         isFinalIndividualsFormActive={isFinalIndividualsFormActive}
