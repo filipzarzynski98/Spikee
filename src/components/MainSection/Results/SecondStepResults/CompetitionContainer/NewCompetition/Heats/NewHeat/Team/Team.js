@@ -14,15 +14,6 @@ const Team = ({
         setTeamsList(remove)
     }
 
-    const listElemsColour = (index) => {
-        if (index % 2 === 0) {
-            return "darkRed"
-        }
-        else {
-            return "black"
-        }
-    }
-
     if (isFinalRelaysFormActive === "finalRelaysForm-active") {
         return (
             <div className='teamsList__wrapper'>
@@ -34,7 +25,7 @@ const Team = ({
                     </tr>
                     {teamsList.map((elem, index) => {
                         return(
-                            <tr className={listElemsColour(index)} key={index}>
+                            <tr key={index}>
                                 <td><h4>{elem.clubName} {elem.country}</h4></td>
                                 <td className='center'><h4>{elem.track}</h4></td>                        
                                 <td className='center'><button className={hideToPrint} onClick={() => removeTeamHandler(elem)}>Remove Team</button></td> 
