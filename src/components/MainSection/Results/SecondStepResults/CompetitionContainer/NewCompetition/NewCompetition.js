@@ -40,12 +40,21 @@ const NewCompetition = ({
         }
     }
 
+    const heatsContainerToPrint = () => {
+        if (listConfirmed === false) {
+            return "heatsContainer"
+        }
+        else {
+            return "heatsContainerToPrint"
+        }
+    }
+
    
 
     if (isCompetitionActive === "active") {
          return (
             <div className='newCompetition__wrapper'>
-                <div className='heatsContainer'>
+                <div className={heatsContainerToPrint()}>
                     <h2 className='competition'>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h2>
                     <Heats
                         onChangeCompetitionData={onChangeCompetitionData}

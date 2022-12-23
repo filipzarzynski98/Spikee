@@ -13,10 +13,10 @@ const NewHeat = ({
 }) => {
 
     const [athletesList, setAthletesList] = useState([])
-    const [athleteData, setAthleteData] = useState({name: "", surname: "", ageCategory: "", yearOfBirth: "", license: "", track: ""})
+    const [athleteData, setAthleteData] = useState({name: "", surname: "", pb: "", ageCategory: "", yearOfBirth: "", license: "", track: ""})
 
     const [teamsList, setTeamsList] = useState([])
-    const [teamData, setTeamData] = useState({type: "", clubName: "", country: "", track: ""})
+    const [teamData, setTeamData] = useState({type: "", clubName: "", country: "", pbOrNR: "", track: ""})
 
    
     return (
@@ -28,6 +28,7 @@ const NewHeat = ({
                         athletesList={athletesList}
                         setAthletesList={setAthletesList}
                         isFinalIndividualsFormActive={isFinalIndividualsFormActive}
+                        isListConfirmed={isListConfirmed}
                     />
                     <FinalIndividualsForm
                         athleteData={athleteData}
@@ -42,6 +43,7 @@ const NewHeat = ({
                         teamsList={teamsList}
                         setTeamsList={setTeamsList}
                         isFinalRelaysFormActive={isFinalRelaysFormActive}
+                        isListConfirmed={isListConfirmed}
                     />
                     <FinalRelaysForm
                         teamData={teamData}

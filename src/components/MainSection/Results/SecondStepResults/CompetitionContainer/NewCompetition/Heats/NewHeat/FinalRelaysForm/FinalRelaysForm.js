@@ -75,6 +75,15 @@ const FinalRelaysForm = ({
         })
     }
 
+    const handlePbOrNRChange = (e) => {
+        setTeamData(prevState => {
+            return {
+                ...prevState,
+                pbOrNR: e.target.value
+            }
+        })
+    }
+
     const selectTrackHandler = (e) => {
         setTeamData(prevState => {
             return {
@@ -110,6 +119,12 @@ const FinalRelaysForm = ({
                 <div className={kindOfTeam.club}>
                     <h4>Enter the name of the club</h4>
                     <input value={teamData.clubName} onChange={clubNameHandler}/>
+                    <label>PB/NR</label>
+                    <input
+                        type="text"
+                        value={teamData.pbOrNR}
+                        onChange={handlePbOrNRChange}
+                    />
                     <label>Select track</label>
                     <select className='track__selectField' value={teamData.track} onChange={selectTrackHandler}>
                         <option></option>
@@ -122,8 +137,18 @@ const FinalRelaysForm = ({
                         <option></option>
                         {countryList.map((elem, index) => <option key={index}>{elem}</option>)}
                     </select>
+                    <label>PB/NR</label>
+                    <input
+                        type="text"
+                        value={teamData.pbOrNR}
+                        onChange={handlePbOrNRChange}
+                    />
                     <label>Select track</label>
-                    <select className='track__selectField' value={teamData.track} onChange={selectTrackHandler}>
+                    <select 
+                        className='track__selectField' 
+                        value={teamData.track} 
+                        onChange={selectTrackHandler}
+                    >
                         <option></option>
                         {tracks.map((elem, index) => <option key={index}>{elem}</option>)}
                     </select> 

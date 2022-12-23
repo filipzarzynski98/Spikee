@@ -4,11 +4,16 @@
     flex-direction: column;
 }
 
+.athleteElementActive {
+    
+}
+
 table {
     max-width: 70vw;
 }
 
 th {
+    min-width: 85px;
     font-size: 18px;
     padding-top: 10px;
     padding-bottom: 1px;
@@ -16,11 +21,16 @@ th {
 }
 
 td {
+    min-width: 85px;
     padding-top: 5px;
     padding-bottom: 3px;
     border-bottom: 1px solid red;
     border-right: 1px solid lightgrey;
     
+}
+
+.noBorder {
+    border: none;
 }
 
 .name__flex-start {

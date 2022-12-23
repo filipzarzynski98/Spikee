@@ -158,6 +158,15 @@ const FinalIndividualsForm = ({
                         <p className={validationErrorSurname}>The surname must consist of numbers only!</p>
                     </div>
                     <div className='labelAndData__wrapper'>
+                        <label>PB</label>
+                        <input
+                            type="text" 
+                            name="pb" 
+                            value={athleteData.pb} 
+                            onChange={handleAthleteDataChange}
+                        />
+                    </div>
+                    <div className='labelAndData__wrapper'>
                         <label>Age Category</label>
                         <select value={athleteData.ageCategory} onChange={handleAgeCategoryChange}>
                             <option></option>
