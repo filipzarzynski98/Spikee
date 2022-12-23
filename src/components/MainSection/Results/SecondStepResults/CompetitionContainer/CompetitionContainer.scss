@@ -1,6 +1,12 @@
 .competitions__wrapper {
     width: 100%;
     height: 100%;
+    background-color: black;
+}
+
+.competitions__wrapper-neutralized {
+    width: 100%;
+    height: 100%;   
 }
 
 .seperate__wrapper {
@@ -33,4 +39,10 @@
 .deleteCompButton:hover {
     background-color: rgb(144, 3, 3);
     cursor: pointer;
+}
+
+.competitions__seperator {
+    height: 30px;
+    background-color:#8080802b;
+    width: 100%;
 }

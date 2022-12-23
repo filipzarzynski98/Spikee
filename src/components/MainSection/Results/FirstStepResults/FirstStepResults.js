@@ -33,7 +33,6 @@ const FirstStepResults = ({
     if (currentResultsStep.firstStep === "active") {
          return (
             <div className='firstStepResults__wrapper'>
-                <p>1 Step</p>
                 <h2>Set your list name</h2>
                 <div className='listNameInput__wrapper'>
                     <input

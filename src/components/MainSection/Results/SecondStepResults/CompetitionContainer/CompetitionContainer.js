@@ -19,8 +19,17 @@ const CompetitionContainer = ({
         }
     }
 
+    const competitionsNeutralColorToPrint = () => {
+        if (listConfirmed === false) {
+            return 'competitions__wrapper'
+        }
+        else {
+            return 'competitions__wrapper-neutralized' 
+        }
+    }
+
     return (
-        <div className='competitions__wrapper'>
+        <div className={competitionsNeutralColorToPrint()}>
             {competitionsArray.map((elem) => {
                 return (
                     <div className='seperate__wrapper' key={elem.id}>
@@ -38,10 +47,10 @@ const CompetitionContainer = ({
                               Delete Competition
                             </button>
                         </div>
+                        <div className={`${isListConfirmed('competitions__seperator')}`}></div> 
                     </div>)} 
-                    
                 )
-            } 
+            }
         </div>
     );
 };

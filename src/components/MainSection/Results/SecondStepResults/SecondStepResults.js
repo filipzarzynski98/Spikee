@@ -51,7 +51,6 @@ const SecondStepResults = ({
     if (currentResultsStep.secondStep === "active") {
         return (
             <div className='secondStep__wrapper'>
-                {/* <p>2 Step</p> */}
                 <div className='competitionContainer__wrapper' ref={competitionsRef}>
                     <div className='listName__wrapper'>
                         <h2 className='listName'>{listName}</h2>
