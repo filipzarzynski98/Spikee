@@ -30,6 +30,7 @@ const NewCompetition = ({
     const [isNewHeatPossible, setIsNewHeatPossible] = useState("newHeat -dezactive")
     const [isFinalIndividualsFormActive, setIsFinalIndividualsFormActive] = useState("finalIndividualsForm-dezactive")
     const [isFinalRelaysFormActive, setIsFinalRelaysFormActive] = useState("finalRelaysForm-dezactive")
+    const [competitionNameBGColor, setCompetitionNameBGColor] = useState("")
 
     const formWrapperNarrowing = () => {
         if (isNewHeatPossible === "newHeat-possible") {
@@ -40,12 +41,13 @@ const NewCompetition = ({
         }
     }
 
-    const heatsContainerToPrint = () => {
+
+    const heatsContainerToPrint = (beforeConfirmedClass, afterConfirmedClass) => {
         if (listConfirmed === false) {
-            return "heatsContainer"
+            return beforeConfirmedClass 
         }
         else {
-            return "heatsContainerToPrint"
+            return afterConfirmedClass 
         }
     }
 
@@ -54,7 +56,7 @@ const NewCompetition = ({
     if (isCompetitionActive === "active") {
          return (
             <div className='newCompetition__wrapper'>
-                <div className={heatsContainerToPrint()}>
+                <div className={`${heatsContainerToPrint("heatsContainer", "heatsContainerToPrint" )} ${competitionNameBGColor}`}>
                     <h2 className='competition'>{onChangeCompetitionData.competition} {onChangeCompetitionData.stage}</h2>
                     <Heats
                         onChangeCompetitionData={onChangeCompetitionData}
@@ -62,6 +64,7 @@ const NewCompetition = ({
                         isFinalRelaysFormActive={isFinalRelaysFormActive}
                         isNewHeatPossible={isNewHeatPossible}
                         isListConfirmed={isListConfirmed}
+                        setCompetitionNameBGColor={setCompetitionNameBGColor}
                     />
                 </div>
                 <div className={formWrapperNarrowing()}>

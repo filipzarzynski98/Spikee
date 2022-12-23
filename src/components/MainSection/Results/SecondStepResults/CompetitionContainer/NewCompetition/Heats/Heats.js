@@ -6,7 +6,8 @@ const Heats = ({
     isFinalIndividualsFormActive,
     isFinalRelaysFormActive, 
     isNewHeatPossible,
-    isListConfirmed
+    isListConfirmed,
+    setCompetitionNameBGColor
 }) => {
 
     const [heatsList, setHeatsList] = useState([])
@@ -15,7 +16,8 @@ const Heats = ({
     const addHeatHandler = (e) => {
         e.preventDefault()
         setHeatsCounter(prevState => prevState + 1)
-        setHeatsList(prevState => [...prevState, {id: heatsCounter}]) 
+        setHeatsList(prevState => [...prevState, {id: heatsCounter}])
+        setCompetitionNameBGColor("competitionNameBGColor") 
     }
 
     const removeHeatHandler = (heatToRemove) => {
