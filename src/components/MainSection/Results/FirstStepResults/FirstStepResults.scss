@@ -20,8 +20,8 @@
 
 
 .listNameInput {
-    width: 40vw;
-    height: 40px;
+    width: 60vw;
+    height: 7vh;
     margin-top: 20px;
     border-radius: 15px;
     padding: 10px;
@@ -30,17 +30,52 @@
 
 .setListNameButton {
     margin-top: 20px;
-    width: 15vw;
-    height: 3vw;
+    width: 25vw;
+    height: 4vw;
     border-radius: 15px;
     font-size: 20px;
     font-weight: 700;
-    background-color: rgb(10, 203, 61);
-    color: white;
+    color: black;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.setListNameButton-submited {
+    margin-top: 20px;
+    width: 25vw;
+    height: 4vw;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .setListNameButton:hover {
     background-color: rgb(0, 255, 17);
     color: black;
+}
+
+.icon-button {
+    height: 30px;
+    width: 30px;
+    z-index: 1;
+    position: relative;
+}
+
+.setListNameButton__title {
+    z-index: 2;
+    position: relative;
+}
+
+.icon-hidden {
+    display: none;
+}
+
+.icon-active {
+    display: block;
 }
